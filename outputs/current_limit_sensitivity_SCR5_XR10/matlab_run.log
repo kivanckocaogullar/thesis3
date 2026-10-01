@@ -1,0 +1,93 @@
+
+NUMERICAL VALIDATION PASSED
+        inactiveBaseline: 2.22044604925031e-16
+         powerContinuity: 0
+       voltageContinuity: 5.55111512312578e-17
+            currentLimit: 2.22044604925031e-16
+                Pe_gamma: 2.7862068208151e-10
+                    Pe_U: 1.81458612025232e-09
+               Pe_gammaU: 1.08933710940562e-08
+    projectionDerivative: 1.08897946216047e-10
+                Jacobian: 5.78497250103283e-11
+           matrixFormula: 8.88178419700125e-16
+          matrixSymmetry: 0
+         networkResidual: 9.42464264760947e-16
+     equilibriumResidual: 0
+            nominalMatch: 7.17648163117701e-13
+
+
+Imax=1.2 pu | current switches:
+         -16.3409260375779
+          16.3409260375779
+
+Local stable intervals:
+         -17.0888847647771         -16.3409260375779
+         -16.3409260375779          16.3409260375779
+
+Certified intervals (voltage valid):
+Mathematical certificates ignoring voltage capability:
+Voltage-invalid intervals:
+
+NUMERICAL VALIDATION PASSED
+        inactiveBaseline: 2.22044604925031e-16
+         powerContinuity: 1.98641103565933e-12
+       voltageContinuity: 4.63868890303988e-13
+            currentLimit: 2.22044604925031e-16
+                Pe_gamma: 2.7862068208151e-10
+                    Pe_U: 1.94572308265251e-09
+               Pe_gammaU: 1.18113288039012e-08
+    projectionDerivative: 1.17972465130123e-10
+                Jacobian: 5.78497250103283e-11
+           matrixFormula: 7.7715611723761e-16
+          matrixSymmetry: 0
+         networkResidual: 9.99200722162641e-16
+     equilibriumResidual: 0
+            nominalMatch: 7.17648163117701e-13
+
+
+Imax=1.3 pu | current switches:
+         -17.7140205666332
+          17.7140205666332
+
+Local stable intervals:
+         -17.7140205666332          17.7140205666332
+
+Certified intervals (voltage valid):
+Mathematical certificates ignoring voltage capability:
+Voltage-invalid intervals:
+
+NUMERICAL VALIDATION PASSED
+        inactiveBaseline: 2.22044604925031e-16
+         powerContinuity: 4.44089209850063e-16
+       voltageContinuity: 1.11022302462516e-16
+            currentLimit: 2.22044604925031e-16
+                Pe_gamma: 2.7862068208151e-10
+                    Pe_U: 1.56859547573163e-09
+               Pe_gammaU: 6.45613096317277e-09
+    projectionDerivative: 8.32613283874295e-11
+                Jacobian: 5.78497250103283e-11
+           matrixFormula: 7.7715611723761e-16
+          matrixSymmetry: 0
+         networkResidual: 9.29811783123569e-16
+     equilibriumResidual: 0
+            nominalMatch: 7.17648163117701e-13
+
+
+Imax=1.4 pu | current switches:
+         -19.0896266975091
+          19.0896266975091
+
+Local stable intervals:
+         -19.0896266975091          19.0896266975091
+
+Certified intervals (voltage valid):
+Mathematical certificates ignoring voltage capability:
+Voltage-invalid intervals:
+    Imax    positiveSwitch_deg    positiveLocalStableWidth_deg    positiveActiveStableWidth_deg    positiveCertifiedWidth_deg    positiveMathematicalCertificateWidth_deg    positiveActiveCertifiedWidth_deg    certifiedIntervalsFullPeriod    maximumRequiredVoltage_pu    voltageAtSwitch_pu    slopeInactiveAtSwitch    slopeActiveAtSwitch    nominalCurrentMargin_pu
+    ____    __________________    ____________________________    _____________________________    __________________________    ________________________________________    ________________________________    ____________________________    _________________________    __________________    _____________________    ___________________    _______________________
+
+    1.2      16.3409260375779           16.3409260375779                        0                              0                                    0                                       0                                 0                        1.242006458247            1.242006458247       4.04152606920135        -0.16830696932954        0.18469284618262    
+    1.3      17.7140205666332           17.7140205666332                        0                              0                                    0                                       0                                 0                      1.26289068731707          1.26289068731707       4.01623652986347       -0.188283616844293        0.28469284618262    
+    1.4      19.0896266975091           19.0896266975091                        0                              0                                    0                                       0                                 0                      1.28382560888811          1.28382560888811       3.98858790582648       -0.209457780891058        0.38469284618262    
+
+Completed separate Imax sensitivity. No existing model or analysis modified.

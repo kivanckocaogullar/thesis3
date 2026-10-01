@@ -1,0 +1,137 @@
+Baseline Figure 3/4/5A/5B source and exports inspected before figure creation.
+Old Usag=.3 meant 70% reduction. New tests use retained .5 and .3 (50% and 70% reductions).
+Old normalized duration=1 has no consistent direct seconds conversion. Fault=[0,.1] s, end=8 s.
+Initial displacement imposed at 0-; source sag at 0+; no state reset at clearing. Pstar=1 throughout.
+A sag=50% clear=(21.210337,1.007291538), active 0.539155 s, valid=1 recovery=Y
+A sag=70% clear=(23.433575,1.009693410), active 0.812101 s, valid=1 recovery=Y
+B sag=50% clear=(26.819433,1.006312097), active 0.599506 s, valid=1 recovery=Y
+B sag=70% clear=(29.506845,1.009139181), active 0.985673 s, valid=1 recovery=Y
+C sag=50% clear=(30.107639,1.005878050), active 0.645106 s, valid=1 recovery=Y
+C sag=70% clear=(32.964313,1.008861442), active 1.137812 s, valid=1 recovery=Y
+D sag=50% clear=(32.466668,1.005619936), active 0.684645 s, valid=1 recovery=Y
+D sag=70% clear=(35.408465,1.008682230), active 1.304033 s, valid=1 recovery=Y
+E sag=50% clear=(40.814825,1.004989897), active 0.895418 s, valid=1 recovery=Y
+{Error using assert
+Tighter integration disagrees.
+
+Error in run_study (line 41)
+  assert(err<2e-6&&terr<2e-5,'Tighter integration disagrees.');
+  ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+Error in run (line 112)
+evalin('caller', strcat(scriptStem, ';'));
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+} 
+Baseline Figure 3/4/5A/5B source and exports inspected before figure creation.
+Old Usag=.3 meant 70% reduction. New tests use retained .5 and .3 (50% and 70% reductions).
+Old normalized duration=1 has no consistent direct seconds conversion. Fault=[0,.1] s, end=8 s.
+Initial displacement imposed at 0-; source sag at 0+; no state reset at clearing. Pstar=1 throughout.
+Check A/50: state difference 5.70432590052e-13, time difference 0, valid 1/1
+A sag=50% clear=(21.210337,1.007291538), active 0.539155 s, valid=1 recovery=Y
+Check A/70: state difference 3.66018326758e-12, time difference 0, valid 1/1
+A sag=70% clear=(23.433575,1.009693410), active 0.812101 s, valid=1 recovery=Y
+Check B/50: state difference 7.19979631469e-14, time difference 0, valid 1/1
+B sag=50% clear=(26.819433,1.006312097), active 0.599506 s, valid=1 recovery=Y
+Check B/70: state difference 3.5799141429e-13, time difference 0, valid 1/1
+B sag=70% clear=(29.506845,1.009139181), active 0.985673 s, valid=1 recovery=Y
+Check C/50: state difference 1.58928425975e-13, time difference 0, valid 1/1
+C sag=50% clear=(30.107639,1.005878050), active 0.645106 s, valid=1 recovery=Y
+Check C/70: state difference 1.15463194561e-14, time difference 0, valid 1/1
+C sag=70% clear=(32.964313,1.008861442), active 1.137812 s, valid=1 recovery=Y
+Check D/50: state difference 3.04367642201e-13, time difference 0, valid 1/1
+D sag=50% clear=(32.466668,1.005619936), active 0.684645 s, valid=1 recovery=Y
+Check D/70: state difference 2.67563748935e-14, time difference 0, valid 1/1
+D sag=70% clear=(35.408465,1.008682230), active 1.304033 s, valid=1 recovery=Y
+Check E/50: state difference 1.71418435002e-13, time difference 0, valid 1/1
+E sag=50% clear=(40.814825,1.004989897), active 0.895418 s, valid=1 recovery=Y
+Check E/70: state difference 2.70262451352e-06, time difference 0, valid 1/1
+Error using assert
+Tighter integration disagrees.
+
+Error in run_study (line 42)
+  assert(err<2e-6&&terr<2e-5,'Tighter integration disagrees.');
+  ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+Error in run (line 112)
+evalin('caller', strcat(scriptStem, ';'));
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+Baseline Figure 3/4/5A/5B source and exports inspected before figure creation.
+Old Usag=.3 meant 70% reduction. New tests use retained .5 and .3 (50% and 70% reductions).
+Old normalized duration=1 has no consistent direct seconds conversion. Fault=[0,.1] s, end=8 s.
+Initial displacement imposed at 0-; source sag at 0+; no state reset at clearing. Pstar=1 throughout.
+Check F/50: state difference 5.58386670235e-13, time difference 0, valid 1/1
+F sag=50% clear=(22.869892,1.006967000), active 0.549924 s, valid=1 recovery=Y
+Check F/70: state difference 4.6573855883e-14, time difference 0, valid 1/1
+F sag=70% clear=(25.256940,1.009518476), active 0.858743 s, valid=1 recovery=Y
+Check G/50: state difference 3.24185123191e-13, time difference 0, valid 1/1
+G sag=50% clear=(23.709976,1.006814293), active 0.560769 s, valid=1 recovery=Y
+Check G/70: state difference 1.37889699658e-13, time difference 0, valid 1/1
+G sag=70% clear=(26.171005,1.009433476), active 0.882491 s, valid=1 recovery=Y
+Check H/50: state difference 4.91828799909e-14, time difference 0, valid 1/1
+H sag=50% clear=(28.890006,1.006028086), active 0.627016 s, valid=1 recovery=Y
+Check H/70: state difference 1.9206858326e-14, time difference 0, valid 1/1
+H sag=70% clear=(31.691471,1.008960404), active 1.074110 s, valid=1 recovery=Y
+Check I/50: state difference 1.26898491715e-13, time difference 0, valid 1/1
+I sag=50% clear=(29.953264,1.005896411), active 0.642729 s, valid=1 recovery=Y
+Check I/70: state difference 3.70259378712e-14, time difference 0, valid 1/1
+I sag=70% clear=(32.803389,1.008873741), active 1.129114 s, valid=1 recovery=Y
+Check J/50: state difference 1.26787469412e-13, time difference 0, valid 1/1
+J sag=50% clear=(30.264990,1.005859527), active 0.647553 s, valid=1 recovery=Y
+Check J/70: state difference 9.57012247227e-14, time difference 0, valid 1/1
+J sag=70% clear=(33.128208,1.008848979), active 1.146890 s, valid=1 recovery=Y
+Check K/50: state difference 4.05731004349e-13, time difference 0, valid 1/1
+K sag=50% clear=(37.058096,1.005224947), active 0.783025 s, valid=1 recovery=Y
+Check K/70: state difference 1.20466978046e-05, time difference 0, valid 1/1
+[Warning: Absolute state-check threshold exceeded; preserved settings. Both integrations agree on recovery class; discrepancy recorded.] 
+[> In run_study (line 53)
+In run (line 112)] 
+K sag=70% clear=(40.098030,1.008378138), active 7.468812 s, valid=1 recovery=N
+Check L/50: state difference 8.95949980873e-14, time difference 0, valid 1/1
+L sag=50% clear=(39.115852,1.005087430), active 0.839853 s, valid=1 recovery=Y
+Check L/70: state difference 2.6091155263e-05, time difference 0, valid 1/1
+[Warning: Absolute state-check threshold exceeded; preserved settings. Both integrations agree on recovery class; discrepancy recorded.] 
+[> In run_study (line 53)
+In run (line 112)] 
+L sag=70% clear=(42.176856,1.008259826), active 7.363016 s, valid=1 recovery=N
+    Case    gamma0_deg    rawCurrent    limitedCurrent      Pe       requiredVoltage    limiterState
+    ____    __________    __________    ______________    _______    _______________    ____________
+
+    "A"           14       0.69219         0.69219        0.68394        1.1406          "inactive" 
+    "B"       20.634        1.0178          1.0178              1          1.21          "inactive" 
+    "C"       24.373           1.2             1.2         1.1731        1.2489          "boundary" 
+    "D"           27        1.3286             1.2         1.1663        1.2404          "active"   
+    "E"           36        1.7661             1.2         1.1384        1.2091          "active"   
+    "F"           16       0.79063         0.79063        0.78023        1.1616          "inactive" 
+    "G"           17       0.83977         0.83977        0.82808         1.172          "inactive" 
+    "H"           23        1.1332          1.1332           1.11        1.2347          "inactive" 
+    "I"         24.2        1.1916          1.1916         1.1652        1.2471          "inactive" 
+    "J"        24.55        1.2087             1.2         1.1727        1.2483          "active"   
+    "K"           32        1.5724             1.2         1.1517        1.2234          "active"   
+    "L"         34.2        1.6791             1.2         1.1446        1.2157          "active"   
+
+    Case    gamma0_deg    sagDepth_percent    clearGamma_deg    clearNu    limiterActivated    activeDuration_s    voltageFeasible    clearRegion    postfaultContained_sampled    entersOmega_sampled    entersTerminal_sampled    recovery    finalGamma_deg    finalNu    maxGamma_deg    minGamma_deg    maxFrequency_Hz    minFrequency_Hz    maxRequiredVoltage    lastValidTime_s    finalGammaError_deg    finalNuError    finalPowerResidual    firstOmegaEntry_sampled_s    firstTerminalEntry_sampled_s    firstDomainExit_sampled_s    firstDomainReentry_sampled_s    modelValidityNote    integrationStateCheckPassed
+    ____    __________    ________________    ______________    _______    ________________    ________________    _______________    ___________    __________________________    ___________________    ______________________    ________    ______________    _______    ____________    ____________    _______________    _______________    __________________    _______________    ___________________    ____________    __________________    _________________________    ____________________________    _________________________    ____________________________    _________________    ___________________________
+
+    "A"           14             50                21.21        1.0073          true               0.53916              true           "outside"               false                      true                    true                "Y"           20.634             1        33.706              14           50.365             49.804               1.2489                 8                4.4469e-06        -4.3533e-09         2.0829e-07                 0.87552                        3.3443                        0.56494                       0.63457                      ""                       true            
+    "A"           14             70               23.434        1.0097          true                0.8121              true           "outside"               false                      true                    true                "Y"           20.634             1        43.379              14           50.485              49.77               1.2489                 8               -2.1707e-06         8.8504e-09        -1.0168e-07                  1.1652                        3.6695                        0.73858                       0.90053                      ""                       true            
+    "B"       20.634             50               26.819        1.0063          true               0.59951              true           "outside"               false                      true                    true                "Y"           20.634             1        36.599          15.568           50.316             49.789               1.2489                 8                7.1667e-06        -3.8773e-09         3.3569e-07                 0.92687                        3.4088                        0.18822                       0.43443                      ""                       true            
+    "B"       20.634             70               29.507        1.0091          true               0.98567              true           "outside"               false                      true                    true                "Y"           20.634             1        49.369          14.898           50.457             49.761               1.2489                 8                -1.845e-05        -3.0115e-09        -8.6419e-07                  1.3416                        3.8551                        0.87683                        1.0717                      ""                       true            
+    "C"       24.373             50               30.108        1.0059          true               0.64511              true           "outside"               false                      true                    true                "Y"           20.634             1        39.179          15.345           50.294              49.78               1.2489                 8                9.8783e-06        -1.8986e-09         4.6271e-07                 0.98217                        3.4733                        0.14213                       0.49763                      ""                       true            
+    "C"       24.373             70               32.964        1.0089          true                1.1378              true           "outside"               false                      true                    true                "Y"           20.634             1        53.285          14.839           50.443             49.759               1.2489                 8                1.3003e-05        -1.5671e-08         6.0908e-07                  1.4957                        4.0131                          1.019                        1.2244                      ""                       true            
+    "D"           27             50               32.467        1.0056          true               0.68464              true           "outside"               false                      true                    true                "Y"           20.634             1        41.198          15.209           50.281             49.774               1.2489                 8                 1.058e-05         7.3511e-10         4.9558e-07                  1.0269                         3.526                         0.1158                       0.54503                      ""                       true            
+    "D"           27             70               35.408        1.0087          true                 1.304              true           "outside"               false                      true                    true                "Y"           20.634             1        56.404          14.816           50.434             49.758               1.2489                 8                2.6578e-05         1.2637e-08         1.2449e-06                  1.6629                        4.1817                         1.4101                         1.547                      ""                       true            
+    "E"           36             50               40.815         1.005          true               0.89542              true           "outside"               false                      true                    true                "Y"           20.634             1        49.386          14.898           50.249             49.761               1.2489                 8               -1.4248e-05         7.1627e-09        -6.6737e-07                  1.2508                        3.7656                         0.7873                       0.98085                      ""                       true            
+    "E"           36             70               43.885        1.0082          true                 7.363              true           "outside"               false                      false                   false               "N"           4590.3        1.0423        4590.3              36           52.617                 50               1.2489                 8                    4569.7           0.042283            -1.9066                     NaN                           NaN                            NaN                           NaN                      ""                       true            
+    "F"           16             50                22.87         1.007          true               0.54992              true           "outside"               false                      true                    true                "Y"           20.634             1        34.088          15.854           50.348             49.801               1.2489                 8                4.2454e-06        -4.4435e-09         1.9886e-07                 0.87552                        3.3469                        0.27512                       0.34358                      ""                       true            
+    "F"           16             70               25.257        1.0095          true               0.85874              true           "outside"               false                      true                    true                "Y"           20.634             1        45.047          15.023           50.476             49.767               1.2489                 8               -8.7902e-06         8.7706e-09        -4.1174e-07                  1.2086                        3.7169                        0.77018                       0.94267                      ""                       true            
+    "G"           17             50                23.71        1.0068          true               0.56077              true           "outside"               false                      true                    true                "Y"           20.634             1        34.476          15.805           50.341             49.799               1.2489                 8                4.5564e-06        -4.4427e-09         2.1342e-07                  0.8821                        3.3548                        0.25142                       0.36465                      ""                       true            
+    "G"           17             70               26.171        1.0094          true               0.88249              true           "outside"               false                      true                    true                "Y"           20.634             1        45.941           14.99           50.472             49.765               1.2489                 8               -1.2382e-05         7.8219e-09        -5.7997e-07                  1.2337                        3.7432                        0.78862                       0.96637                      ""                       true            
+    "H"           23             50                28.89         1.006          true               0.62702              true           "outside"               false                      true                    true                "Y"           20.634             1         38.19          15.423           50.301             49.783               1.2489                 8                8.9917e-06        -2.8413e-09         4.2118e-07                 0.95978                        3.4483                        0.15793                       0.47393                      ""                       true            
+    "H"           23             70               31.691         1.009          true                1.0741              true           "outside"               false                      true                    true                "Y"           20.634             1         51.79          14.857           50.448              49.76               1.2489                 8               -4.5668e-06        -1.3802e-08        -2.1391e-07                  1.4312                        3.9486                        0.95847                        1.1599                      ""                       true            
+    "I"         24.2             50               29.953        1.0059          true               0.64273              true           "outside"               false                      true                    true                "Y"           20.634             1        39.052          15.355           50.295             49.781               1.2489                 8                9.7794e-06        -2.0334e-09         4.5807e-07                 0.97822                        3.4707                        0.14477                         0.495                      ""                       true            
+    "I"         24.2             70               32.803        1.0089          true                1.1291              true           "outside"               false                      true                    true                "Y"           20.634             1        53.092          14.841           50.444             49.759               1.2489                 8                1.0533e-05        -1.5866e-08         4.9335e-07                  1.4878                        4.0052                         1.0098                        1.2152                      ""                       true            
+    "J"        24.55             50               30.265        1.0059          true               0.64755              true           "outside"               false                      true                    true                "Y"           20.634             1         39.31          15.335           50.293              49.78               1.2489                 8                9.9742e-06        -1.7567e-09          4.672e-07                  0.9848                        3.4773                        0.14082                       0.50158                      ""                       true            
+    "J"        24.55             70               33.128        1.0088          true                1.1469              true           "outside"               false                      true                    true                "Y"           20.634             1        53.483          14.837           50.442             49.759               1.2489                 8                1.5537e-05        -1.5302e-08         7.2774e-07                  1.5049                        4.0224                         1.0269                        1.2323                      ""                       true            
+    "K"           32             50               37.058        1.0052          true               0.78302              true           "outside"               false                      true                    true                "Y"           20.634             1        45.496          15.006           50.261             49.766               1.2489                 8                3.1722e-06         7.7583e-09         1.4859e-07                  1.1336                        3.6432                         0.6925                       0.86762                      ""                       true            
+    "K"           32             70               40.098        1.0084          true                7.4688              true           "outside"               false                      false                   false               "N"           3824.9        1.0357        3824.9              32           52.617                 50               1.2489                 8                    3804.3           0.035661            -1.5378                     NaN                           NaN                            NaN                           NaN                      ""                       false           
+    "L"         34.2             50               39.116        1.0051          true               0.83985              true           "outside"               false                      true                    true                "Y"           20.634             1        47.582          14.941           50.254             49.763               1.2489                 8               -5.7155e-06         9.2317e-09        -2.6772e-07                  1.1942                        3.7064                        0.73858                       0.92423                      ""                       true            
+    "L"         34.2             70               42.177        1.0083          true                 7.363              true           "outside"               false                      false                   false               "N"           4457.9        1.0299        4457.9            34.2           52.617                 50               1.2489                 8                    4437.3           0.029915           -0.62181                     NaN                           NaN                            NaN                           NaN                      ""                       false           
+

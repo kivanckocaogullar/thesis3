@@ -1,0 +1,864 @@
+====================================================
+NORMALIZATION AUDIT
+====================================================
+Physical EMT base:
+f_base = 50 Hz
+omega_base = 314.159265359 rad/s
+Pourazad-style analytical convention:
+omega0_pu = 1.0 pu
+VSM parameters:
+H = 3.4 s
+K = 20 pu
+Kd = 5 pu
+D_eff = 25 pu
+Main contraction state: x=[gamma;nu]
+gamma_dot=nu-1; nu0=1 pu
+Physical mapping retained only for reference: omega_phys=omega_base*nu
+NO 314.159 factor is used inside beta2_dot, Theta or Eq15c of the main branch.
+Analytical time is the specified normalized-model time, NOT physical EMT seconds.
+This is NOT a coordinate-only re-expression of the physical EMT dynamics.
+Candidate contraction-oriented retuning: D/(2H)=3.67647058824; D/H=7.35294117647; Pmax=3.33333333333 pu
+SI equivalents for reference ONLY: Mv_SI=0.0216450722605, Dv_SI=0.0795774715459
+====================================================
+SG LEGACY-CODE REPRODUCTION: gamma_rep=0 deg, gamma0 separate
+Diagonal bounds 41.185925166 < gamma0 < 90 deg; category reproduction PASS=1
+Scaling: legacy Eq15c eigenvalues = 2 * reported half-symmetric eigenvalues.
+    gamma0_deg    PaperCase    lambdaRepresentativeHalf    lambdaEquilibriumHalf
+    __________    _________    ________________________    _____________________
+
+       44.1           1          -0.0485373783795852       -0.00199742851106065 
+       55.5           1            -0.20557064948059        -0.0764417202923078 
+         67           1           -0.198325567311119        -0.0199610977413553 
+       78.5           1           -0.105355181540818         0.0769582512402732 
+       26.4           2             1.02701712191672           1.01340206645046 
+       35.2           2            0.274743913818692          0.276350728791868 
+      101.5           3            0.205298468868376          0.312232299086906 
+      112.9           3            0.432245893910592          0.463819161324251 
+
+
+CORRECTED PU VSM-GFM CONTRACTION RESULTS
+                   f_base: 50
+                omega0_pu: 1
+                        H: 3.4
+                        K: 20
+                       Kd: 5
+                        D: 25
+                     mass: 6.8
+                        E: 1
+                       U1: 1
+                      Xeq: 0.3
+            Pstar_nominal: 1
+                 idealPLL: 1
+    frequencyReference_pu: 1
+             powerBase_VA: 2000000
+
+Pe=(E*U1/Xeq)*sin(gamma)
+f=[nu-1;((Pstar-Pe)/nu-D*(nu-1))/(2*H)]
+A=[0,1;-E*U1*cos(gamma)/(2*H*Xeq*nu),(-(Pstar-Pe)/nu^2-D)/(2*H)]
+B=[0;-E*sin(gamma)/(2*H*Xeq*nu)]
+At equilibrium: alpha1=-E*U1*cos(gamma0)/(2*H*Xeq); alpha2=-D/(2*H) (printed numerically below)
+beta2=-E*sin(gamma)/(2*H*Xeq*nu)
+beta2_dot_paper=-E*omega0_pu*cos(gamma0)/(2*H*Xeq), omega0_pu=1
+beta2_dot_paper/beta2=cot(gamma0)
+beta2_dot_coordinate=-C*cos(gamma)*(nu-1)/nu+C*sin(gamma)*nu_dot/nu^2
+The full coordinate derivative is zero at a true equilibrium.
+Main branch: paper-literal PU contraction branch, SymF=Eq15c/2.
+Same frozen-reference-metric direct definition is checked independently.
+alpha2=-3.67647058824
+Nominal Pstar=1 pu angle=17.457603123722 deg
+
+Paper-style VSM-GFM contraction interval (gamma=gamma0):
+gamma0_min=15.322599180550 deg; gamma0_max=21.091668254769 deg
+gamma0_min=48.626361830614 deg; gamma0_max=81.415962806098 deg
+
+Direct-definition interval, same frozen paper metric:
+gamma0_min=15.322599180550 deg; gamma0_max=21.091668254769 deg
+gamma0_min=48.626361830614 deg; gamma0_max=81.415962806098 deg
+Boundary cause diagnostics (half-symmetric convention):
+    Interval    Edge       gamma0_deg              s11                    s22                   detSymF                 minEigM                lambdaMax              Cause    
+    ________    ____    ________________    __________________    ___________________    _____________________    ___________________    _____________________    _____________
+
+       1         1      15.3225991805504     -3.64972776993109    -0.0267428183042022    -1.26625368868479e-15    0.00109994257503341     3.43475248243408e-16    "det(SymF)=0"
+       1         2      21.0916682547685     -2.59268305731671      -1.08378753091858                        0    0.00361591382026086    -1.11022302462516e-16    "det(SymF)=0"
+       2         1      48.6263618306144    -0.880801209203681      -2.79566937903161     1.39374098956336e-15     0.0575721163762419    -4.44089209850063e-16    "det(SymF)=0"
+       2         2      81.4159628060982     -0.15095081711923      -3.52551977111606     1.61983036864884e-16      0.202050440944997    -5.55111512312578e-17    "det(SymF)=0"
+
+Method B actual-derivative metric interval: EMPTY (SymF11=0).
+Literal moving-angle derivative interval: EMPTY (SymF11=0); not a VSM equilibrium.
+Necessary diagonal sector only: 15.2163267120 < gamma0 < 90 deg
+0 <= Pstar <= 1 pu in scanned sector: 0 <= gamma0 <= 17.457603124 deg
+Contraction interval powers at boundaries [pu]:
+         0.880844933056766          1.19953712527426
+          2.50138420100842          3.29599334582185
+
+Maximum full direct/paper residual over scan: 1.155e-15
+Maximum equilibrium residual over scan: 0.000e+00
+
+Nominal 1-pu operating point: gamma0=17.457603123722 deg; residual=0.000e+00
+A=
+                         0                         1
+        -0.467617255596542         -3.67647058823529
+
+eigA=
+        -0.131925902200914
+         -3.54454468603438
+
+M=
+         0.240292195309496        0.0687672434700797
+        0.0687672434700797        0.0216262975778547
+
+eigM=
+       0.00179800038987881
+         0.260120492497472
+
+SymF_paper=
+         -3.17979733805649          1.05585151160295
+          1.05585151160295        -0.496673250178808
+
+eigPaper=
+         -3.54545851686609
+        -0.131012071369203
+
+lambda_max(SymF)=-0.131012071369; det(SymF)=0.464497864248
+LOCALLY STABLE = YES
+CONTRACTION CERTIFIED = YES
+
+========================================================
+12-POINT VSM-GFM OPERATING-POINT CLASSIFICATION
+========================================================
+H=3.4 s; K=20; Kd=5; D_eff=25; classification tol=1e-09
+
+Verified contraction intervals:
+gamma0_min=15.322599180550 deg; gamma0_max=21.091668254769 deg
+gamma0_min=48.626361830614 deg; gamma0_max=81.415962806098 deg
+    gamma0_deg        Pstar_pu         eq_residual        maxRealEigA             lambdaMinM            lambdaMaxSymF            detSymF          locallyStable    contractionCertified       regionLabel         stabilityClass  
+    __________    _________________    ___________    ___________________    ____________________    ___________________    __________________    _____________    ____________________    _________________    __________________
+
+           10     0.578827258889768         0          -0.136365705105494    0.000212271233353379       4.78219006755364     -40.4509229729206        true                false            "Below Region 1"     "Locally stable"  
+           12     0.693038969392531         0          -0.135406800542024    0.000431145606283464       1.74986531101491     -9.49535695601286        true                false            "Below Region 1"     "Locally stable"  
+         15.8     0.907600823468581         0           -0.13311550081407     0.00123545951075148    -0.0657636317678059     0.237453202706583        true                true             "Inside Region 1"    "Locally stable"  
+    17.457603     0.999999993133679         0          -0.131925902293967     0.00179800034221961     -0.131012072520421     0.464497868178982        true                true             "Inside Region 1"    "Locally stable"  
+           19      1.08522718152386         0          -0.130716773369778     0.00246376486365463    -0.0868208138029622     0.311656314683835        true                true             "Inside Region 1"    "Locally stable"  
+         20.5      1.16735793753156         0          -0.129447430573872      0.0032589438723416    -0.0237633051486315    0.0868003977866168        true                true             "Inside Region 1"    "Locally stable"  
+           25      1.40872753913566         0          -0.125097683333677     0.00666038782457571      0.106551546163516    -0.403086857590998        true                false            "Between Regions"    "Locally stable"  
+           35      1.91192145450349         0          -0.112673392362081      0.0209431344661581      0.110107333541983    -0.416929998215839        true                false            "Between Regions"    "Locally stable"  
+           55      2.73050681429664         0         -0.0781375477524437      0.0811456377723845    -0.0329428385353109     0.120028146357291        true                true             "Inside Region 2"    "Locally stable"  
+           65      3.02102595678883         0         -0.0572402963815453       0.124327605869284    -0.0513572710110662      0.18617592707851        true                true             "Inside Region 2"    "Locally stable"  
+          100      3.28269251004069         0          0.0230090886163548       0.195417569296754      0.186517377083579    -0.720514382996706        false               false            "Above Region 2"     "Locally unstable"
+          120      2.88675134594813         0          0.0654997283462144       0.101957441985535       0.65206407994632     -2.82248197592359        false               false            "Above Region 2"     "Locally unstable"
+
+Five representative trajectory angles (deg):
+                        12                 17.457603                        35                        65                       120
+
+COMMON +1 deg test perturbation: gamma(0)=gamma0+1 deg; nu(0)=1 for all five representatives.
+This is our own visualization/test choice, NOT a magnitude taken from the reference paper.
+Equilibrium and metric reference remain xd=[gamma0;1]. No Figure-5 severity analysis is implemented.
+
+====================================================
+CONTROLLER TUNING COMPARISON
+====================================================
+OLD: H=0.1 K=20 Kd=40 D=60; nominal certified=NO
+Previously verified OLD PU baseline; not recalculated
+
+OLD interval:
+gamma0_min=89.673050903627 deg; gamma0_max=89.874923488339 deg
+NEW: H=3.4 K=20 Kd=5 D=25; nominal certified=YES
+
+NEW intervals:
+gamma0_min=15.322599180550 deg; gamma0_max=21.091668254769 deg
+gamma0_min=48.626361830614 deg; gamma0_max=81.415962806098 deg
+Total width: OLD 0.201872584712 deg; NEW 38.5586700497 deg; change +38.356797465 deg
+Nominal lambda_max: OLD 337.117533862; NEW -0.131012071369; change -337.248545933
+Full interval summaries:
+    Interval     gamma_min_deg       gamma_max_deg       Pstar_min_edge       Pstar_max_edge        width_deg         lowerCause       upperCause  
+    ________    ________________    ________________    _________________    ________________    ________________    _____________    _____________
+
+       1        15.3225991805504    21.0916682547685    0.880844933056766    1.19953712527426    5.76906907421816    "det(SymF)=0"    "det(SymF)=0"
+       2        48.6263618306144    81.4159628060982     2.50138420100842    3.29599334582185    32.7896009754839    "det(SymF)=0"    "det(SymF)=0"
+
+
+Below R1 - 12 deg: Locally stable
+gamma0=12.000000000000 deg; Pstar=0.693038969393 pu; above 1 pu=0; residual=0.000e+00
+A=
+                         0                         1
+        -0.479484118006767         -3.67647058823529
+
+B=
+                         0
+        -0.101917495498902
+
+T Eq12=
+     1     0
+     0     1
+
+alpha1=-0.479484118007; alpha2=-3.67647058824; beta2=-0.101917495499
+beta2_dot_paper=-0.479484118007; beta2_dot_direct=0
+Theta_paper=
+         0.101917495498902                         0
+         0.479484118006767         0.101917495498902
+
+Theta_dot_reference=
+     0     0
+     0     0
+
+M=
+         0.240292195309496        0.0488678204387495
+        0.0488678204387495        0.0103871758887686
+
+det(M)=0.000107893422944; symmetry residual=0.000e+00
+F_direct=
+         -4.70463010947845                         1
+         -5.31659435899429          1.02815952124316
+
+SymF_paper=
+         -4.70463010947845         -2.15829717949715
+         -2.15829717949715          1.02815952124316
+
+SymF_direct=
+         -4.70463010947845         -2.15829717949715
+         -2.15829717949715          1.02815952124316
+
+SymF_coordinate (Method B)=
+                         0         0.260257940996616
+         0.260257940996616         -3.67647058823529
+
+SymF_literal_moving (not equilibrium)=
+                         0         -13.7250694130028
+         -13.7250694130028          5.73278963072161
+
+eig(A)=
+        -0.135406800542024
+         -3.54106378769327
+
+eig(M)=
+      0.000431145606283464
+         0.250248225591982
+
+eig(SymF_paper)=
+         -5.42633589925021
+          1.74986531101491
+
+eig(SymF_direct)=
+         -5.42633589925021
+          1.74986531101491
+
+lambda_max paper=+1.74986531101; direct=+1.74986531101; coordinate=+0.0183322894601; moving=+16.887584124
+norm(SymF_paper-SymF_direct)=1.256e-15
+norm(SymF_paper-SymF_literal_moving)=17.6592052125
+gamma_rep=0 diagnostic lambda_max=+1.52080803646 (NOT main classification)
+Below R1 - 12 deg: no validated envelope for common +1 deg displacement.
+Below R1 - 12 deg trajectory: L0=0.0085555355, Lend=2.6451939e-09, maxL=0.0085555355, solver discrepancy=3.172e-09
+  nu range=[0.9979239310,1.0000000000]; actual 1/nu torque conversion retained.
+
+====================================================
+REPRESENTATIVE FINAL-STATE DIAGNOSTICS
+====================================================
+Below R1 - 12 deg
+Initial perturbed gamma = 13.000000000000 deg
+L_final = 2.64519385583e-09
+Original equilibrium gamma0      = 12.000000000000 deg
+Final unwrapped gamma            = 12.000000317929 deg
+Final gamma mod 360              = 12.000000317929 deg
+Final nu                         = 0.999999999249
+Final frequency deviation nu-1   = -7.51358864015e-10
+Delta gamma from original eq     = +0.000000317929 deg
+
+Pe(gamma_final)                  = 0.693038987485 pu
+Pstar reference                   = 0.693038969393 pu
+Pe(gamma_final)-Pstar residual   = +1.80921451154e-08 pu
+
+Interpretation:
+- Returns to original equilibrium
+Final-sample tolerances: angle 0.001 deg; nu-1 1e-05 pu; power 0.0001 pu
+====================================================
+
+Inside R1 - nominal 1 pu: Locally stable
+gamma0=17.457603000000 deg; Pstar=0.999999993134 pu; above 1 pu=0; residual=0.000e+00
+A=
+                         0                         1
+        -0.467617255914095         -3.67647058823529
+
+B=
+                         0
+        -0.147058822519659
+
+T Eq12=
+     1     0
+     0     1
+
+alpha1=-0.467617255914; alpha2=-3.67647058824; beta2=-0.14705882252
+beta2_dot_paper=-0.467617255914; beta2_dot_direct=0
+Theta_paper=
+         0.147058822519659                         0
+         0.467617255914095         0.147058822519659
+
+Theta_dot_reference=
+     0     0
+     0     0
+
+M=
+         0.240292195309496        0.0687672430446007
+        0.0687672430446007        0.0216262972808685
+
+det(M)=0.000467696734081; symmetry residual=0.000e+00
+F_direct=
+         -3.17979736204935                         1
+          1.11170295851251        -0.496673226185944
+
+SymF_paper=
+         -3.17979736204935          1.05585147925625
+          1.05585147925625        -0.496673226185943
+
+SymF_direct=
+         -3.17979736204935          1.05585147925625
+          1.05585147925625        -0.496673226185944
+
+SymF_coordinate (Method B)=
+                         0         0.266191372042953
+         0.266191372042953         -3.67647058823529
+
+SymF_literal_moving (not equilibrium)=
+                         0         -4.49970415259175
+         -4.49970415259175          2.68312413586341
+
+eig(A)=
+        -0.131925902293967
+         -3.54454468594133
+
+eig(M)=
+       0.00179800034221961
+         0.260120492248145
+
+eig(SymF_paper)=
+         -3.54545851571487
+        -0.131012072520421
+
+eig(SymF_direct)=
+         -3.54545851571487
+        -0.131012072520422
+
+lambda_max paper=-0.13101207252; direct=-0.13101207252; coordinate=+0.0191733424214; moving=+6.03699881471
+norm(SymF_paper-SymF_direct)=4.191e-16
+norm(SymF_paper-SymF_literal_moving)=9.05265813364
+gamma_rep=0 diagnostic lambda_max=-0.111170788176 (NOT main classification)
+Inside R1 - nominal 1 pu: no validated envelope for common +1 deg displacement.
+Inside R1 - nominal 1 pu trajectory: L0=0.0085555355, Lend=2.6174525e-09, maxL=0.0085555355, solver discrepancy=4.662e-09
+  nu range=[0.9979738258,1.0000000000]; actual 1/nu torque conversion retained.
+
+====================================================
+REPRESENTATIVE FINAL-STATE DIAGNOSTICS
+====================================================
+Inside R1 - nominal 1 pu
+Initial perturbed gamma = 18.457603000000 deg
+L_final = 2.61745249977e-09
+Original equilibrium gamma0      = 17.457603000000 deg
+Final unwrapped gamma            = 17.457603317916 deg
+Final gamma mod 360              = 17.457603317916 deg
+Final nu                         = 0.999999999268
+Final frequency deviation nu-1   = -7.32015448257e-10
+Delta gamma from original eq     = +0.000000317916 deg
+
+Pe(gamma_final)                  = 1.00000001078 pu
+Pstar reference                   = 0.999999993134 pu
+Pe(gamma_final)-Pstar residual   = +1.7643697503e-08 pu
+
+Interpretation:
+- Returns to original equilibrium
+Final-sample tolerances: angle 0.001 deg; nu-1 1e-05 pu; power 0.0001 pu
+====================================================
+
+Between R1/R2 - 35 deg: Locally stable
+gamma0=35.000000000000 deg; Pstar=1.9119214545 pu; above 1 pu=1; residual=0.000e+00
+A=
+                         0                         1
+        -0.401545119749506         -3.67647058823529
+
+B=
+                         0
+        -0.281164919779925
+
+T Eq12=
+     1     0
+     0     1
+
+alpha1=-0.40154511975; alpha2=-3.67647058824; beta2=-0.28116491978
+beta2_dot_paper=-0.40154511975; beta2_dot_direct=0
+Theta_paper=
+         0.281164919779925                         0
+         0.401545119749506         0.281164919779925
+
+Theta_dot_reference=
+     0     0
+     0     0
+
+M=
+         0.240292195309496          0.11290040138239
+          0.11290040138239        0.0790537121148514
+
+det(M)=0.00624948939914; symmetry residual=0.000e+00
+F_direct=
+         -1.42814800674211                         1
+          2.80939229352326         -2.24832258149318
+
+SymF_paper=
+         -1.42814800674211          1.90469614676163
+          1.90469614676163         -2.24832258149318
+
+SymF_direct=
+         -1.42814800674211          1.90469614676163
+          1.90469614676163         -2.24832258149318
+
+SymF_coordinate (Method B)=
+                         0         0.299227440125247
+         0.299227440125247         -3.67647058823529
+
+SymF_literal_moving (not equilibrium)=
+                         0         0.384892782180895
+         0.384892782180895        -0.820174574751066
+
+eig(A)=
+        -0.112673392362081
+         -3.56379719587321
+
+eig(M)=
+        0.0209431344661581
+          0.29840277295819
+
+eig(SymF_paper)=
+         -3.78657792177728
+         0.110107333541983
+
+eig(SymF_direct)=
+         -3.78657792177728
+         0.110107333541983
+
+lambda_max paper=+0.110107333542; direct=+0.110107333542; coordinate=+0.0241948542272; moving=+0.152330739578
+norm(SymF_paper-SymF_direct)=5.439e-16
+norm(SymF_paper-SymF_literal_moving)=2.94937586487
+gamma_rep=0 diagnostic lambda_max=+0.154618107222 (NOT main classification)
+Between R1/R2 - 35 deg: no validated envelope for common +1 deg displacement.
+Between R1/R2 - 35 deg trajectory: L0=0.0085555355, Lend=2.5730931e-09, maxL=0.0085555355, solver discrepancy=4.200e-09
+  nu range=[0.9982500619,1.0000000000]; actual 1/nu torque conversion retained.
+
+====================================================
+REPRESENTATIVE FINAL-STATE DIAGNOSTICS
+====================================================
+Between R1/R2 - 35 deg
+Initial perturbed gamma = 36.000000000000 deg
+L_final = 2.57309307541e-09
+Original equilibrium gamma0      = 35.000000000000 deg
+Final unwrapped gamma            = 35.000000317320 deg
+Final gamma mod 360              = 35.000000317320 deg
+Final nu                         = 0.999999999376
+Final frequency deviation nu-1   = -6.24017504336e-10
+Delta gamma from original eq     = +0.000000317320 deg
+
+Pe(gamma_final)                  = 1.91192146963 pu
+Pstar reference                   = 1.9119214545 pu
+Pe(gamma_final)-Pstar residual   = +1.51223278344e-08 pu
+
+Interpretation:
+- Returns to original equilibrium
+Final-sample tolerances: angle 0.001 deg; nu-1 1e-05 pu; power 0.0001 pu
+====================================================
+
+Inside R2 - 65 deg: Locally stable
+gamma0=65.000000000000 deg; Pstar=3.02102595679 pu; above 1 pu=1; residual=0.000e+00
+A=
+                         0                         1
+        -0.207165814578774         -3.67647058823529
+
+B=
+                         0
+        -0.444268523057181
+
+T Eq12=
+     1     0
+     0     1
+
+alpha1=-0.207165814579; alpha2=-3.67647058824; beta2=-0.444268523057
+beta2_dot_paper=-0.207165814579; beta2_dot_direct=0
+Theta_paper=
+         0.444268523057181                         0
+         0.207165814578774         0.444268523057181
+
+Theta_dot_reference=
+     0     0
+     0     0
+
+M=
+         0.240292195309496        0.0920372504708499
+        0.0920372504708499         0.197374520579409
+
+det(M)=0.038956701374; symmetry residual=0.000e+00
+F_direct=
+        -0.466307658154999                         1
+          1.28975774364296          -3.2101629300803
+
+SymF_paper=
+        -0.466307658154999          1.14487887182148
+          1.14487887182148          -3.2101629300803
+
+SymF_direct=
+        -0.466307658154999          1.14487887182148
+          1.14487887182148          -3.2101629300803
+
+SymF_coordinate (Method B)=
+                         0         0.396417092710613
+         0.396417092710613         -3.67647058823529
+
+SymF_literal_moving (not equilibrium)=
+                         0         0.536157455794479
+         0.536157455794479          -2.7438552719253
+
+eig(A)=
+       -0.0572402963815453
+         -3.61923029185375
+
+eig(M)=
+         0.124327605869284
+         0.313339110019622
+
+eig(SymF_paper)=
+         -3.62511331722423
+       -0.0513572710110662
+
+eig(SymF_direct)=
+         -3.62511331722423
+       -0.0513572710110661
+
+lambda_max paper=-0.0513572710111; direct=-0.0513572710111; coordinate=+0.0422581272835; moving=+0.101045634576
+norm(SymF_paper-SymF_direct)=3.140e-16
+norm(SymF_paper-SymF_literal_moving)=1.08442113073
+gamma_rep=0 diagnostic lambda_max=-0.119657260445 (NOT main classification)
+Inside R2 - 65 deg trajectory: L0=0.0085555355, Lend=2.6525534e-09, maxL=0.0085555355, solver discrepancy=4.048e-09
+  nu range=[0.9990809928,1.0000000000]; actual 1/nu torque conversion retained.
+  Certified rectangle rate=-0.00657426819884; gamma [deg]=[50.000000000,80.000000000]; |nu-1|<=0.1
+
+====================================================
+REPRESENTATIVE FINAL-STATE DIAGNOSTICS
+====================================================
+Inside R2 - 65 deg
+Initial perturbed gamma = 66.000000000000 deg
+L_final = 2.65255336232e-09
+Original equilibrium gamma0      = 65.000000000000 deg
+Final unwrapped gamma            = 65.000000316624 deg
+Final gamma mod 360              = 65.000000316624 deg
+Final nu                         = 0.999999999684
+Final frequency deviation nu-1   = -3.16316972615e-10
+Delta gamma from original eq     = +0.000000316624 deg
+
+Pe(gamma_final)                  = 3.02102596457 pu
+Pstar reference                   = 3.02102595679 pu
+Pe(gamma_final)-Pstar residual   = +7.78480302444e-09 pu
+
+Interpretation:
+- Returns to original equilibrium
+Final-sample tolerances: angle 0.001 deg; nu-1 1e-05 pu; power 0.0001 pu
+====================================================
+
+Above R2 - 120 deg: Locally unstable
+gamma0=120.000000000000 deg; Pstar=2.88675134595 pu; above 1 pu=1; residual=0.000e+00
+A=
+                         0                         1
+         0.245098039215686         -3.67647058823529
+
+B=
+                         0
+        -0.424522256757078
+
+T Eq12=
+     1     0
+     0     1
+
+alpha1=0.245098039216; alpha2=-3.67647058824; beta2=-0.424522256757
+beta2_dot_paper=0.245098039216; beta2_dot_direct=0
+Theta_paper=
+         0.424522256757078                         0
+        -0.245098039215686         0.424522256757078
+
+Theta_dot_reference=
+     0     0
+     0     0
+
+M=
+         0.240292195309496        -0.104049572734578
+        -0.104049572734578         0.180219146482122
+
+det(M)=0.0324789407587; symmetry residual=0.000e+00
+F_direct=
+         0.577350269189626                         1
+         -2.21084657790303         -4.25382085742492
+
+SymF_paper=
+         0.577350269189626        -0.605423288951518
+        -0.605423288951518         -4.25382085742492
+
+SymF_direct=
+         0.577350269189626        -0.605423288951517
+        -0.605423288951517         -4.25382085742492
+
+SymF_coordinate (Method B)=
+                         0         0.622549019607843
+         0.622549019607843         -3.67647058823529
+
+SymF_literal_moving (not equilibrium)=
+                         0         -1.27208995561818
+         -1.27208995561818         -4.83117112661455
+
+eig(A)=
+        0.0654997283462144
+         -3.74197031658151
+
+eig(M)=
+         0.101957441985535
+         0.318553899806084
+
+eig(SymF_paper)=
+         -4.32853466818161
+          0.65206407994632
+
+eig(SymF_direct)=
+         -4.32853466818161
+          0.65206407994632
+
+lambda_max paper=+0.652064079946; direct=+0.652064079946; coordinate=+0.102557399179; moving=+0.314481554703
+norm(SymF_paper-SymF_direct)=4.710e-16
+norm(SymF_paper-SymF_literal_moving)=1.24721912892
+gamma_rep=0 diagnostic lambda_max=+0.796600350216 (NOT main classification)
+Above R2 - 120 deg: no validated envelope for common +1 deg displacement.
+Above R2 - 120 deg trajectory: L0=0.0085555355, Lend=2.5666523, maxL=2.5666523, solver discrepancy=2.159e-09
+  nu range=[1.0000000000,1.2061523176]; actual 1/nu torque conversion retained.
+120 deg MAIN display ends at t=42.8246050911, gamma=140.118322673 deg, L=0.166418632303; full simulation ends at t=229.008583375.
+
+====================================================
+REPRESENTATIVE FINAL-STATE DIAGNOSTICS
+====================================================
+Above R2 - 120 deg
+Initial perturbed gamma = 121.000000000000 deg
+L_final = 2.56665230032
+Original equilibrium gamma0      = 120.000000000000 deg
+Final unwrapped gamma            = 419.999050275229 deg
+Final gamma mod 360              = 59.999050275229 deg
+Final nu                         = 1.00000112587
+Final frequency deviation nu-1   = +1.12587019374e-06
+Delta gamma from original eq     = +299.999050275229 deg
+
+Pe(gamma_final)                  = 2.88672371918 pu
+Pstar reference                   = 2.88675134595 pu
+Pe(gamma_final)-Pstar residual   = -2.7626770323e-05 pu
+
+Interpretation:
+- Approaches another equilibrium branch
+Final-sample tolerances: angle 0.001 deg; nu-1 1e-05 pu; power 0.0001 pu
+====================================================
+
+Analytical Jacobian relative check: 8.286e-11; input Jacobian check: 1.390e-10
+Actual beta derivative check: 9.195e-11; speed-coordinate equivalence: 0.000e+00
+
+FINAL CASE TABLE
+               Case               gamma0_deg        Pstar_pu         AboveOnePu    EquilibriumResidual          eigA_1                eigA_2                 eigM_1                eigM_2              lambdaPaper           lambdaDirect         lambdaCoordinate     lambdaLiteralMoving    lambdaRepresentative      Classification  
+    __________________________    __________    _________________    __________    ___________________    ___________________    _________________    ____________________    _________________    ___________________    ___________________    __________________    ___________________    ____________________    __________________
+
+    "Below R1 - 12 deg"                  12     0.693038969392531      false                0              -0.135406800542024    -3.54106378769327    0.000431145606283464    0.250248225591982       1.74986531101491       1.74986531101491    0.0183322894600665      16.8875841240205        1.52080803646466     "Locally stable"  
+    "Inside R1 - nominal 1 pu"    17.457603     0.999999993133679      false                0              -0.131925902293967    -3.54454468594133     0.00179800034221961    0.260120492248145     -0.131012072520421     -0.131012072520422    0.0191733424214162      6.03699881470667      -0.111170788176282     "Locally stable"  
+    "Between R1/R2 - 35 deg"             35      1.91192145450349      true                 0              -0.112673392362081    -3.56379719587321      0.0209431344661581     0.29840277295819      0.110107333541983      0.110107333541983    0.0241948542271709     0.152330739577705       0.154618107221725     "Locally stable"  
+    "Inside R2 - 65 deg"                 65      3.02102595678883      true                 0             -0.0572402963815453    -3.61923029185375       0.124327605869284    0.313339110019622    -0.0513572710110662    -0.0513572710110661    0.0422581272834827     0.101045634576254      -0.119657260444674     "Locally stable"  
+    "Above R2 - 120 deg"                120      2.88675134594813      true                 0              0.0654997283462144    -3.74197031658151       0.101957441985535    0.318553899806084       0.65206407994632       0.65206407994632     0.102557399179213     0.314481554703416       0.796600350216071     "Locally unstable"
+
+All selected equilibrium, derivative, matrix, trajectory and envelope checks passed.
+====================================================
+RETUNED CURRENT-LIMITER-FREE VSM-GFM SUMMARY
+====================================================
+Candidate contraction-oriented retuning
+H=3.4 s; K=20; Kd=5; D_eff=25
+Nominal Pstar=1 pu; gamma0=17.457603123722 deg
+    Interval     gamma_min_deg       gamma_max_deg       Pstar_min_edge       Pstar_max_edge        width_deg         lowerCause       upperCause  
+    ________    ________________    ________________    _________________    ________________    ________________    _____________    _____________
+
+       1        15.3225991805504    21.0916682547685    0.880844933056766    1.19953712527426    5.76906907421816    "det(SymF)=0"    "det(SymF)=0"
+       2        48.6263618306144    81.4159628060982     2.50138420100842    3.29599334582185    32.7896009754839    "det(SymF)=0"    "det(SymF)=0"
+
+Nominal contraction certified: YES
+lambda_max(SymF): -0.131012071369
+Local stability at nominal: YES
+Below R1 - 12 deg = 12.000000000000 deg
+Inside R1 - nominal 1 pu = 17.457603000000 deg
+Between R1/R2 - 35 deg = 35.000000000000 deg
+Inside R2 - 65 deg = 65.000000000000 deg
+Above R2 - 120 deg = 120.000000000000 deg
+
+========================================================
+FIVE REPRESENTATIVE NONLINEAR TRAJECTORIES
+========================================================
+Below R1 - 12 deg: gamma0=12.000000000 deg; classification=Returns to original equilibrium
+Inside R1 - nominal 1 pu: gamma0=17.457603000 deg; classification=Returns to original equilibrium
+Between R1/R2 - 35 deg: gamma0=35.000000000 deg; classification=Returns to original equilibrium
+Inside R2 - 65 deg: gamma0=65.000000000 deg; classification=Returns to original equilibrium
+Above R2 - 120 deg: gamma0=120.000000000 deg; classification=Approaches another equilibrium branch
+Same MATLAB file updated; outputs: outputs
+
+========================================================
+SEPARATE VOLTAGE-SAG SWEEP: CERTIFIED REFERENCES
+========================================================
+No angle jump; initial x=[gamma0;1]; fixed pre-fault Pstar. Tfault=1 normalized analytical time.
+Nominal uses exact asin(0.3)=17.457603123722 deg with Pstar=1; 17.457603 deg is its rounded label.
+Instantaneous test uses each fixed pre-fault Theta_ref and M_ref=Theta_ref'*Theta_ref.
+F(t)=Theta_ref*A(gamma(t),nu(t),U1(t),Pstar)/Theta_ref, Theta_dot_ref=0.
+This is a consistent fixed-metric differential test away from equilibrium, NOT a re-designed equilibrium metric.
+WARNING: maintained/violated flags are numerical tests at stored samples, including both clearing sides.
+They are not a continuous-time or finite-region contraction proof; recovery is evaluated separately.
+Severest sag solver verification at 17.457603124 deg: max state error 4.764e-09.
+Severest sag solver verification at 65.000000000 deg: max state error 5.842e-09.
+
+VOLTAGE SAG SWEEP SUMMARY (all 18 runs)
+       gamma0_deg           Pstar_pu        Usag_pu    sagDepth_percent    faultDuration_normalized      gammaMax_deg        gammaMin_deg      maxAngleExcursion_deg     maxAbsNuDeviation            maxL             gammaFinal_deg          nuFinal         finalGammaError_deg         finalNuError           maxLambdaMaxSymF         minLambdaMinM       metricRemainedPD    symFRemainedND    contractionMaintained    contractionViolatedDuringFault    contractionSatisfiedPostfaultTail    contractionBecameSatisfiedAfterClearing    postfaultSatisfiedFromTime    tailMaxAngleError_deg    tailMaxAbsNuDeviation    finalPowerResidual_pu             recoveryClass                                      contractionEvaluationScope                        
+    ________________    ________________    _______    ________________    ________________________    ________________    ________________    _____________________    ___________________    ___________________    ________________    _________________    ____________________    _____________________    ____________________    ___________________    ________________    ______________    _____________________    ______________________________    _________________________________    _______________________________________    __________________________    _____________________    _____________________    _____________________    ________________________________    __________________________________________________________________________
+
+    17.4576031237221                   1      0.9             10                      1                17.6634718474589    17.4576031237221       0.20586872373682      0.00366440344471508    0.00192153219494255     17.457603123723    0.999999999999998    9.02389274415327e-13    -2.22044604925031e-15      -0.114281858703367    0.00179800038987881         true               true                  true                         false                               true                                    false                                 1                 1.28359545215062e-11     2.94209101525666e-14     5.01820807130571e-14     "Recovered original equilibrium"    "Fixed reference metric; sampled instantaneous test, not a regional proof"
+    17.4576031237221                   1      0.8             20                      1                17.8697933622016    17.4576031237221      0.412190238479521       0.0073525138745818    0.00384734342620718    17.4576031237239    0.999999999999996    1.82254211722466e-12    -4.32986979603811e-15     -0.0967639645754939    0.00179800038987881         true               true                  true                         false                               true                                    false                                 1                  2.5732305175552e-11     5.92859095149834e-14     1.01252339845814e-13     "Recovered original equilibrium"    "Fixed reference metric; sampled instantaneous test, not a regional proof"
+    17.4576031237221                   1      0.7             30                      1                18.0765584220539    17.4576031237221      0.618955298331851       0.0110641830282683    0.00577733864130649    17.4576031237248    0.999999999999994    2.74980038739159e-12    -6.43929354282591e-15     -0.0784964951931433    0.00179800038987881         true               true                  true                         false                               true                                    false                                 1                 3.86322085432766e-11     8.90398865749376e-14     1.52766688188422e-13     "Recovered original equilibrium"    "Fixed reference metric; sampled instantaneous test, not a regional proof"
+    17.4576031237221                   1      0.6             40                      1                18.2837579021302    17.4576031237221      0.826154778408135       0.0147988775136287    0.00771142420151282    17.4576031237258    0.999999999999992    3.67705865755852e-12    -8.43769498715119e-15     -0.0595207638158812    0.00179800038987881         true               true                  true                         false                               true                                    false                                 1                 5.16031661845773e-11     1.19015908239817e-13     2.04058991926104e-13     "Recovered original equilibrium"    "Fixed reference metric; sampled instantaneous test, not a regional proof"
+    17.4576031237221                   1      0.5             50                      1                 18.491382810933    17.4576031237221       1.03377968721087       0.0185561674727748    0.00964950785554272    17.4576031237267    0.999999999999989    4.60076421404665e-12    -1.06581410364015e-14     -0.0398735293578374    0.00179800038987881         true               true                  true                         false                               true                                    false                                 1                 6.45989928216295e-11     1.48880907602233e-13     2.55573340268711e-13     "Recovered original equilibrium"    "Fixed reference metric; sampled instantaneous test, not a regional proof"
+    17.4576031237221                   1      0.4             60                      1                18.6994242851535    17.4576031237221       1.24182116143142       0.0223356297655479     0.0115914987429442    17.4576031237276    0.999999999999987    5.51381162949838e-12    -1.26565424807268e-14     -0.0195632926359348    0.00179800038987881         true               true                  true                         false                               true                                    false                                 1                 7.76161357407545e-11      1.7874590696465e-13     3.06199510191618e-13     "Recovered original equilibrium"    "Fixed reference metric; sampled instantaneous test, not a regional proof"
+    17.4576031237221                   1      0.3             70                      1                18.9078735913621    17.4576031237221       1.45027046764005       0.0261368465786522     0.0135373073702688    17.4576031237285    0.999999999999985    6.44817532702291e-12    -1.49880108324396e-14     0.00173082268493818    0.00179800038987881         true               false                 false                        true                                true                                    true                                  1                 9.06865693650616e-11     2.08721928629529e-13     3.58157947744075e-13     "Recovered original equilibrium"    "Fixed reference metric; sampled instantaneous test, not a regional proof"
+    17.4576031237221                   1      0.2             80                      1                 19.116722121968    17.4576031237221       1.65911899824589       0.0299594064021509     0.0154868456118042    17.4576031237295    0.999999999999983    7.38964445190504e-12    -1.72084568816899e-14      0.0239205370132192    0.00179800038987881         true               false                 false                        true                                true                                    true                                  1                 1.03746344848332e-10     2.39031017201796e-13     4.10338429901458e-13     "Recovered original equilibrium"    "Fixed reference metric; sampled instantaneous test, not a regional proof"
+    17.4576031237221                   1      0.1             90                      1                19.3259613948081    17.4576031237221       1.86835827108601       0.0338029032534681     0.0174400266895919    17.4576031237304    0.999999999999981    8.32045543575077e-12    -1.93178806284777e-14      0.0468114535701623    0.00179800038987881         true               false                 false                        true                                true                                    true                                  1                 1.16862963750464e-10     2.69118061169138e-13     4.61852778244065e-13     "Recovered original equilibrium"    "Fixed reference metric; sampled instantaneous test, not a regional proof"
+                  65    3.02102595678883      0.9             10                      1                65.6487309714174                  65      0.648730971417393       0.0113609793080849    0.00786938363805001    65.0000000015248    0.999999999998477    1.52476786752231e-09    -1.52333701208818e-12     -0.0415463773860361      0.124327605869284         true               true                  true                         false                               true                                    false                                 1                  1.1239578157074e-08     1.12285736264539e-11     3.74895670063324e-11     "Recovered original equilibrium"    "Fixed reference metric; sampled instantaneous test, not a regional proof"
+                  65    3.02102595678883      0.8             20                      1                66.2894779029056                  65       1.28947790290562       0.0225602375754139     0.0156317723253716    65.0000000030678    0.999999999996935    3.06776826164423e-09    -3.06488168178021e-12     -0.0322219937385524      0.124327605869284         true               true                  true                         false                               true                                    false                                 1                 2.26141878556518e-08     2.25922613950047e-11     7.54267759361937e-11     "Recovered original equilibrium"    "Fixed reference metric; sampled instantaneous test, not a regional proof"
+                  65    3.02102595678883      0.7             30                      1                66.9225650292968                  65       1.92256502929683       0.0336046948900659     0.0232916315569566    65.0000000046302    0.999999999995374    4.63019489416183e-09    -4.62563320979825e-12     -0.0233616629121089      0.124327605869284         true               true                  true                         false                               true                                    false                                 1                 3.41306645168515e-08     3.40976136214977e-11     1.13842268945064e-10     "Recovered original equilibrium"    "Fixed reference metric; sampled instantaneous test, not a regional proof"
+                  65    3.02102595678883      0.6             40                      1                67.5482933397045                  65       2.54829333970446       0.0445007325660185      0.030853094925709    65.0000000062127    0.999999999993793    6.21265883182787e-09    -6.20670181916694e-12     -0.0149444359198461      0.124327605869284         true               true                  true                         false                               true                                    false                                 1                 4.57959572486288e-08     4.57515136886855e-11     1.52749812798447e-10     "Recovered original equilibrium"    "Fixed reference metric; sampled instantaneous test, not a regional proof"
+                  65    3.02102595678883      0.5             50                      1                 68.166942888363                  65       3.16694288836304       0.0552542506373417     0.0383199981503682    65.0000000078164    0.999999999992191    7.81638220814784e-09    -7.80875364370104e-12    -0.00695074148605079      0.124327605869284         true               true                  true                         false                               true                                    false                                 1                 5.76171430566319e-08     5.75614000908331e-11     1.92180493741034e-10     "Recovered original equilibrium"    "Fixed reference metric; sampled instantaneous test, not a regional proof"
+                  65    3.02102595678883      0.4             60                      1                68.7787747649712                  65       3.77877476497116       0.0658707172139861     0.0456959085345477    65.0000000094421    0.999999999990567    9.44206135500281e-09    -9.43289890642518e-12    0.000637731764814964      0.124327605869284         true               false                 false                        true                                true                                    true                                  1                 6.96010005185599e-08     6.95336010991809e-11     2.32151187162799e-10     "Recovered original equilibrium"    "Fixed reference metric; sampled instantaneous test, not a regional proof"
+                  65    3.02102595678883      0.3             70                      1                69.3840328876201                  65       4.38403288762008       0.0763552109703736     0.0529841506241811    65.0000000110909     0.99999999998892     1.1090932616753e-08     -1.1080247830364e-11     0.00783814163606311      0.124327605869284         true               false                 false                        true                                true                                    true                                  1                 8.17549192788647e-08     8.16756662302964e-11     2.72691647040801e-10     "Recovered original equilibrium"    "Fixed reference metric; sampled instantaneous test, not a regional proof"
+                  65    3.02102595678883      0.2             80                      1                69.9829455775727                  65       4.98294557757272       0.0867124613439207     0.0601878297676448    65.0000000127638    0.999999999987249     1.2763763379553e-08    -1.27513555270298e-11      0.0146665882686028      0.124327605869284         true               false                 false                        true                                true                                    true                                  1                 9.40860331866133e-08     9.39949229561421e-11     3.13821413300275e-10     "Recovered original equilibrium"    "Fixed reference metric; sampled instantaneous test, not a regional proof"
+                  65    3.02102595678883      0.1             90                      1                70.5757268986682                  65       5.57572689866817       0.0969468798489479     0.0673098514246107    65.0000000144617    0.999999999985552      1.446169051178e-08     -1.4447776308657e-11      0.0217327364064928      0.124327605869284         true               false                 false                        true                                true                                    true                                  1                 1.06601845573095e-07     1.06498476704076e-10      3.5556846356144e-10     "Recovered original equilibrium"    "Fixed reference metric; sampled instantaneous test, not a regional proof"
+
+
+VOLTAGE SAG RESULTS: gamma0 = 17.457603124 deg
+    Usag_pu    sagDepth_percent    maxAngleExcursion_deg     maxAbsNuDeviation     contractionMaintained             recoveryClass          
+    _______    ________________    _____________________    ___________________    _____________________    ________________________________
+
+      0.9             10              0.20586872373682      0.00366440344471508            true             "Recovered original equilibrium"
+      0.8             20             0.412190238479521       0.0073525138745818            true             "Recovered original equilibrium"
+      0.7             30             0.618955298331851       0.0110641830282683            true             "Recovered original equilibrium"
+      0.6             40             0.826154778408135       0.0147988775136287            true             "Recovered original equilibrium"
+      0.5             50              1.03377968721087       0.0185561674727748            true             "Recovered original equilibrium"
+      0.4             60              1.24182116143142       0.0223356297655479            true             "Recovered original equilibrium"
+      0.3             70              1.45027046764005       0.0261368465786522            false            "Recovered original equilibrium"
+      0.2             80              1.65911899824589       0.0299594064021509            false            "Recovered original equilibrium"
+      0.1             90              1.86835827108601       0.0338029032534681            false            "Recovered original equilibrium"
+
+Strongest recovering sag among the tested discrete cases: Usag=0.1 pu, depth=90%.
+
+VOLTAGE SAG RESULTS: gamma0 = 65.000000000 deg
+    Usag_pu    sagDepth_percent    maxAngleExcursion_deg    maxAbsNuDeviation     contractionMaintained             recoveryClass          
+    _______    ________________    _____________________    __________________    _____________________    ________________________________
+
+      0.9             10             0.648730971417393      0.0113609793080849            true             "Recovered original equilibrium"
+      0.8             20              1.28947790290562      0.0225602375754139            true             "Recovered original equilibrium"
+      0.7             30              1.92256502929683      0.0336046948900659            true             "Recovered original equilibrium"
+      0.6             40              2.54829333970446      0.0445007325660185            true             "Recovered original equilibrium"
+      0.5             50              3.16694288836304      0.0552542506373417            true             "Recovered original equilibrium"
+      0.4             60              3.77877476497116      0.0658707172139861            false            "Recovered original equilibrium"
+      0.3             70              4.38403288762008      0.0763552109703736            false            "Recovered original equilibrium"
+      0.2             80              4.98294557757272      0.0867124613439207            false            "Recovered original equilibrium"
+      0.1             90              5.57572689866817      0.0969468798489479            false            "Recovered original equilibrium"
+
+Strongest recovering sag among the tested discrete cases: Usag=0.1 pu, depth=90%.
+Recovery requires final 10% in time within 0.1 deg and 1e-4 pu of ORIGINAL equilibrium.
+No exact critical sag, voltage boundary or CCT is inferred; no fault-duration sweep was performed.
+
+========================================================
+SEPARATE FAULT-DURATION SWEEP: Usag=0.1 pu
+========================================================
+No angle jump; initial x=[gamma0;1]; fixed pre-fault Pstar. Tfault=[1 2 3 4 5 7 10] normalized analytical time.
+Nominal uses exact asin(0.3)=17.457603123722 deg with Pstar=1; 17.457603 deg is its rounded label.
+Instantaneous test uses each fixed pre-fault Theta_ref and M_ref=Theta_ref'*Theta_ref.
+F(t)=Theta_ref*A(gamma(t),nu(t),U1(t),Pstar)/Theta_ref, Theta_dot_ref=0.
+This is a consistent fixed-metric differential test away from equilibrium, NOT a re-designed equilibrium metric.
+WARNING: maintained/violated flags are numerical tests at stored samples, including both clearing sides.
+They are not a continuous-time or finite-region contraction proof; recovery is evaluated separately.
+Duration solver verification: gamma0=17.457603124 deg, Tfault=1, max state error=4.784e-09.
+Duration solver verification: gamma0=17.457603124 deg, Tfault=2, max state error=3.611e-09.
+Duration solver verification: gamma0=17.457603124 deg, Tfault=3, max state error=3.611e-09.
+Duration solver verification: gamma0=17.457603124 deg, Tfault=4, max state error=3.611e-09.
+Duration solver verification: gamma0=17.457603124 deg, Tfault=5, max state error=3.611e-09.
+Duration solver verification: gamma0=17.457603124 deg, Tfault=7, max state error=3.611e-09.
+Duration solver verification: gamma0=17.457603124 deg, Tfault=10, max state error=3.611e-09.
+Duration solver verification: gamma0=65.000000000 deg, Tfault=1, max state error=5.843e-09.
+Duration solver verification: gamma0=65.000000000 deg, Tfault=2, max state error=3.422e-09.
+Duration solver verification: gamma0=65.000000000 deg, Tfault=3, max state error=4.475e-09.
+Duration solver verification: gamma0=65.000000000 deg, Tfault=4, max state error=4.227e-09.
+Duration solver verification: gamma0=65.000000000 deg, Tfault=5, max state error=4.186e-09.
+Duration solver verification: gamma0=65.000000000 deg, Tfault=7, max state error=4.345e-09.
+Duration solver verification: gamma0=65.000000000 deg, Tfault=10, max state error=4.061e-09.
+
+VOLTAGE SAG DURATION SWEEP SUMMARY (all 14 runs)
+       gamma0_deg           Pstar_pu        Usag_pu    sagDepth_percent    faultDuration_normalized      gammaMax_deg        gammaMin_deg      maxAngleExcursion_deg    maxAbsNuDeviation            maxL            gammaFinal_deg          nuFinal         finalGammaError_deg         finalNuError          maxLambdaMaxSymF        minLambdaMinM       metricRemainedPD    symFRemainedND    contractionMaintained    contractionViolatedDuringFault    contractionSatisfiedPostfaultTail    contractionBecameSatisfiedAfterClearing    postfaultSatisfiedFromTime    tailMaxAngleError_deg    tailMaxAbsNuDeviation    finalPowerResidual_pu                   recoveryClass                                            contractionEvaluationScope                            gammaAtClearing_deg      nuAtClearing      deltaGammaClearing_deg     deltaNuClearing      firstContractionViolationTime    totalTimeWithPositiveLambdaMaxSymF    lambdaMaxSymFAtClearing    lambdaMaxSymFBeforeClearing    totalSimulationTime_normalized    postfaultDuration_normalized
+    ________________    ________________    _______    ________________    ________________________    ________________    ________________    _____________________    __________________    __________________    ________________    _________________    ____________________    _____________________    __________________    ___________________    ________________    ______________    _____________________    ______________________________    _________________________________    _______________________________________    __________________________    _____________________    _____________________    _____________________    ____________________________________________    __________________________________________________________________________    ___________________    ________________    ______________________    __________________    _____________________________    __________________________________    _______________________    ___________________________    ______________________________    ____________________________
+
+    17.4576031237221                   1      0.1             90                       1               19.3259955934222    17.4576031237221       1.8683924697001       0.0338029032534681    0.0174400266895919    17.4576031237294    0.999999999999983    7.28661575521983e-12    -1.68753899743024e-14    0.0468114535701623    0.00179800038987881         true               false                 false                        true                                true                                    true                                          1         1.03785424698799e-10     2.38919994899334e-13      4.04565270173407e-13    "Recovered original equilibrium"                "Fixed reference metric; sampled instantaneous test, not a regional proof"     18.9343198430073      1.03380290325347        1.4767167192852       0.0338029032534681                  0                                          1                -0.126089603262586          0.0439505471330544                             201                              200      
+    17.4576031237221                   1      0.1             90                       2               21.2200734762144    17.4576031237221      3.76247035249228       0.0342721836483237    0.0342192452938812    17.4576031237365    0.999999999999967    1.44311229632876e-11    -3.34177130412172e-14    0.0468114535701623    0.00179800038987881         true               false                 false                        true                                true                                    true                                          2          2.0762414010278e-10     4.78062034403592e-13      8.00914889964588e-13    "Recovered original equilibrium"                "Fixed reference metric; sampled instantaneous test, not a regional proof"     20.8930780859569      1.03417105949092       3.43547496223482       0.0341710594909219                  0                                          2                -0.125416115930078          0.0435926897141714                             202                              200      
+    17.4576031237221                   1      0.1             90                       3               23.1174160018523    17.4576031237221      5.65981287813016       0.0342721836483237    0.0508142576060957    17.4576031237436     0.99999999999995    2.15045758977794e-11     -4.9737991503207e-14    0.0468114535701623    0.00179800038987881         true               false                 false                        true                                true                                    true                                          3          3.1193891913972e-10     7.18425319234939e-13      1.19371179607697e-12    "Recovered original equilibrium"                "Fixed reference metric; sampled instantaneous test, not a regional proof"     22.8402975803628      1.03379223331731       5.38269445664066       0.0337922333173066                  0                                          3                -0.124429158586405          0.0433167942940265                             203                              200      
+    17.4576031237221                   1      0.1             90                       4               25.0057445410317    17.4576031237221      7.54814141730959       0.0342721836483237    0.0672241503227496    17.4576031237506    0.999999999999934    2.85389489818044e-11    -6.57252030578093e-14    0.0468114535701623    0.00179800038987881         true               false                 false                        true                                true                                    true                                          4         4.21014334506253e-10     9.69335722800224e-13      1.58384416693025e-12    "Recovered original equilibrium"                "Fixed reference metric; sampled instantaneous test, not a regional proof"     24.7653433352646      1.03340596590328       7.30774021154249       0.0334059659032768                  0                                          4                -0.123060750074908          0.0430717704619314                             204                              200      
+    17.4576031237221                   1      0.1             90                       5               26.8808153910799    17.4576031237221      9.42321226735777       0.0342721836483237    0.0834505759673745    17.4576031237576    0.999999999999918     3.5509373219611e-11    -8.19344592173366e-14    0.0468114535701623    0.00179800038987881         true               false                 false                        true                                true                                    true                                          5         5.30857136027407e-10     1.22213350550737e-12      1.97086791331458e-12    "Recovered original equilibrium"                "Fixed reference metric; sampled instantaneous test, not a regional proof"     26.6685226245977      1.03302917471566       9.21091950087556       0.0330291747156595                  0                                          5                -0.121338155257312          0.0428557239272538                             205                              200      
+    17.4576031237221                   1      0.1             90                       7               30.5828384600806    17.4576031237221      13.1252353363585       0.0342721836483237     0.115368733323073    17.4576031237714    0.999999999999886     4.9347192998539e-11    -1.13686837721616e-13    0.0468114535701623    0.00179800038987881         true               false                 false                        true                                true                                    true                                          7         7.57363949333012e-10     1.74371628247627e-12      2.73892020175026e-12    "Recovered original equilibrium"                "Fixed reference metric; sampled instantaneous test, not a regional proof"     30.4115468150991       1.0323056482425        12.953943691377       0.0323056482425019                  0                                          7                -0.116945290273556          0.0425073919158041                             207                              200      
+    17.4576031237221                   1      0.1             90                      10               36.0093560758472    17.4576031237221      18.5517529521251       0.0366009096157001     0.161979405489265     17.457603123792    0.999999999999839    6.99067470577575e-11    -1.60982338570648e-13    0.0468114535701623    0.00179800038987881         true               false                 false                        true                                true                                    true                                         10         1.11623421616969e-09      2.5702773243097e-12      3.87978538185507e-12    "Recovered original equilibrium"                "Fixed reference metric; sampled instantaneous test, not a regional proof"     35.8764453101411      1.03129668857186        18.418842186419       0.0312966885718617                  0                                         10                -0.108398813282757           0.042182758142699                             210                              200      
+                  65    3.02102595678883      0.1             90                       1                70.575771446489                  65      5.57577144648897       0.0969468798489479    0.0673098514246107    65.0000000136572    0.999999999986356    1.36571713937883e-08    -1.36439748388284e-11    0.0217327364064928      0.124327605869284         true               false                 false                        true                                true                                    true                                          1         1.01250137163333e-07     1.01152086706691e-10      3.35787397887088e-10    "Recovered original equilibrium"                "Fixed reference metric; sampled instantaneous test, not a regional proof"      69.281748808646      1.09694687984895       4.28174880864601       0.0969468798489479                  0                                          1                -0.035912309451589          0.0211382006756922                350.404200612214                 349.404200612214      
+                  65    3.02102595678883      0.1             90                       2               76.1118994457922                  65      11.1118994457922       0.0983739164863207      0.11053057278266    65.0000000305757    0.999999999969454     3.0575705523006e-08    -3.05460101657218e-11    0.0224359536595684      0.124327605869284         true               false                 false                        true                                true                                    true                                          2         2.28196242346712e-07     2.27975305300276e-10      7.51762652129173e-10    "Recovered original equilibrium"                "Fixed reference metric; sampled instantaneous test, not a regional proof"     74.9032652543734      1.09834911893303       9.90326525437342       0.0983491189330343                  0                                          2                -0.022621644861015          0.0224359536595684                351.404200612214                 349.404200612214      
+                  65    3.02102595678883      0.1             90                       3               81.6778487456351                  65      16.6778487456351       0.0983739164863207     0.156378583801157    65.0000000529339    0.999999999947117    5.29339274635277e-08    -5.28826982204578e-11    0.0238088059861234      0.124327605869284         true               false                 false                        true                                true                                    true                                          3         3.97705065324772e-07     3.97319843692401e-10      1.30148292143417e-09    "Recovered original equilibrium"                "Fixed reference metric; sampled instantaneous test, not a regional proof"     80.5317506306189      1.09812228356565       15.5317506306189       0.0981222835656523                  0                                          3              -0.00873474551667019          0.0238088059861234                352.404200612214                 349.404200612214      
+                  65    3.02102595678883      0.1             90                       4               87.2650149077976                  65      22.2650149077976       0.0983739164863207     0.203199951634258    65.0000000841713     0.99999999991591    8.41712761712188e-08    -8.40897351750414e-11    0.0252146140976763      0.124327605869284         true               false                 false                        true                                true                                    true                           8.60048864139414          6.3451089715727e-07     6.33896490853658e-10      2.06951344949857e-09    "Recovered original equilibrium"                "Fixed reference metric; sampled instantaneous test, not a regional proof"        86.1488711082      1.09796962032015          21.1488711082       0.0979696203201497                  0                           8.56510800149493               0.00563776527433912          0.0252146140976763                353.404200612214                 349.404200612214      
+                  65    3.02102595678883      0.1             90                       5               92.8743261941212                  65      27.8743261941212       0.0983739164863207     0.250457046081993    65.0000001313232    0.999999999868804    1.31323190544208e-07    -1.31196054020677e-10     0.026640212858585      0.124327605869284         true               false                 false                        true                                true                                    true                           17.3456150882982         9.96578549461447e-07     9.95613480547775e-10      3.22883453307554e-09    "Recovered original equilibrium"                "Fixed reference metric; sampled instantaneous test, not a regional proof"     91.7602721703478      1.09792303268559       26.7602721703478       0.0979230326855862                  0                           17.3359746291967                0.0203523246726065           0.026640212858585                354.404200612214                 349.404200612214      
+                  65    3.02102595678883      0.1             90                       7               104.189224861598                  65      39.1892248615976       0.0983739164863207     0.345722289217297    65.0000003785345    0.999999999621832    3.78534494416272e-07    -3.78167941406105e-10    0.0570730146131513      0.124327605869284         true               false                 false                        true                                true                                    true                           37.8640377207455         2.91116052153484e-06     2.90834123450878e-09      9.30700227996795e-09    "Recovered original equilibrium"                "Fixed reference metric; sampled instantaneous test, not a regional proof"     102.990361530864      1.09814993805449        37.990361530864       0.0981499380544912                  0                           37.8307433841647                0.0502053897564994          0.0294999830431522                356.404200612214                 349.404200612214      
+                  65    3.02102595678883      0.1             90                      10               424.999998812781                  65      359.999998812781         0.20994027734033      3.07999278770245    424.999998812781     1.00000000118607        359.999998812781     1.18606968690926e-09     0.178300632096172      0.124327605869284         true               false                 false                        true                                true                                    true                           52.5690784412547             359.999998812781     9.27490506619222e-09     -2.91900850157845e-08    "Transitioned to another equilibrium branch"    "Fixed reference metric; sampled instantaneous test, not a regional proof"     119.944544329727      1.09927464964025        54.944544329727       0.0992746496402521                  0                           52.5638989445692                 0.093689464609515          0.0336183596661583                359.404200612214                 349.404200612214      
+
+
+FAULT-DURATION RESULTS: gamma0=17.457603124 deg, Usag=0.1 pu
+    faultDuration_normalized    deltaGammaClearing_deg    maxAngleExcursion_deg    maxAbsNuDeviation     contractionMaintained    firstContractionViolationTime             recoveryClass          
+    ________________________    ______________________    _____________________    __________________    _____________________    _____________________________    ________________________________
+
+                1                   1.4767167192852          1.8683924697001       0.0338029032534681            false                          0                  "Recovered original equilibrium"
+                2                  3.43547496223482         3.76247035249228       0.0342721836483237            false                          0                  "Recovered original equilibrium"
+                3                  5.38269445664066         5.65981287813016       0.0342721836483237            false                          0                  "Recovered original equilibrium"
+                4                  7.30774021154249         7.54814141730959       0.0342721836483237            false                          0                  "Recovered original equilibrium"
+                5                  9.21091950087556         9.42321226735777       0.0342721836483237            false                          0                  "Recovered original equilibrium"
+                7                   12.953943691377         13.1252353363585       0.0342721836483237            false                          0                  "Recovered original equilibrium"
+               10                   18.418842186419         18.5517529521251       0.0366009096157001            false                          0                  "Recovered original equilibrium"
+
+Longest tested duration recovering ORIGINAL equilibrium: 10 normalized time units.
+No recovery loss observed within tested duration range.
+
+FAULT-DURATION RESULTS: gamma0=65.000000000 deg, Usag=0.1 pu
+    faultDuration_normalized    deltaGammaClearing_deg    maxAngleExcursion_deg    maxAbsNuDeviation     contractionMaintained    firstContractionViolationTime                   recoveryClass                
+    ________________________    ______________________    _____________________    __________________    _____________________    _____________________________    ____________________________________________
+
+                1                  4.28174880864601         5.57577144648897       0.0969468798489479            false                          0                  "Recovered original equilibrium"            
+                2                  9.90326525437342         11.1118994457922       0.0983739164863207            false                          0                  "Recovered original equilibrium"            
+                3                  15.5317506306189         16.6778487456351       0.0983739164863207            false                          0                  "Recovered original equilibrium"            
+                4                     21.1488711082         22.2650149077976       0.0983739164863207            false                          0                  "Recovered original equilibrium"            
+                5                  26.7602721703478         27.8743261941212       0.0983739164863207            false                          0                  "Recovered original equilibrium"            
+                7                   37.990361530864         39.1892248615976       0.0983739164863207            false                          0                  "Recovered original equilibrium"            
+               10                   54.944544329727         359.999998812781         0.20994027734033            false                          0                  "Transitioned to another equilibrium branch"
+
+Longest tested duration recovering ORIGINAL equilibrium: 7 normalized time units.
+First tested duration not recovering original equilibrium: 10 normalized time units.
+Recovery transition is bracketed between Tfault = 7 and Tfault = 10 normalized time units.
+Contraction flags remain sampled fixed-reference-metric diagnostics, independent of recovery.
+lambdaMaxSymFAtClearing is the post-clearing RIGHT limit; the LEFT limit is also saved.
+Positive-lambda duration is estimated from linear interpolation between samples.
+Only the seven requested durations were tested. No automatic refinement or exact CCT claim.
+
+FIGURE-5-STYLE POST-PROCESSING
+Blue: previously computed steady-state contraction boundaries (family of reference metrics).
+Red: fixed pre-fault metric; Usag fixed; intersection over all stored fault-on nu samples.
+Gamma scan [-180,180] deg, step 0.01 deg; crossings use linear interpolation only.
+These sampled instantaneous contraction boundaries are not stability limits or a regional proof.
+       gamma0_deg       Usag_pu    faultDuration_normalized      gammaMax_deg      maxAngleExcursion_deg    maxAbsNuDeviation     contractionMaintained             recoveryClass              CaseLabel    Example    sampledGammaMin_deg    sampledGammaMax_deg    faultNuMin       faultNuMax                  boundaryStatus           
+    ________________    _______    ________________________    ________________    _____________________    __________________    _____________________    ________________________________    _________    _______    ___________________    ___________________    __________    ________________    ____________________________________
+
+    17.4576031237221      0.4                 1                18.6994242851535      1.24182116143142       0.0223356297655479            true             "Recovered original equilibrium"    "Case 2"       "A"       -3.10898520109228      77.7722826276028          1         1.02233562976555    "Nearest complete sampled component"
+    17.4576031237221      0.3                 1                18.9078735913621      1.45027046764005       0.0261368465786522            false            "Recovered original equilibrium"    "Case 2"       "B"        21.2411201731354      54.1289167805873          1         1.02613684657865    "Nearest complete sampled component"
+                  65      0.5                 1                 68.166942888363      3.16694288836304       0.0552542506373417            true             "Recovered original equilibrium"    "Case 4"       "C"       -61.2690910500361      73.2338155064664          1         1.05525425063734    "Nearest complete sampled component"
+                  65      0.4                 1                68.7787747649712      3.77877476497116       0.0658707172139861            false            "Recovered original equilibrium"    "Case 4"       "D"        -55.346503578694      67.2148295214464          1         1.06587071721399    "Nearest complete sampled component"
+

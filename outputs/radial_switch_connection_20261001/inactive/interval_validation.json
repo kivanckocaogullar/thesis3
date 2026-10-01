@@ -1,0 +1,19 @@
+{
+  "complete": false,
+  "tested": 62,
+  "passed_boxes": 23,
+  "pending_boxes": 16,
+  "max_depth": 28,
+  "precision_decimal_digits": 30,
+  "failures_to_subdivide": {
+    "M lower": 4,
+    "Q": 6,
+    "M upper": 29
+  },
+  "elapsed_s": 0.13886475563049316,
+  "min_branch_margin_passed": -0.00031126007028580745,
+  "min_voltage_margin_passed": 0.05045604951776343,
+  "epsilon": "1e-05",
+  "lambda": 1,
+  "status": "incomplete interval attempt; no full certificate"
+}

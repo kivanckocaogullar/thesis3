@@ -1,0 +1,1 @@
+The publication PDF used by the optional paper-extraction helpers is an external reference and is not included in this backup. Set the `GFM_REFERENCE_PDF` environment variable to its local path before running those helpers.

@@ -1,0 +1,10 @@
+[Warning: Using find_system without the 'Variants' argument skips inactive Variant Subsystem blocks in the search. This behavior will change in a future release to look at all
+choices of the Variant Subsystem. To find blocks that are active in simulation or code generation, compile the model and use the built-in variant filters with the 'MatchFilter'
+option. To find all blocks use filter '@Simulink.match.allVariants' with the 'MatchFilter' option.] 
+    {'GFMVSG1/Grid_Forming_Converter/Converter_Control/Inner_Control/Cascaded_PI_controller/v_cap_Controller'            }
+    {'GFMVSG1/Grid_Forming_Converter/Converter_Control/Operation_Mode_Selector'                                          }
+    {'GFMVSG1/Grid_Forming_Converter/Converter_Control/Outer_Control/Virtual_Synchronous_Machine'                        }
+    {'GFMVSG1/Grid_Forming_Converter/Converter_Control/measurement_transformations/Power_Calculation_(Positive_Sequence)'}
+    {'GFMVSG1/Grid_Forming_Converter/Electrical_Part/LC_harmonic_filter/V_cap_abc'                                       }
+    {'GFMVSG1/Grid_Forming_Converter/Electrical_Part/Transformer_Model/Transformer/Three-Phase...'                       }
+

@@ -1,0 +1,70 @@
+      gamma_eq_deg      limiter_active       Iconv_mag             Vc_mag               Pe_gamma            eigenvalue_1         eigenvalue_2       classification 
+    ________________    ______________    ________________    _________________    __________________    __________________    ________________    ________________
+
+    13.8107589411381        false         1.01530715381737    0.997477277664183       4.0820378139433    -0.171259194103397    -3.5052113941319    "LOCALLY_STABLE"
+    56.3010960202058        true                       1.2    0.894388940146741    -0.345863659797705    0.0137828751915041    -3.6902534634268    "SADDLE"        
+
+Nominal 13.810758941138 deg; switches [-16.34092603758;16.34092603758] deg
+Scan 96/18411, recovered 96, elapsed 1.4 s
+Scan 1056/18411, recovered 1056, elapsed 10.9 s
+Scan 2016/18411, recovered 2016, elapsed 19.1 s
+Scan 2976/18411, recovered 2976, elapsed 26.8 s
+Scan 3936/18411, recovered 3936, elapsed 36.8 s
+Scan 4896/18411, recovered 4896, elapsed 54.1 s
+Scan 5856/18411, recovered 5856, elapsed 76.8 s
+Scan 6816/18411, recovered 6816, elapsed 87.3 s
+Scan 7776/18411, recovered 7776, elapsed 109.6 s
+Scan 8736/18411, recovered 8736, elapsed 129.7 s
+Scan 9696/18411, recovered 9696, elapsed 148.8 s
+Scan 10656/18411, recovered 10431, elapsed 167.0 s
+Scan 11616/18411, recovered 10431, elapsed 180.5 s
+Scan 12576/18411, recovered 10431, elapsed 193.6 s
+Scan 13536/18411, recovered 10431, elapsed 208.1 s
+Scan 14496/18411, recovered 10431, elapsed 226.5 s
+Scan 15456/18411, recovered 10431, elapsed 247.4 s
+Scan 16416/18411, recovered 10431, elapsed 264.4 s
+Scan 17376/18411, recovered 10431, elapsed 280.2 s
+Scan 18336/18411, recovered 10431, elapsed 296.4 s
+Scan 96/1991, recovered 96, elapsed 0.9 s
+Scan 1056/1991, recovered 1056, elapsed 15.9 s
+Scan 1991/1991, recovered 1125, elapsed 33.1 s
+Scan 96/3801, recovered 96, elapsed 0.9 s
+Scan 1056/3801, recovered 1056, elapsed 10.6 s
+Scan 2016/3801, recovered 2016, elapsed 30.2 s
+Scan 2976/3801, recovered 2147, elapsed 46.7 s
+Scan 96/11041, recovered 96, elapsed 0.8 s
+Scan 1056/11041, recovered 1056, elapsed 9.9 s
+Scan 2016/11041, recovered 2016, elapsed 20.1 s
+Scan 2976/11041, recovered 2976, elapsed 32.1 s
+Scan 3936/11041, recovered 3936, elapsed 49.7 s
+Scan 4896/11041, recovered 4896, elapsed 70.6 s
+Scan 5856/11041, recovered 5716, elapsed 94.9 s
+Scan 6816/11041, recovered 6181, elapsed 114.1 s
+Scan 7776/11041, recovered 6242, elapsed 130.2 s
+Scan 8736/11041, recovered 6242, elapsed 149.0 s
+Scan 9696/11041, recovered 6242, elapsed 168.0 s
+Scan 10656/11041, recovered 6242, elapsed 195.0 s
+Boundary intersects nu edges 0.950/1.050: expanded to 0.900/1.100.
+Boundary intersects nu edges 0.900/1.100: expanded to 0.800/1.200.
+Boundary intersects nu edges 0.800/1.200: expanded to 0.500/1.500.
+The separatrix remains open at the finite nu limits; this is a sampled window, not a globally exhausted basin.
+Scan 96/9001, recovered 96, elapsed 2.1 s
+Scan 1056/9001, recovered 1056, elapsed 21.5 s
+Scan 2016/9001, recovered 2016, elapsed 32.7 s
+Scan 2976/9001, recovered 2976, elapsed 42.7 s
+Scan 3936/9001, recovered 3936, elapsed 59.7 s
+Scan 4896/9001, recovered 4896, elapsed 79.5 s
+Scan 5856/9001, recovered 5101, elapsed 95.0 s
+Scan 6816/9001, recovered 5101, elapsed 109.7 s
+Scan 7776/9001, recovered 5101, elapsed 126.5 s
+Scan 8736/9001, recovered 5101, elapsed 142.4 s
+Refined 141 boundary rows to 8.58e-05 deg at horizon 200.
+Refined 141 boundary rows to 8.58e-05 deg at horizon 2000.
+Recovered 19945/35244; limited and recovered 13915; nu0=1 extended bracket 56.301069260 .. 56.301155090 deg
+                         savedClosureMaxError: 0
+        representativeClassificationAgreement: 1
+    maxRepresentativeFinalAngleDifference_deg: 7.95807864051312e-13
+                  primaryVsTightBallDifferent: 409
+           extendedBoundaryTightDisagreements: 0
+
+FIXED-PSTAR RECOVERY STUDY COMPLETE

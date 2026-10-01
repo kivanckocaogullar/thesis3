@@ -1,0 +1,38 @@
+def second(g,E):
+ rot=iv.mpc(iv.cos(g),iv.sin(g))*rot0;v=E*rot;q=(v-T)/Z;r=iv.sqrt(abs2(q));qi=[1j*v/Z,rot/Z];qij=[[-v/Z,1j*rot/Z],[1j*rot/Z,iv.mpc(0)]]
+ ri=[(conj(q)*u).real/r for u in qi];ci=[ilim*(qi[i]/r-q*ri[i]/(r*r)) for i in range(2)];c=ilim*q/r
+ vc=T+Z*c;vg=net['vgE']*vc+net['vgU']*U;ig=net['igE']*vc+net['igU']*U
+ si=[net['vgE']*Z*ci[i]*conj(ig)+vg*conj(net['igE']*Z*ci[i]) for i in range(2)]
+ sij=[[None,None],[None,None]]
+ for i,j in [(0,0),(0,1),(1,1)]:
+  rij=((conj(qi[i])*qi[j]+conj(q)*qij[i][j]).real-ri[i]*ri[j])/r
+  cij=ilim*(qij[i][j]/r-qi[i]*ri[j]/(r*r)-qi[j]*ri[i]/(r*r)-q*rij/(r*r)+2*q*ri[i]*ri[j]/(r*r*r))
+  val=net['vgE']*Z*cij*conj(ig)+net['vgE']*Z*ci[i]*conj(net['igE']*Z*ci[j])+net['vgE']*Z*ci[j]*conj(net['igE']*Z*ci[i])+vg*conj(net['igE']*Z*cij)
+  sij[i][j]=val;sij[j][i]=val
+ ep=-I('.1')*si[0].imag/(1+I('.1')*si[1].imag)
+ epp=-I('.1')*(sij[0][0].imag+2*sij[0][1].imag*ep+sij[1][1].imag*ep*ep)/(1+I('.1')*si[1].imag)
+ return sij[0][0].real+2*sij[0][1].real*ep+sij[1][1].real*ep*ep+si[1].real*epp
+
+def qvalues(g,nu,er):
+ P,Pg,r,u,E=er;z1=(g-cen[0])/sc[0];z2=(nu-cen[1])/sc[1];f1=om*(nu-1);f2=((1-P)/nu-D*(nu-1))/mass;a=-Pg/(mass*nu);b=(-(1-P)/(nu*nu)-D)/mass
+ M,MD=matpoly(z1,z2,f1/sc[0],f2/sc[1]);m11=M[0][0];m12=M[0][1];m22=M[1][1]
+ return [2*a*m12+MD[0][0]+2*lam*m11,om*m11+b*m12+a*m22+MD[0][1]+2*lam*m12,2*om*m12+2*b*m22+MD[1][1]+2*lam*m22]
+
+def taylorQ(g,nu,er):
+ P,Pg,r,u,E=er;Pgg=second(g,E);z1=(g-cen[0])/sc[0];z2=(nu-cen[1])/sc[1]
+ f1=om*(nu-1);f2=((1-P)/nu-D*(nu-1))/mass;a=-Pg/(mass*nu);b=(-(1-P)/(nu*nu)-D)/mass
+ ag=-Pgg/(mass*nu);bg=Pg/(mass*nu*nu);av=Pg/(mass*nu*nu);bv=2*(1-P)/(mass*nu*nu*nu)
+ M,_=matpoly(z1,z2,I(0),I(0))
+ mg=[[ (C[1][i][j]+2*z1*C[3][i][j]+z2*C[4][i][j])/sc[0] for j in range(2)] for i in range(2)]
+ mv=[[ (C[2][i][j]+z1*C[4][i][j]+2*z2*C[5][i][j])/sc[1] for j in range(2)] for i in range(2)]
+ mgg=[[2*C[3][i][j]/(sc[0]*sc[0]) for j in range(2)] for i in range(2)]
+ mgv=[[C[4][i][j]/(sc[0]*sc[1]) for j in range(2)] for i in range(2)]
+ mvv=[[2*C[5][i][j]/(sc[1]*sc[1]) for j in range(2)] for i in range(2)]
+ mdg=[[mgg[i][j]*f1+mgv[i][j]*f2+mv[i][j]*a for j in range(2)] for i in range(2)]
+ mdv=[[mgv[i][j]*f1+mvv[i][j]*f2+mg[i][j]*om+mv[i][j]*b for j in range(2)] for i in range(2)]
+ dg=[2*ag*M[0][1]+2*a*mg[0][1]+mdg[0][0]+2*lam*mg[0][0],om*mg[0][0]+bg*M[0][1]+b*mg[0][1]+ag*M[1][1]+a*mg[1][1]+mdg[0][1]+2*lam*mg[0][1],2*om*mg[0][1]+2*bg*M[1][1]+2*b*mg[1][1]+mdg[1][1]+2*lam*mg[1][1]]
+ dv=[2*av*M[0][1]+2*a*mv[0][1]+mdv[0][0]+2*lam*mv[0][0],om*mv[0][0]+bv*M[0][1]+b*mv[0][1]+av*M[1][1]+a*mv[1][1]+mdv[0][1]+2*lam*mv[0][1],2*om*mv[0][1]+2*bv*M[1][1]+2*b*mv[1][1]+mdv[1][1]+2*lam*mv[1][1]]
+ gc=(g.a+g.b)/2;vc=(nu.a+nu.b)/2;ec,reason=enclosure(gc)
+ if ec is None:return None
+ qc=qvalues(gc,vc,ec)
+ return [qc[i]+dg[i]*(g-gc)+dv[i]*(nu-vc) for i in range(3)]

@@ -1,0 +1,65 @@
+
+NUMERICAL VALIDATION PASSED
+        inactiveBaseline: 2.22044604925031e-16
+         powerContinuity: 3.05644398679306e-12
+       voltageContinuity: 7.14004444016429e-13
+            currentLimit: 2.22044604925031e-16
+                Pe_gamma: 2.7862068208151e-10
+                    Pe_U: 1.81458612025232e-09
+               Pe_gammaU: 1.08933710940562e-08
+    projectionDerivative: 1.08897946216047e-10
+                Jacobian: 5.78497250103283e-11
+           matrixFormula: 8.88178419700125e-16
+          matrixSymmetry: 0
+         networkResidual: 9.42464264760947e-16
+     equilibriumResidual: 0
+            nominalMatch: 7.17648163117701e-13
+
+
+SCR5/XR10 LIMITER-FREE BASELINE
+E=0.997477277664; Vth=0.990384568064-0.00174104618759j; Zeq=0.0298789620445+0.233596600585j
+H=3.4 K=20 Kd=5 D_eff=25; nominal=13.8107589411 deg
+Local stability intervals:
+         -87.6493870930416          92.3506122192155
+
+Baseline contraction-certified intervals:
+          22.3523784001167          29.2174838490467
+          50.7057644612351          84.7903294107444
+
+
+SCR5/XR10 + RADIAL CURRENT LIMITER
+Imax=1.2; voltage capability=1.3
+Switching angles:
+         -16.3409260376195
+          16.3409260376195
+
+Voltage boundaries:
+Local stable intervals (branchwise):
+          -17.088884764777         -16.3409260376195
+         -16.3409260376195          16.3409260376195
+
+Local unstable intervals:
+                      -180         -17.0888919123916
+          16.3409260376195                       180
+
+Contraction-certified intervals, voltage valid, open smooth branches:
+    regionID    lower_gamma_deg    upper_gamma_deg    local_stable    limiter_mode    contraction_certified    voltage_capability_valid    lower_cause    upper_cause
+    ________    _______________    _______________    ____________    ____________    _____________________    ________________________    ___________    ___________
+
+
+NOMINAL:
+       gamma0_deg            Pstar                 Pe                 Ireq               Iconv               Vc_abs            Vc_angle_deg         u_required       limiter_active    voltage_capability_valid       Pe_gamma              Pe_U             Pe_gammaU            eig1_real         eig1_imag       eig2_real        eig2_imag       maxRealEigJ        local_stable           beta                    c                  detTheta               lambdaMinM            lambdaMaxM        lambda_max_SymF      lambda_min_SymF     mathematical_branch_certificate    contraction_certified    on_switch    equilibriumResidual
+    ________________    ________________    ________________    ________________    ________________    _________________    ________________    ________________    ______________    ________________________    _______________    ________________    ________________    __________________    _________    ________________    _________    __________________    ____________    ___________________    __________________    ___________________    ____________________    _________________    ________________    _________________    _______________________________    _____________________    _________    ___________________
+
+    13.8107589411382    1.00000000000001    1.00000000000001    1.01530715381738    1.01530715381738    0.997477277664183    13.7100359503498    1.20360014576111        false                  true               4.0820378139433    0.48151832154035    4.16367857022216    -0.171259194103397        0        -3.5052113941319        0        -0.171259194103397       true         -0.0708115178735809    -0.612305672091494    0.00501427106356047    6.53263860344381e-05    0.384881451816503    20.5140979567503    -24.1905685449856                 false                         false              false               0         
+
+EFFECT ON BASELINE REGIONS:
+    baselineRegion       lower_deg           upper_deg           width_deg        currentFeasibleWidth_deg    currentLimitedWidth_deg    limitedVoltageValidWidth_deg    limitedVoltageInvalidWidth_deg    limitedLocalStableWidth_deg    limitedCertifiedWidth_deg    lostCertifiedWidth_deg
+    ______________    ________________    ________________    ________________    ________________________    _______________________    ____________________________    ______________________________    ___________________________    _________________________    ______________________
+
+          1           22.3523784001167    29.2174838490467    6.86510544892991               0                   6.86510544892991              6.86510544892991                        0                                0                             0                   6.86510544892991   
+          2           50.7057644612351    84.7903294107444    34.0845649495092               0                   34.0845649495092              34.0845649495092                        0                                0                             0                   34.0845649495092   
+
+Branchwise contraction negativity is NOT a global switched-system contraction certificate.
+
+Finished analytical benchmark. No EMT validation run. Outputs: outputs\current_limiter_SCR5_XR10

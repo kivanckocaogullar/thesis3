@@ -1,0 +1,83 @@
+[
+  {
+    "name": "Figure3_ConstantRatioLimiter.pdf",
+    "pages": 1,
+    "embedded_raster_images": 0,
+    "png_pixels": [
+      3147,
+      2877
+    ]
+  },
+  {
+    "name": "Figure4_ConstantRatioLimiter_Sag30.pdf",
+    "pages": 1,
+    "embedded_raster_images": 0,
+    "png_pixels": [
+      5014,
+      2443
+    ]
+  },
+  {
+    "name": "Figure4_ConstantRatioLimiter_Sag50.pdf",
+    "pages": 1,
+    "embedded_raster_images": 0,
+    "png_pixels": [
+      5014,
+      2443
+    ]
+  },
+  {
+    "name": "Figure5A_ConstantRatioLimiter.pdf",
+    "pages": 1,
+    "embedded_raster_images": 0,
+    "png_pixels": [
+      3298,
+      1899
+    ]
+  },
+  {
+    "name": "Figure5B_ConstantRatioLimiter_Sag30.pdf",
+    "pages": 1,
+    "embedded_raster_images": 0,
+    "png_pixels": [
+      3830,
+      2909
+    ]
+  },
+  {
+    "name": "Figure5B_ConstantRatioLimiter_Sag50.pdf",
+    "pages": 1,
+    "embedded_raster_images": 0,
+    "png_pixels": [
+      3830,
+      2909
+    ]
+  },
+  {
+    "name": "Supplement_Current_ConstantRatioLimiter_Sag30.pdf",
+    "pages": 1,
+    "embedded_raster_images": 0,
+    "png_pixels": [
+      4959,
+      2802
+    ]
+  },
+  {
+    "name": "Supplement_Current_ConstantRatioLimiter_Sag50.pdf",
+    "pages": 1,
+    "embedded_raster_images": 0,
+    "png_pixels": [
+      4959,
+      2802
+    ]
+  },
+  {
+    "name": "Supplement_Frequency_ConstantRatioLimiter.pdf",
+    "pages": 1,
+    "embedded_raster_images": 0,
+    "png_pixels": [
+      3276,
+      2292
+    ]
+  }
+]

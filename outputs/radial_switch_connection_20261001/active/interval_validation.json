@@ -1,0 +1,18 @@
+{
+  "complete": true,
+  "tested": 231,
+  "passed_boxes": 116,
+  "pending_boxes": 0,
+  "max_depth": 10,
+  "precision_decimal_digits": 30,
+  "failures_to_subdivide": {
+    "M lower": 111,
+    "Q": 4
+  },
+  "elapsed_s": 0.3914463520050049,
+  "min_branch_margin_passed": -0.0008838056808676206,
+  "min_voltage_margin_passed": 0.046640859256102715,
+  "epsilon": "1e-05",
+  "lambda": "0.1",
+  "status": "validated full rectangle for fixed decimal coefficients"
+}

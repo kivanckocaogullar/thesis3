@@ -1,0 +1,22 @@
+{
+  "complete": true,
+  "tested": 18319,
+  "passed_boxes": 9160,
+  "pending_boxes": 0,
+  "max_depth": 18,
+  "precision_decimal_digits": 30,
+  "failures_to_subdivide": {
+    "root bracket": 7,
+    "voltage": 102,
+    "M upper": 3,
+    "Q": 5115,
+    "M lower": 3746,
+    "activation": 186
+  },
+  "elapsed_s": 44.952959060668945,
+  "min_branch_margin_passed": 0.0011465018615563448,
+  "min_voltage_margin_passed": 0.00031949728569694816,
+  "epsilon": "1E-5",
+  "lambda": "0.1",
+  "status": "validated full rectangle for fixed decimal coefficients"
+}

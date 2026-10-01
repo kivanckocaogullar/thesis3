@@ -1,0 +1,632 @@
+CURRENT MODEL AUDIT PASSED: H=3.4, K=20, Kd=5; external R=3.98014876 ohm, L=0.12669207 H
+
+POINTWISE MATRIX AUDIT (each equilibrium has its own fixed reference metric)
+
+Old-angle comparison: gamma0=10.000000000 deg, Pstar=0.726872907898, beta=-0.0298424541, c=-0.619201806
+J =
+                         0                         1
+        -0.607060594139832         -3.67647058823529
+
+Theta =
+        0.0298424540583283                         0
+         0.619201806022628        0.0298424540583283
+
+M =
+         0.384301448645908        0.0184785014490642
+        0.0184785014490642      0.000890572064223433
+
+F =
+         -20.7490243534387                         1
+         -354.845894443736          17.0725537652034
+
+Sym(F) =
+         -20.7490243534387         -176.922947221868
+         -176.922947221868          17.0725537652034
+
+
+Below first certificate: gamma0=11.176189200 deg, Pstar=0.811491516527, beta=-0.0425352454, c=-0.61736427
+J =
+                         0                         1
+        -0.605259088429528         -3.67647058823529
+
+Theta =
+        0.0425352453526396                         0
+         0.617364270198119        0.0425352453526396
+
+M =
+         0.382947889214465        0.0262597407048303
+        0.0262597407048303       0.00180924709720925
+
+F =
+         -14.5141814765577                         1
+         -157.905761712006          10.8377108883224
+
+Sym(F) =
+         -14.5141814765577         -78.4528808560031
+         -78.4528808560031          10.8377108883224
+
+
+Old-angle comparison: gamma0=12.000000000 deg, Pstar=0.870600714988, beta=-0.0514016251, c=-0.615922277
+J =
+                         0                         1
+        -0.603845369598804         -3.67647058823529
+
+Theta =
+        0.0514016251217325                         0
+          0.61592227699078        0.0514016251217325
+
+M =
+         0.382002378358662         0.031659405986004
+         0.031659405986004       0.00264212706515512
+
+F =
+         -11.9825448228945                         1
+         -100.131752188692           8.3060742346592
+
+Sym(F) =
+         -11.9825448228945         -49.5658760943459
+         -49.5658760943459           8.3060742346592
+
+
+New nominal (Pstar=1): gamma0=13.810758941 deg, Pstar=1, beta=-0.0708115179, c=-0.612305672
+J =
+                         0                         1
+        -0.600299678521073         -3.67647058823529
+
+Theta =
+         0.070811517873581                         0
+         0.612305672091495         0.070811517873581
+
+M =
+         0.379932507138977        0.0433582940434019
+        0.0433582940434019       0.00501427106356048
+
+F =
+         -8.64697849274516                         1
+         -43.5801746268377          4.97050790450987
+
+Sym(F) =
+         -8.64697849274516         -21.2900873134189
+         -21.2900873134189          4.97050790450987
+
+
+Old-angle comparison: gamma0=17.457603000 deg, Pstar=1.25796828116, beta=-0.10950676, c=-0.603170221
+J =
+                         0                         1
+        -0.591343353925218         -3.67647058823529
+
+Theta =
+         0.109506760047996                         0
+         0.603170221003722         0.109506760047996
+
+M =
+         0.375806046001889        0.0660512166595515
+        0.0660512166595515        0.0119917304962094
+
+F =
+         -5.50806380116949                         1
+         -10.6798756285558           1.8315932129342
+
+Sym(F) =
+         -5.50806380116949         -4.83993781427791
+         -4.83993781427791           1.8315932129342
+
+
+Old-angle comparison: gamma0=20.500000000 deg, Pstar=1.46985959733, beta=-0.141290457, c=-0.59367806
+J =
+                         0                         1
+        -0.582037313551925         -3.67647058823529
+
+Theta =
+         0.141290457473436                         0
+         0.593678059822964         0.141290457473436
+
+M =
+         0.372416632088212        0.0838810446643285
+        0.0838810446643285        0.0199629933730528
+
+F =
+         -4.20182700544077                         1
+         -2.78949409484749         0.525356417205474
+
+Sym(F) =
+         -4.20182700544077        -0.894747047423747
+        -0.894747047423747         0.525356417205474
+
+
+Near boundary 22.352378: gamma0=22.342378400 deg, Pstar=1.59643401885, beta=-0.160276621, c=-0.587114429
+J =
+                         0                         1
+        -0.575602380960978         -3.67647058823529
+
+Theta =
+         0.160276620701501                         0
+         0.587114428580198         0.160276620701501
+
+M =
+         0.370391947390545        0.0941007165779269
+        0.0941007165779269        0.0256885951434928
+
+F =
+         -3.66313206511659                         1
+        -0.526741609223548       -0.0133385231187058
+
+Sym(F) =
+         -3.66313206511659         0.236629195388226
+         0.236629195388226       -0.0133385231187058
+
+
+Near boundary 22.352378: gamma0=22.362378400 deg, Pstar=1.59780020939, beta=-0.160481549, c=-0.587039834
+J =
+                         0                         1
+        -0.575529248553236         -3.67647058823529
+
+Theta =
+         0.160481549281582                         0
+         0.587039833524301         0.160481549281582
+
+M =
+         0.370370093804056        0.0942090619739821
+        0.0942090619739821         0.025754327659817
+
+F =
+         -3.65798957046629                         1
+        -0.507925878302623       -0.0184810177690025
+
+Sym(F) =
+         -3.65798957046629         0.246037060848689
+         0.246037060848689       -0.0184810177690025
+
+
+Old-angle comparison: gamma0=25.000000000 deg, Pstar=1.77638976143, beta=-0.187269982, c=-0.576578987
+J =
+                         0                         1
+        -0.565273517120926         -3.67647058823529
+
+Theta =
+         0.187269982087795                         0
+         0.576578987463344         0.187269982087795
+
+M =
+         0.367513374975418         0.107975936654459
+         0.107975936654459        0.0350700461911629
+
+F =
+         -3.07886496829501                         1
+          1.27467349096944        -0.597605619940287
+
+Sym(F) =
+         -3.07886496829501          1.13733674548472
+          1.13733674548472        -0.597605619940287
+
+
+Inside R1: gamma0=25.784931125 deg, Pstar=1.8288970719, beta=-0.195146079, c=-0.573228991
+J =
+                         0                         1
+        -0.561989206686695         -3.67647058823529
+
+Theta =
+         0.195146078658877                         0
+         0.573228990820429         0.195146078658877
+
+M =
+         0.366673467932944         0.111863389732192
+         0.111863389732192        0.0380819920159365
+
+F =
+         -2.93743535488846                         1
+          1.60887901625454        -0.739035233346833
+
+Sym(F) =
+         -2.93743535488846          1.30443950812727
+          1.30443950812727        -0.739035233346833
+
+
+Near boundary 29.217484: gamma0=29.207483849 deg, Pstar=2.05408510102, beta=-0.228924283, c=-0.557373333
+J =
+                         0                         1
+        -0.546444444182472         -3.67647058823529
+
+Theta =
+         0.228924283026762                         0
+         0.557373333066121         0.228924283026762
+
+M =
+         0.363071359772555         0.127596290650399
+         0.127596290650399        0.0524063273593172
+
+F =
+         -2.43474971591791                         1
+          2.47683509694162         -1.24172087231738
+
+Sym(F) =
+         -2.43474971591791          1.73841754847081
+          1.73841754847081         -1.24172087231738
+
+
+Near boundary 29.217484: gamma0=29.227483849 deg, Pstar=2.055382053, beta=-0.229118826, c=-0.557274777
+J =
+                         0                         1
+        -0.546347820850995         -3.67647058823529
+
+Theta =
+         0.229118825824002                         0
+         0.557274777268015         0.229118825824002
+
+M =
+         0.363050613726085          0.12768214262898
+          0.12768214262898        0.0524954363469695
+
+F =
+         -2.43225223970066                         1
+          2.47990504404903         -1.24421834853464
+
+Sym(F) =
+         -2.43225223970066          1.73995252202451
+          1.73995252202451         -1.24421834853464
+
+
+Old-angle comparison: gamma0=35.000000000 deg, Pstar=2.41950168091, beta=-0.28373677, c=-0.526041444
+J =
+                         0                         1
+        -0.515726905858256         -3.67647058823529
+
+Theta =
+          0.28373677001075                         0
+         0.526041443975421          0.28373677001075
+
+M =
+         0.357226155435879         0.149257300205377
+         0.149257300205377        0.0805065546561332
+
+F =
+         -1.85397699408325                         1
+          2.86313428956373         -1.82249359415204
+
+Sym(F) =
+         -1.85397699408325          1.93156714478186
+          1.93156714478186         -1.82249359415204
+
+
+Between R1 and R2: gamma0=39.961624155 deg, Pstar=2.71439185716, beta=-0.327970296, c=-0.494918757
+J =
+                         0                         1
+        -0.485214467854188         -3.67647058823529
+
+Theta =
+         0.327970296448051                         0
+         0.494918757211271         0.327970296448051
+
+M =
+         0.352509091591772         0.162318651520282
+         0.162318651520282         0.107564515352223
+
+F =
+          -1.5090353076827                         1
+          2.78552189761683         -2.16743528055259
+
+Sym(F) =
+          -1.5090353076827          1.89276094880842
+          1.89276094880842         -2.16743528055259
+
+
+Near boundary 50.705764: gamma0=50.695764461 deg, Pstar=3.28444404422, beta=-0.413478125, c=-0.415242551
+J =
+                         0                         1
+        -0.407100540279761         -3.67647058823529
+
+Theta =
+         0.413478124506275                         0
+         0.415242551085356         0.413478124506275
+
+M =
+         0.343390535677101         0.171693711237974
+         0.171693711237974         0.170964159445227
+
+F =
+         -1.00426727914853                         1
+          2.27650580626851         -2.67220330908676
+
+Sym(F) =
+         -1.00426727914853          1.63825290313425
+          1.63825290313425         -2.67220330908676
+
+
+Near boundary 50.705764: gamma0=50.715764461 deg, Pstar=3.2854101679, beta=-0.413623043, c=-0.415079583
+J =
+                         0                         1
+        -0.406940767160823         -3.67647058823529
+
+Theta =
+          0.41362304305858                         0
+         0.415079582504039          0.41362304305858
+
+M =
+         0.343375081560768         0.171686480026806
+         0.171686480026806          0.17108402174904
+
+F =
+         -1.00352141755616                         1
+          2.27542097365467         -2.67294917067913
+
+Sym(F) =
+         -1.00352141755616          1.63771048682733
+          1.63771048682733         -2.67294917067913
+
+
+Old-angle comparison: gamma0=55.000000000 deg, Pstar=3.48343340904, beta=-0.443326529, c=-0.379037056
+J =
+                         0                         1
+        -0.371604956943426         -3.67647058823529
+
+Theta =
+         0.443326529230073                         0
+         0.379037056082294         0.443326529230073
+
+M =
+         0.340207501402715         0.168037182522548
+         0.168037182522548         0.196538411519183
+
+F =
+        -0.854983925145579                         1
+          2.04072078501092         -2.82148666308972
+
+Sym(F) =
+        -0.854983925145579          1.52036039250546
+          1.52036039250546         -2.82148666308972
+
+
+Old-angle comparison: gamma0=65.000000000 deg, Pstar=3.8719261905, beta=-0.501600446, c=-0.287036866
+J =
+                         0                         1
+        -0.281408691779818         -3.67647058823529
+
+Theta =
+         0.501600446448876                         0
+         0.287036865615414         0.501600446448876
+
+M =
+         0.333993170100033         0.143977819939978
+         0.143977819939978         0.251603007877712
+
+F =
+        -0.572242045730853                         1
+          1.49496139979903         -3.10422854250444
+
+Sym(F) =
+        -0.572242045730853          1.24748069989951
+          1.24748069989951         -3.10422854250444
+
+
+Inside R2: gamma0=67.748046936 deg, Pstar=3.95941666969, beta=-0.514724018, c=-0.260101629
+J =
+                         0                         1
+        -0.255001596626677         -3.67647058823529
+
+Theta =
+         0.514724018326639                         0
+         0.260101628559211         0.514724018326639
+
+M =
+         0.332593672221476           0.1338805554253
+           0.1338805554253         0.264940815042322
+
+F =
+        -0.505322501570449                         1
+          1.34745088737714         -3.17114808666485
+
+Sym(F) =
+        -0.505322501570449          1.17372544368857
+          1.17372544368857         -3.17114808666485
+
+
+Near boundary 84.790329: gamma0=84.780329411 deg, Pstar=4.3012300531, beta=-0.565996026, c=-0.082307493
+J =
+                         0                         1
+       -0.0806936205455778         -3.67647058823529
+
+Theta =
+         0.565996025839113                         0
+        0.0823074929564894         0.565996025839113
+
+M =
+         0.327126024662453        0.0465857139101538
+        0.0465857139101538          0.32035150126567
+
+F =
+        -0.145420619931854                         1
+         0.432793854855461         -3.53104996830344
+
+Sym(F) =
+        -0.145420619931854         0.716396927427731
+         0.716396927427731         -3.53104996830344
+
+
+Near boundary 84.790329: gamma0=84.800329411 deg, Pstar=4.30142133979, beta=-0.566024719, c=-0.0820913059
+J =
+                         0                         1
+       -0.0804816724204779         -3.67647058823529
+
+Theta =
+         0.566024718842663                         0
+        0.0820913058688875         0.566024718842663
+
+M =
+         0.327122964840175        0.0464657083238641
+        0.0464657083238641         0.320383982340916
+
+F =
+        -0.145031308944842                         1
+         0.431687588714245         -3.53143927929045
+
+Sym(F) =
+        -0.145031308944842         0.715843794357123
+         0.715843794357123         -3.53143927929045
+
+
+Old-angle comparison: gamma0=100.000000000 deg, Pstar=4.30046854359, beta=-0.565881799, c=0.0831624607
+J =
+                         0                         1
+        0.0815318241853689         -3.67647058823529
+
+Theta =
+          0.56588179941188                         0
+       -0.0831624606690763          0.56588179941188
+
+M =
+         0.327138205770163       -0.0470601228869366
+       -0.0470601228869366         0.320222210905628
+
+F =
+         0.146960833084766                         1
+        -0.480362842734298         -3.82343142132006
+
+Sym(F) =
+         0.146960833084766         0.259818578632851
+         0.259818578632851         -3.82343142132006
+
+
+Old-angle comparison: gamma0=120.000000000 deg, Pstar=3.86189737797, beta=-0.500096125, c=0.289926641
+J =
+                         0                         1
+         0.284241804961276         -3.67647058823529
+
+Theta =
+          0.50009612456867                         0
+        -0.289926641060502          0.50009612456867
+
+M =
+         0.334153591005228        -0.144991189603569
+        -0.144991189603569         0.250096133808603
+
+F =
+         0.579741827254833                         1
+         -2.18326255797968         -4.25621241549013
+
+Sym(F) =
+         0.579741827254833        -0.591631278989838
+        -0.591631278989838         -4.25621241549013
+
+
+Locally unstable: gamma0=136.175306454 deg, Pstar=3.17740020687, beta=-0.397421549, c=0.432618679
+J =
+                         0                         1
+         0.424135959983844         -3.67647058823529
+
+Theta =
+         0.397421548903857                         0
+        -0.432618679183521         0.397421548903857
+
+M =
+         0.345102809111635        -0.171931985565856
+        -0.171931985565856         0.157943887533141
+
+F =
+          1.08856371874334                         1
+         -4.76290750516041         -4.76503430697863
+
+Sym(F) =
+          1.08856371874334          -1.8814537525802
+          -1.8814537525802         -4.76503430697863
+
+Independent numerical verification passed.
+        powerDerivative: 7.62887530925127e-11
+               Jacobian: 3.58953977652732e-11
+         betaDerivative: 9.14124331785615e-12
+            cDerivative: 1.12019282738629e-11
+         matrixSymmetry: 0
+          matrixFormula: 1.01436463956883e-15
+    equilibriumResidual: 0
+            phasorPower: 1.11022302462516e-15
+               thevenin: 1.79018083652472e-15
+           nominalAngle: 1.47104550762833e-15
+
+
+magnitude sag study: 3 references, 9 tests each; no angle jump; Pstar fixed.
+gamma0 13.810759 | Usag 0.9 | depth 10% | T 1.00 | excursion 0.0989104 | max|nu-1| 0.00177011 | maintained 0 | Recovered original equilibrium
+gamma0 13.810759 | Usag 0.8 | depth 20% | T 1.00 | excursion 0.205702 | max|nu-1| 0.00369061 | maintained 0 | Recovered original equilibrium
+gamma0 13.810759 | Usag 0.7 | depth 30% | T 1.00 | excursion 0.320419 | max|nu-1| 0.0057654 | maintained 0 | Recovered original equilibrium
+gamma0 13.810759 | Usag 0.6 | depth 40% | T 1.00 | excursion 0.443098 | max|nu-1| 0.00799816 | maintained 0 | Recovered original equilibrium
+gamma0 13.810759 | Usag 0.5 | depth 50% | T 1.00 | excursion 0.573769 | max|nu-1| 0.0103894 | maintained 0 | Recovered original equilibrium
+gamma0 13.810759 | Usag 0.4 | depth 60% | T 1.00 | excursion 0.712457 | max|nu-1| 0.0129404 | maintained 0 | Recovered original equilibrium
+gamma0 13.810759 | Usag 0.3 | depth 70% | T 1.00 | excursion 0.859181 | max|nu-1| 0.0156523 | maintained 0 | Recovered original equilibrium
+gamma0 13.810759 | Usag 0.2 | depth 80% | T 1.00 | excursion 1.01395 | max|nu-1| 0.0185264 | maintained 0 | Recovered original equilibrium
+gamma0 13.810759 | Usag 0.1 | depth 90% | T 1.00 | excursion 1.17679 | max|nu-1| 0.0215634 | maintained 0 | Recovered original equilibrium
+Strongest recovering sag among tested discrete cases: gamma0 13.810759, Usag 0.1 pu
+gamma0 25.784931 | Usag 0.9 | depth 10% | T 1.00 | excursion 0.267278 | max|nu-1| 0.00477358 | maintained 1 | Recovered original equilibrium
+gamma0 25.784931 | Usag 0.8 | depth 20% | T 1.00 | excursion 0.542297 | max|nu-1| 0.00970478 | maintained 1 | Recovered original equilibrium
+gamma0 25.784931 | Usag 0.7 | depth 30% | T 1.00 | excursion 0.824986 | max|nu-1| 0.0147976 | maintained 1 | Recovered original equilibrium
+gamma0 25.784931 | Usag 0.6 | depth 40% | T 1.00 | excursion 1.11527 | max|nu-1| 0.0200521 | maintained 1 | Recovered original equilibrium
+gamma0 25.784931 | Usag 0.5 | depth 50% | T 1.00 | excursion 1.41307 | max|nu-1| 0.0254653 | maintained 0 | Recovered original equilibrium
+gamma0 25.784931 | Usag 0.4 | depth 60% | T 1.00 | excursion 1.7183 | max|nu-1| 0.0310354 | maintained 0 | Recovered original equilibrium
+gamma0 25.784931 | Usag 0.3 | depth 70% | T 1.00 | excursion 2.03087 | max|nu-1| 0.0367605 | maintained 0 | Recovered original equilibrium
+gamma0 25.784931 | Usag 0.2 | depth 80% | T 1.00 | excursion 2.35071 | max|nu-1| 0.042639 | maintained 0 | Recovered original equilibrium
+gamma0 25.784931 | Usag 0.1 | depth 90% | T 1.00 | excursion 2.67771 | max|nu-1| 0.0486687 | maintained 0 | Recovered original equilibrium
+Strongest recovering sag among tested discrete cases: gamma0 25.784931, Usag 0.1 pu
+gamma0 67.748047 | Usag 0.9 | depth 10% | T 1.00 | excursion 0.732831 | max|nu-1| 0.0128774 | maintained 1 | Recovered original equilibrium
+gamma0 67.748047 | Usag 0.8 | depth 20% | T 1.00 | excursion 1.46321 | max|nu-1| 0.0256859 | maintained 1 | Recovered original equilibrium
+gamma0 67.748047 | Usag 0.7 | depth 30% | T 1.00 | excursion 2.19123 | max|nu-1| 0.0384273 | maintained 1 | Recovered original equilibrium
+gamma0 67.748047 | Usag 0.6 | depth 40% | T 1.00 | excursion 2.91701 | max|nu-1| 0.0511036 | maintained 1 | Recovered original equilibrium
+gamma0 67.748047 | Usag 0.5 | depth 50% | T 1.00 | excursion 3.64064 | max|nu-1| 0.0637165 | maintained 1 | Recovered original equilibrium
+gamma0 67.748047 | Usag 0.4 | depth 60% | T 1.00 | excursion 4.36218 | max|nu-1| 0.0762675 | maintained 0 | Recovered original equilibrium
+gamma0 67.748047 | Usag 0.3 | depth 70% | T 1.00 | excursion 5.08192 | max|nu-1| 0.088758 | maintained 0 | Recovered original equilibrium
+gamma0 67.748047 | Usag 0.2 | depth 80% | T 1.00 | excursion 5.79981 | max|nu-1| 0.101189 | maintained 0 | Recovered original equilibrium
+gamma0 67.748047 | Usag 0.1 | depth 90% | T 1.00 | excursion 6.51591 | max|nu-1| 0.113563 | maintained 0 | Recovered original equilibrium
+Strongest recovering sag among tested discrete cases: gamma0 67.748047, Usag 0.1 pu
+
+duration sag study: 3 references, 7 tests each; no angle jump; Pstar fixed.
+gamma0 13.810759 | Usag 0.1 | depth 90% | T 1.00 | excursion 1.17677 | max|nu-1| 0.0215634 | maintained 0 | Recovered original equilibrium
+gamma0 13.810759 | Usag 0.1 | depth 90% | T 2.00 | excursion 2.37905 | max|nu-1| 0.0218423 | maintained 0 | Recovered original equilibrium
+gamma0 13.810759 | Usag 0.1 | depth 90% | T 3.00 | excursion 3.58156 | max|nu-1| 0.0218423 | maintained 0 | Recovered original equilibrium
+gamma0 13.810759 | Usag 0.1 | depth 90% | T 4.00 | excursion 4.7752 | max|nu-1| 0.0218423 | maintained 0 | Recovered original equilibrium
+gamma0 13.810759 | Usag 0.1 | depth 90% | T 5.00 | excursion 5.95598 | max|nu-1| 0.0218423 | maintained 0 | Recovered original equilibrium
+gamma0 13.810759 | Usag 0.1 | depth 90% | T 7.00 | excursion 8.27435 | max|nu-1| 0.0218423 | maintained 0 | Recovered original equilibrium
+gamma0 13.810759 | Usag 0.1 | depth 90% | T 10.00 | excursion 11.6357 | max|nu-1| 0.0298813 | maintained 0 | Recovered original equilibrium
+gamma0 25.784931 | Usag 0.1 | depth 90% | T 1.00 | excursion 2.67773 | max|nu-1| 0.0486687 | maintained 0 | Recovered original equilibrium
+gamma0 25.784931 | Usag 0.1 | depth 90% | T 2.00 | excursion 5.39367 | max|nu-1| 0.049255 | maintained 0 | Recovered original equilibrium
+gamma0 25.784931 | Usag 0.1 | depth 90% | T 3.00 | excursion 8.11395 | max|nu-1| 0.049255 | maintained 0 | Recovered original equilibrium
+gamma0 25.784931 | Usag 0.1 | depth 90% | T 4.00 | excursion 10.8186 | max|nu-1| 0.049255 | maintained 0 | Recovered original equilibrium
+gamma0 25.784931 | Usag 0.1 | depth 90% | T 5.00 | excursion 13.5018 | max|nu-1| 0.049255 | maintained 0 | Recovered original equilibrium
+gamma0 25.784931 | Usag 0.1 | depth 90% | T 7.00 | excursion 18.7924 | max|nu-1| 0.049255 | maintained 0 | Recovered original equilibrium
+gamma0 25.784931 | Usag 0.1 | depth 90% | T 10.00 | excursion 26.5355 | max|nu-1| 0.0597265 | maintained 0 | Recovered original equilibrium
+gamma0 67.748047 | Usag 0.1 | depth 90% | T 1.00 | excursion 6.51585 | max|nu-1| 0.113563 | maintained 0 | Recovered original equilibrium
+gamma0 67.748047 | Usag 0.1 | depth 90% | T 2.00 | excursion 12.9882 | max|nu-1| 0.115091 | maintained 0 | Recovered original equilibrium
+gamma0 67.748047 | Usag 0.1 | depth 90% | T 3.00 | excursion 19.5063 | max|nu-1| 0.115091 | maintained 0 | Recovered original equilibrium
+gamma0 67.748047 | Usag 0.1 | depth 90% | T 4.00 | excursion 26.0609 | max|nu-1| 0.115091 | maintained 0 | Recovered original equilibrium
+gamma0 67.748047 | Usag 0.1 | depth 90% | T 5.00 | excursion 32.6601 | max|nu-1| 0.115091 | maintained 0 | Recovered original equilibrium
+gamma0 67.748047 | Usag 0.1 | depth 90% | T 7.00 | excursion 46.0999 | max|nu-1| 0.115327 | maintained 0 | Recovered original equilibrium
+gamma0 67.748047 | Usag 0.1 | depth 90% | T 10.00 | excursion 360 | max|nu-1| 0.25353 | maintained 0 | Transitioned to another equilibrium branch
+
+OLD BASELINE: E=1, Xeq=0.3, H=3.4, D_eff=25; gamma_nominal=17.457603 deg
+R1=15.322599..21.091668; R2=48.626362..81.415963 deg
+
+NEW SCR5/XR10 BASELINE: E=0.997477277664, Vth=0.990384568064+j-0.00174104618759, Zeq=0.0298789620445+j0.233596600585 pu
+|Zeq|=0.235499732861; angle=82.7109687 deg; H=3.4 K=20 Kd=5 D_eff=25
+gamma_nominal=13.8107589411 deg
+Local stability intervals (deg):
+         -87.6493870930416          92.3506122192155
+
+Certified regions (deg):
+          22.3523784001167          29.2174838490467
+          50.7057644612351          84.7903294107444
+
+       quantity            oldValue             newValue                change       
+    _______________    ________________    __________________    ____________________
+
+    "E"                               1     0.997477277664183    -0.00252272233581663
+    "Vth magnitude"                   1     0.990386098398668    -0.00961390160133224
+    "Req"                             0    0.0298789620445137      0.0298789620445137
+    "Xeq"                           0.3     0.233596600584515     -0.0664033994154851
+    "Nominal gamma"    17.4576031237221      13.8107589411382       -3.64684418258391
+    "H"                             3.4                   3.4                       0
+    "D_eff"                          25                    25                       0
+    "R1 boundary 1"      15.32259918055      22.3523784001167        7.02977921956674
+    "R1 boundary 2"     21.091668254769      29.2174838490467        8.12581559427765
+    "R2 boundary 1"     48.626361830614      50.7057644612351        2.07940263062113
+    "R2 boundary 2"     81.415962806098      84.7903294107444        3.37436660464637
+
+Second certified region survives: 1. Changes are electrical-network/mapping/calibration only; tuning and metric method unchanged.
+Numerically verified baseline ready for subsequent reduced limiter study within documented assumptions. Limiter analysis not started.
+
+All SCR5_XR10 outputs saved to outputs\baseline_SCR5_XR10
+Both existing analytical scripts unchanged. No current-limiter analysis run.

@@ -1,0 +1,29 @@
+NUMERICAL DIAGNOSTIC VALIDATION PASSED
+              activeCurrentMagnitude: 4.44089209850063e-16
+           radialAngleDifference_rad: 2.00928070815927e-16
+                        complexPower: 0
+                          polarPower: 4.44089209850063e-16
+                complexDecomposition: 2.66453525910038e-15
+                  polarDecomposition: 3.83157047756377e-15
+                             dqQSign: 0
+    activeCurrentMagnitudeDerivative: 2.15105711021124e-15
+                  complexDerivatives: 1.077748933587e-09
+                magnitudeDerivatives: 5.22532861424452e-09
+                    phaseDerivatives: 2.07879857327953e-07
+                        PeDerivative: 4.71746142149954e-10
+                        QeDerivative: 6.33649577252982e-10
+                            Jacobian: 1.67739749173945e-10
+                 equilibriumResidual: 0
+               switchPowerContinuity: 2.44249065417534e-15
+             switchVoltageContinuity: 4.9960036108132e-16
+                oneSidedPeDerivative: 1.42912987000088e-10
+
+
+SWITCH 16.340926037578 deg
+           Pe                   Qe                 Pe_gamma              Qe_gamma            Iconv_mag_gamma       Iconv_angle_gamma        Vc_mag_gamma          Vc_angle_gamma             C_V                    C_I                   C_Vmag                 C_Imag                 C_phase             max_real_eigJ   
+    ________________    __________________    __________________    __________________    _____________________    _________________    ____________________    __________________    __________________    ____________________    ___________________    ___________________    ___________________    ___________________
+
+    1.17939641481844    0.0338889230818409      4.04152606920135     0.257170325271075         4.17633964109681    0.588253445882101    5.56515446259083e-17                     1    -0.100874796148997        4.14240086535035    -0.0725909122876696       4.11816631665435    -0.0040493351653303     -0.169473199767589
+    1.17939641481844    0.0338889230818414    -0.168306969329541    -0.690153573999527    -2.54426109809932e-16      0.5882534458821      -0.163915250859034    0.0277757802034662    -0.164214005982818    -0.00409296334672249     -0.163771164121323    -0.0242115558179192     0.0196757506097014    0.00671999570408599
+
+Smooth Pe_gamma zero roots over 0..180 deg: 

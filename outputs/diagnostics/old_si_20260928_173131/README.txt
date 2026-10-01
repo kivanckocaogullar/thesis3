@@ -1,0 +1,1 @@
+OLD SI-coordinate / mixed-normalization diagnostic. NOT used as thesis baseline result. Prior SI-state/frozen-metric outputs retained for provenance; the main normalized model uses different angle dynamics.

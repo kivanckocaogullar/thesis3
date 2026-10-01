@@ -1,0 +1,11 @@
+Recovered 19945/35244; limited and recovered 13915; nu0=1 extended bracket 56.301069260 .. 56.301155090 deg
+                         savedClosureMaxError: 0
+        representativeClassificationAgreement: 1
+    maxRepresentativeFinalAngleDifference_deg: 7.95807864051312e-13
+                  primaryVsTightBallDifferent: 409
+           extendedBoundaryTightDisagreements: 0
+             maxRepresentativeDwellDifference: 8.17708473732637e-06
+     maxRepresentativeExcursionDifference_deg: 6.33465226940189e-08
+                  phaseDepartureThreshold_deg: 180
+
+SAVED RECOVERY OUTPUTS REFRESHED AND VERIFIED

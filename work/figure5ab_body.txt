@@ -1,0 +1,155 @@
+% New post-processing only: existing trajectories, classifications and intervals
+% are read unchanged. Red HORIZONTAL boundaries require an explicit nu rule.
+% For each trial gamma, use the largest lambda over ALL stored FAULT-ON nu
+% samples at the chosen Usag, with the original fixed Theta_ref and Pstar.
+% This intersection of sampled frequency slices is not a regional proof,
+% nor is it the pointwise gamma boundary along the time-varying trajectory.
+% It is only a sampled instantaneous contraction boundary (fixed metric).
+p=sweep.parameters;spec=[1,.5;1,.3;2,.5;2,.3];caseIDs=[2,2,4,4];
+I=base.paperIntervals_deg;examples=cell(1,4);companion=table();
+gridDeg=linspace(-180,180,36001);g=deg2rad(gridDeg);
+fprintf('\nFIGURE-5-STYLE POST-PROCESSING\n');
+fprintf(['Blue: previously computed steady-state contraction boundaries (family of reference metrics).\n' ...
+    'Red: fixed pre-fault metric; Usag fixed; intersection over all stored fault-on nu samples.\n' ...
+    'Gamma scan [-180,180] deg, step 0.01 deg; crossings use linear interpolation only.\n' ...
+    'These sampled instantaneous contraction boundaries are not stability limits or a regional proof.\n']);
+for q=1:4
+    k=spec(q,1);z=find(abs(sweep.Usag_values-spec(q,2))<1e-12,1);r=sweep.runs{k,z};
+    ref=r.reference;nuSamples=unique(r.state(r.faultMask,2));U=spec(q,2);
+    ratio=ref.betaDotPaper/ref.beta;lambdaEnvelope=-inf(size(g));
+    for nu=nuSamples.'
+        pe=p.E*U/p.Xeq*sin(g);
+        a=-p.E*U*cos(g)/(p.mass*p.Xeq*nu);
+        d=(-(r.Pstar-pe)/nu^2-p.D)/p.mass;
+        off=(1+a-d*ratio-ratio^2)/2;
+        lam=d/2+hypot(-ratio-d/2,off);
+        lambdaEnvelope=max(lambdaEnvelope,lam);
+    end
+    % Connected sign-negative components; no equilibrium-region roots are changed.
+    neg=lambdaEnvelope<0 & min(ref.eigM)>sweep.tolerances.matrix;
+    starts=find(diff([false,neg,false])==1);stops=find(diff([false,neg,false])==-1)-1;
+    pairs=zeros(0,2);
+    for h=1:numel(starts)
+        lo=starts(h);hi=stops(h);
+        if lo==1 || hi==numel(g),continue;end % scan-edge clipping is not a boundary
+        x1=gridDeg(lo-1:lo);v1=lambdaEnvelope(lo-1:lo);
+        x2=gridDeg(hi:hi+1);v2=lambdaEnvelope(hi:hi+1);
+        pairs(end+1,:)=[x1(1)-v1(1)*diff(x1)/diff(v1),x2(1)-v2(1)*diff(x2)/diff(v2)]; %#ok<AGROW>
+    end
+    bd=[NaN,NaN];status="No clean boundary pair";
+    if ~isempty(pairs)
+        % Choose the component nearest the actual fault-on angular excursion.
+        faultG=rad2deg(r.gammaUnwrapped(r.faultMask));target=mean([min(faultG),max(faultG)]);
+        distance=max(pairs(:,1)-target,0)+max(target-pairs(:,2),0);
+        [~,h]=min(distance);bd=pairs(h,:);status="Nearest complete sampled component";
+    else
+        fprintf('Case %d, Usag=%.1f: No clean sampled instantaneous gamma boundary found for this case with the current fixed-reference-metric formulation.\n',caseIDs(q),U);
+    end
+    region=find(rad2deg(ref.gamma0)>I(:,1) & rad2deg(ref.gamma0)<I(:,2),1);
+    assert(~isempty(region));
+    row=r.summary(:,{'gamma0_deg','Usag_pu','faultDuration_normalized','gammaMax_deg', ...
+        'maxAngleExcursion_deg','maxAbsNuDeviation','contractionMaintained','recoveryClass'});
+    row.CaseLabel="Case "+string(caseIDs(q));row.Example=string(char('A'+q-1));
+    row.sampledGammaMin_deg=bd(1);row.sampledGammaMax_deg=bd(2);
+    row.faultNuMin=min(nuSamples);row.faultNuMax=max(nuSamples);row.boundaryStatus=status;
+    row.caseLabel=row.CaseLabel;row.regionLabel="Region "+string(region);
+    row.gamma0_region_min_deg=I(region,1);row.gamma0_region_max_deg=I(region,2);
+    row.gammaInstantaneousMin_deg=bd(1);row.gammaInstantaneousMax_deg=bd(2);
+    row.gammaTrajectoryMin_deg=min(rad2deg(r.gammaUnwrapped));
+    row.gammaTrajectoryMax_deg=max(rad2deg(r.gammaUnwrapped));
+    row.boundaryEvaluationScope="Fixed reference metric; intersection over fault-on nu samples; not a regional proof";
+    companion=[companion;row]; %#ok<AGROW>
+    examples{q}=struct('run',r,'caseID',caseIDs(q),'region',region,'steadyBoundaries_deg',I(region,:), ...
+        'sampledBoundaries_deg',bd,'allSampledComponents_deg',pairs,'gammaScan_deg',gridDeg, ...
+        'worstSampledLambda',lambdaEnvelope,'faultNuSamples',nuSamples,'boundaryStatus',status);
+end
+boundarySummary=companion(:,{'caseLabel','regionLabel','gamma0_deg','Usag_pu', ...
+    'gamma0_region_min_deg','gamma0_region_max_deg','gammaInstantaneousMin_deg','gammaInstantaneousMax_deg', ...
+    'gammaTrajectoryMin_deg','gammaTrajectoryMax_deg','contractionMaintained','recoveryClass','boundaryEvaluationScope'});
+disp(boundarySummary);
+fig=figure('Color','w','Position',[60,100,1600,550]);ax=axes(fig);hold(ax,'on');ylim(ax,[-.7,1.5]);xlim(ax,[0,125]);
+for si=1:size(I,1),patch(ax,[I(si,1),I(si,2),I(si,2),I(si,1)],[-.7,-.7,1.5,1.5],[.6,.85,.65],'FaceAlpha',.18,'EdgeColor','none','HandleVisibility','off');end
+for k=1:size(I,1)
+    for h=1:2
+        boundary=I(k,h);xline(ax,boundary,'b--','HandleVisibility','off');
+        boundNames={'min','max'};
+        text(ax,boundary,1.05+.25*(h-1),sprintf('gamma0_%s_R%d = %.6f deg',boundNames{h},k,boundary), ...
+            'HorizontalAlignment','center','FontSize',8,'BackgroundColor','w');
+    end
+    text(ax,mean(I(k,:)),.75,sprintf('Steady-state contraction-certified\nRegion %d',k),'HorizontalAlignment','center','FontWeight','bold');
+end
+yline(ax,0,'k-','HandleVisibility','off');
+for j=1:5
+    r=base.cases{j};ma=max(real(r.eigA));cert=min(r.eigM)>base.classificationTolerance && max(r.eigPaper)<-base.classificationTolerance;
+    if cert,color=[0,.55,.2];marker='o';elseif ma>base.classificationTolerance,color=[.85,.1,.1];marker='x';else,color=[.9,.5,.05];marker='s';end
+    plot(ax,rad2deg(r.gamma0),0,marker,'Color',color,'MarkerSize',10,'LineWidth',2,'HandleVisibility','off');
+    % Stagger nearby Case 1/2 labels for clarity.
+    if mod(j,2),height=.3;else,height=-.35;end
+    text(ax,rad2deg(r.gamma0),height,sprintf('Case %d\n%.6g deg',j,rad2deg(r.gamma0)),'HorizontalAlignment','center');
+end
+plot(ax,NaN,NaN,'s','Color',[.9,.5,.05],'DisplayName','Locally stable, not certified');
+plot(ax,NaN,NaN,'o','Color',[0,.55,.2],'DisplayName','Contraction-certified');
+plot(ax,NaN,NaN,'x','Color',[.85,.1,.1],'DisplayName','Locally unstable');
+yticks(ax,[]);xlabel(ax,'gamma0 (deg)');legend(ax,'Location','southoutside','Orientation','horizontal');
+title(ax,'Figure 5A - Steady-State Contraction-Certified Operating Regions');
+print(fig,fullfile(outDir,'figure5A_gamma0_contraction_regions.png'),'-dpng','-r180');savefig(fig,fullfile(outDir,'figure5A_gamma0_contraction_regions.fig'));
+exportgraphics(fig,fullfile(outDir,'figure5A_gamma0_contraction_regions.pdf'),'ContentType','vector');
+% Common y limits within each reference pair include every displayed boundary.
+limits=zeros(2,2);
+for k=1:2
+    vals=[];
+    for q=2*k-1:2*k
+        e=examples{q};vals=[vals,e.sampledBoundaries_deg,rad2deg(e.run.gammaUnwrapped).']; %#ok<AGROW>
+    end
+    vals=vals(isfinite(vals));pad=.08*(max(vals)-min(vals));limits(k,:)=[min(vals)-pad,max(vals)+pad];
+end
+fig=figure('Color','w','Position',[50,60,1650,950]);tl=tiledlayout(fig,2,2,'TileSpacing','compact');
+mainAxes=gobjects(1,4);
+for q=1:4
+    e=examples{q};r=e.run;ax=nexttile(tl);mainAxes(q)=ax;hold(ax,'on');
+    plot(ax,r.time,rad2deg(r.gammaUnwrapped),'k','LineWidth',1.6,'DisplayName','Nonlinear gamma(t)');
+    yline(ax,rad2deg(r.reference.gamma0),'Color',[.4,.4,.4],'LineWidth',.7,'DisplayName','Original gamma0');
+    for h=1:2
+        if h==1,visibility='on';else,visibility='off';end
+        if isfinite(e.sampledBoundaries_deg(h))
+            yline(ax,e.sampledBoundaries_deg(h),'r--','LineWidth',1.3, ...
+                'DisplayName','Sampled instantaneous contraction boundary (fixed reference metric)','HandleVisibility',visibility);
+        end
+    end
+    ylim(ax,limits(spec(q,1),:));
+    % Focus on disturbance and recovery; full data remain unchanged.
+    timeWindows=[40,80];xlim(ax,[0,timeWindows(spec(q,1))]);yl=ylim(ax);tf=r.summary.faultDuration_normalized;
+    patch(ax,[0,tf,tf,0],[yl(1),yl(1),yl(2),yl(2)],[1,.75,.3], ...
+        'FaceAlpha',.3,'EdgeColor','none','DisplayName','Fault on');
+    xline(ax,tf,':','Color',[.6,.4,0],'HandleVisibility','off');
+    if r.summary.contractionMaintained,condition='Sampled contraction maintained';
+    elseif r.summary.contractionViolatedDuringFault,condition='Sampled contraction violated during fault';
+    else,condition='Sampled contraction not maintained';end
+    title(ax,sprintf('%c: Case %d, gamma0=%.6f deg, Usag=%.1f, Tfault=1',char('A'+q-1),e.caseID,rad2deg(r.reference.gamma0),r.summary.Usag_pu));
+    subtitle(ax,{condition,char(r.summary.recoveryClass)});
+    if any(~isfinite(e.sampledBoundaries_deg)),text(ax,.02,.55,'No clean sampled boundary pair','Units','normalized','Color','r');end
+    xlabel(ax,'Normalized analytical time');ylabel(ax,'gamma (deg)');grid(ax,'on');
+    legend(ax,'Location','best','FontSize',8);
+end
+title(tl,{'Figure 5B - Voltage Sag and Sampled Instantaneous Gamma Boundaries', ...
+    'Red: intersection over fault-on nu samples at fixed Usag and fixed reference metric; not a regional proof'});
+% Early-time insets expose the sag response despite wide gamma-boundary ranges.
+drawnow;
+for q=1:4
+    pos=mainAxes(q).Position;e=examples{q};r=e.run;k=spec(q,1);
+    insetY=.35;if q>2,insetY=.12;end
+    axz=axes(fig,'Position',[pos(1)+.57*pos(3),pos(2)+insetY*pos(4),.39*pos(3),.30*pos(4)]);
+    hold(axz,'on');sel=r.time<=5;
+    plot(axz,r.time(sel),rad2deg(r.gammaUnwrapped(sel)),'k','LineWidth',1.4);
+    pair=companion(2*k-1:2*k,:);lo=min(pair.gamma0_deg)-.15;hi=max(pair.gammaMax_deg)+.15;
+    ylim(axz,[lo,hi]);xlim(axz,[0,5]);
+    patch(axz,[0,1,1,0],[lo,lo,hi,hi],[1,.75,.3],'FaceAlpha',.3,'EdgeColor','none');
+    for y=e.sampledBoundaries_deg
+        if y>lo && y<hi,yline(axz,y,'r--');end
+    end
+    yline(axz,rad2deg(r.reference.gamma0),'Color',[.4,.4,.4]);
+    title(axz,'Early time: 0 to 5','FontSize',8);set(axz,'FontSize',8);grid(axz,'on');box(axz,'on');
+end
+print(fig,fullfile(outDir,'figure5B_voltage_sag_instantaneous_gamma_boundaries.png'),'-dpng','-r180');savefig(fig,fullfile(outDir,'figure5B_voltage_sag_instantaneous_gamma_boundaries.fig'));
+exportgraphics(fig,fullfile(outDir,'figure5B_voltage_sag_instantaneous_gamma_boundaries.pdf'),'ContentType','vector');
+writetable(boundarySummary,fullfile(outDir,'figure5B_boundary_summary.csv'));

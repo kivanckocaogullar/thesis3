@@ -1,0 +1,24 @@
+Original metric equilibrium screening (not nonlinear domains):
+   20.1680   24.4218
+   45.4596   47.5215
+
+Active stable feasible interval: (29.400102759326, 47.521506348664) deg
+Branch 1 common M (trace=1):
+    0.8849    0.2299
+    0.2299    0.1151
+
+Branch 2 common M (trace=1):
+    0.8244    0.2242
+    0.2242    0.1756
+
+      Branch      OriginalLower_deg    OriginalUpper_deg     NewFamily_deg        GammaBox_deg         NuBox        minEigM     WorstQEigenvalue    Lambda    CurrentMargin    VoltageMargin
+    __________    _________________    _________________    ________________    ________________    ____________    ________    ________________    ______    _____________    _____________
+
+    "Inactive"         20.168               24.422            0.04    24.382      0.02    24.402    0.99    1.01    0.051655         -0.16643       1e-05        0.0009678        0.055253  
+    "Active"            45.46               47.522          29.457    47.482    29.437    47.502    0.99    1.01     0.10565      -1.7546e-05       1e-05      -4.4409e-16      0.00014357  
+
+Degree 0 succeeded: Mdot=0 exactly; quadratic optimization unnecessary for this enlargement.
+Numerical common-Jacobian vertex test; electrical extrema use dense samples and refined extrema, not directed rounding.
+Therefore numerical nonlinear-neighbourhood evidence, NOT a mathematically uniform certificate.
+Separate common M per smooth branch; no switched-system certificate or bridging.
+Invariant ellipsoid construction is conditional on the numerical domain inequalities holding everywhere.

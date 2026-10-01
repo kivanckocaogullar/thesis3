@@ -1,0 +1,142 @@
+function sweep=hd_parameter_sweep(outDir)
+% Additive GFM adaptation of Fig. 6/7: no existing data or tuning is changed.
+% D_eff is swept directly; K=20 and Kd=D_eff-K is only its interpretation.
+% Instantaneous slices use nu=U1=1, fixed midpoint metric and fixed Pstar.
+Hc=[.1:.1:1,1.25:.25:6];Dc=20:2:70;
+Hf=2.5:.05:4.5;Df=20:.25:35;
+fprintf('\nH-D_eff GFM contraction-boundary sensitivity (two-stage sweep)\n');
+coarse=hd_grid(Hc,Dc,.25);fine=hd_grid(Hf,Df,.1);
+highlight=[hd_pair(.1,60,.1);hd_pair(3.4,25,.1)];
+names={'H','D_eff','numberOfCertifiedRegions','gamma0_min_R1','gamma0_max_R1', ...
+    'gamma0_min_R2','gamma0_max_R2','gamma_min_R1','gamma_max_R1','gamma_min_R2','gamma_max_R2'};
+fineTable=array2table(fine.rows,'VariableNames',names);
+highlightTable=array2table(highlight,'VariableNames',names);
+% Independent denser detection and direct matrix checks at both highlighted tunings.
+for j=1:2
+    dense=hd_pair(highlight(j,1),highlight(j,2),.005);
+    assert(isequal(isnan(dense),isnan(highlight(j,:))));
+    ok=isfinite(dense);assert(max(abs(dense(ok)-highlight(j,ok)))<1e-6);
+end
+b=load(fullfile(outDir,'baseline_gfm_results.mat'),'results');
+assert(max(abs(highlight(2,4:7)-reshape(b.results.paperIntervals_deg.',1,[])))<1e-6, ...
+    'Selected tuning must reproduce the verified contraction intervals.');
+fprintf('Highlighted tunings: angle boundaries in degrees\n');disp(highlightTable);
+fprintf(['Instantaneous domain: [-180,180] deg; connected component containing the regional midpoint.\n' ...
+    'Fixed reference metric, U1=nu=1, fixed midpoint Pstar; sampled instantaneous test, not a regional proof.\n' ...
+    'Regions sorted by increasing angle; absent regions and unclosed instantaneous pairs are NaN.\n']);
+sweep=struct('coarse',coarse,'fine',fine,'fineTable',fineTable,'highlightTable',highlightTable, ...
+    'K',20,'E',1,'Xeq',.3,'U1',1,'nu',1,'instantaneousDomain_deg',[-180,180], ...
+    'scope','Sampled instantaneous contraction boundaries (fixed reference metric); not a regional proof', ...
+    'regionRule','Connected intervals in increasing gamma0 order; missing regions NaN', ...
+    'validation','Highlighted tunings cross-checked with 0.005 deg detection and direct Theta*A/Theta');
+writetable(fineTable,fullfile(outDir,'HD_eff_sweep_contraction_boundaries_fine.csv'));
+writetable(highlightTable,fullfile(outDir,'HD_eff_sweep_highlighted_tunings.csv'));
+save(fullfile(outDir,'HD_eff_sweep_contraction_boundaries.mat'),'sweep','-v7.3');
+for region=1:2
+    fig=figure('Color','w','Position',[80,50,1500,1100]);tl=tiledlayout(fig,2,2,'TileSpacing','compact');
+    for panel=1:4
+        ax=nexttile(tl);hold(ax,'on');
+        col=3+2*(region-1)+mod(panel-1,2)+1;
+        if panel>2,col=col+4;end
+        zc=reshape(coarse.rows(:,col),numel(Dc),numel(Hc)).';
+        zf=reshape(fine.rows(:,col),numel(Df),numel(Hf)).';
+        % Nonuniform H mesh is respected. Fine data replace the entire fine box;
+        % an opaque background prevents missing fine regions exposing coarse data.
+        surface(ax,Dc,Hc,zeros(size(zc)),zc,'FaceColor','interp','EdgeColor','none');
+        patch(ax,[Df(1),Df(end),Df(end),Df(1)],[Hf(1),Hf(1),Hf(end),Hf(end)], ...
+            ones(1,4),[.92,.92,.92],'EdgeColor','none');
+        surface(ax,Df,Hf,2*ones(size(zf)),zf,'FaceColor','interp','EdgeColor','none');
+        plot3(ax,[Df(1),Df(end),Df(end),Df(1),Df(1)], ...
+            [Hf(1),Hf(1),Hf(end),Hf(end),Hf(1)],3*ones(1,5),'k:','LineWidth',.8);
+        h1=plot3(ax,60,.1,4,'ks','MarkerFaceColor','w','MarkerSize',9,'Clipping','off');
+        h2=plot3(ax,25,3.4,4,'kp','MarkerFaceColor','w','MarkerSize',12);
+        view(ax,2);xlim(ax,[19,71]);ylim(ax,[0,6.1]);set(ax,'Color',[.92,.92,.92]);
+        xlabel(ax,'D_{eff} = K + K_d (K=20)');ylabel(ax,'H');grid(ax,'on');box(ax,'on');
+        cb=colorbar(ax);cb.Label.String='Boundary angle (deg)';
+        vals=[zc(:);zf(:)];vals=vals(isfinite(vals));
+        if ~isempty(vals) && max(vals)>min(vals),clim(ax,[min(vals),max(vals)]);end
+        if panel<=2,kind='Steady-state certified gamma0';else,kind='Sampled instantaneous gamma';end
+        if mod(panel,2)==1,edge='lower';else,edge='upper';end
+        title(ax,sprintf('%s: %s boundary',kind,edge),'Interpreter','none');
+        if panel==1,legend(ax,[h1,h2],{'Original: H=0.1, D_{eff}=60','Selected: H=3.4, D_{eff}=25'}, ...
+                'Location','northeast','FontSize',8);end
+    end
+    colormap(fig,turbo(256));
+    title(tl,{sprintf('GFM contraction-boundary sensitivity in Region %d over the H-D_eff plane',region), ...
+        'Fig. 6/7 concept adapted to GFM | dotted box: fine sweep | gray: missing region / no clean boundary', ...
+        'Bottom: fixed midpoint metric, U1=nu=1; sampled instantaneous boundaries, not a regional proof'},'FontSize',12);
+    if region==1,stem='figure6_like_HD_sweep_region1';else,stem='figure7_like_HD_sweep_region2';end
+    save_figure(fig,outDir,stem);
+    exportgraphics(fig,fullfile(outDir,[stem,'.pdf']),'ContentType','image','Resolution',200);
+end
+fprintf('New H-D_eff outputs saved; prior numerical and figure files were not written.\n');
+end
+
+function grid=hd_grid(Hvalues,Dvalues,step)
+rows=nan(numel(Hvalues)*numel(Dvalues),11);n=0;
+for h=Hvalues
+    for d=Dvalues,n=n+1;rows(n,:)=hd_pair(h,d,step);end
+end
+grid=struct('H',Hvalues,'D_eff',Dvalues,'gamma0DetectionStep_deg',step,'rows',rows);
+fprintf('Completed %d parameter pairs (gamma0 detection step %.3g deg).\n',n,step);
+end
+
+function row=hd_pair(H,D,step)
+C=1/(2*H*.3);b=D/(2*H);
+f=@(g)hd_steady_lambda(g,C,b);
+% Endpoints: gamma0=0 has singular metric; gamma0=90 cannot be strictly ND.
+% Small numerical endpoint offset is used only to bracket roots, never as a certificate.
+I=hd_intervals(f,[1e-7,step:step:90],true);
+row=[H,D,size(I,1),nan(1,8)];
+for region=1:min(2,size(I,1))
+    g0=mean(I(region,:));beta=-C*sind(g0);c=-C*cosd(g0);
+    Theta=[-beta,0;-c,-beta];M=Theta'*Theta;
+    [~,pd]=chol(M);assert(pd==0,'Midpoint metric must be positive definite.');
+    row(2+2*region:3+2*region)=I(region,:);
+    r=c/beta;ps=sin(deg2rad(g0))/.3;
+    instant=@(g)hd_instant_lambda(g,C,b,r,ps,H);
+    J=hd_intervals(instant,-180:step:180,false);
+    ii=find(J(:,1)<g0 & J(:,2)>g0,1);
+    if ~isempty(ii) && J(ii,1)>-180+1e-7 && J(ii,2)<180-1e-7
+        row(6+2*region:7+2*region)=J(ii,:);
+    end
+    % Audit the scalar lambda expression against the actual fixed-metric matrix.
+    for g=[g0,g0+1]
+        a=-C*cosd(g);d=-b-(ps-sind(g)/.3)/(2*H);
+        F=Theta*[0,1;a,d]/Theta;direct=max(eig((F+F')/2));
+        assert(abs(direct-instant(g))<1e-8*max(1,abs(direct)));
+    end
+end
+end
+
+function z=hd_steady_lambda(g,C,b)
+r=cotd(g);off=(1-C*cosd(g)+b*r-r.^2)/2;
+z=-b/2+hypot(b/2-r,off);
+z(g<=0 | g>=90)=max(z(g<=0 | g>=90),eps);
+end
+
+function z=hd_instant_lambda(g,C,b,r,ps,H)
+a=-C*cosd(g);d=-b-(ps-sind(g)/.3)/(2*H);
+z=d/2+hypot(-r-d/2,(1+a-d*r-r^2)/2);
+end
+
+function I=hd_intervals(f,g,searchNarrow)
+y=f(g);extra=[];
+% Refine local minima as well as sign changes: a narrow certified island can
+% fall wholly between grid nodes (especially for the original low-H tuning).
+valleys=find(y(2:end-1)<=y(1:end-2) & y(2:end-1)<=y(3:end))+1;
+if searchNarrow,valleys=unique([2,valleys,numel(g)-1]);end
+for j=valleys
+    [x,v]=fminbnd(f,g(j-1),g(j+1),optimset('TolX',1e-11,'Display','off'));
+    if v<0,extra(end+1)=x;end %#ok<AGROW>
+end
+g=unique([g,extra]);y=f(g);roots=g(y==0);
+idx=find((y(1:end-1)<0)~=(y(2:end)<0));
+for j=idx
+    roots(end+1)=fzero(f,g(j:j+1),optimset('TolX',1e-11,'Display','off')); %#ok<AGROW>
+end
+edges=unique([g(1),roots,g(end)]);I=zeros(0,2);
+for j=1:numel(edges)-1
+    if f(mean(edges(j:j+1)))<0,I(end+1,:)=edges(j:j+1);end %#ok<AGROW>
+end
+end

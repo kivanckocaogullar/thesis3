@@ -1,0 +1,299 @@
+SG LEGACY-CODE REPRODUCTION: gamma_rep=0 deg, gamma0 separate
+Diagonal bounds 41.185925166 < gamma0 < 90 deg; category reproduction PASS=1
+Scaling: legacy Eq15c eigenvalues = 2 * reported half-symmetric eigenvalues.
+    gamma0_deg    PaperCase    lambdaRepresentativeHalf    lambdaEquilibriumHalf
+    __________    _________    ________________________    _____________________
+
+       44.1           1          -0.0485373783795852       -0.00199742851106065 
+       55.5           1            -0.20557064948059        -0.0764417202923078 
+         67           1           -0.198325567311119        -0.0199610977413553 
+       78.5           1           -0.105355181540818         0.0769582512402732 
+       26.4           2             1.02701712191672           1.01340206645046 
+       35.2           2            0.274743913818692          0.276350728791868 
+      101.5           3            0.205298468868376          0.312232299086906 
+      112.9           3            0.432245893910592          0.463819161324251 
+
+
+====================================================
+CURRENT-LIMITER-FREE VSM-GFM SMIB CONTRACTION ANALYSIS
+====================================================
+Model: E -- jXeq -- infinite bus U1
+                       f0: 50
+                   omega0: 314.159265358979
+                        H: 0.1
+                        K: 20
+                       Kd: 40
+                       Mv: 0.000636619772367581
+                       Dv: 0.190985931710274
+                        E: 1
+                       U1: 1
+                      Xeq: 0.3
+            Pstar_nominal: 1
+                 idealPLL: 1
+    frequencyReference_pu: 1
+             powerBase_VA: 2000000
+
+Dv/Mv=300 1/s; Pmax=3.33333333333 pu
+Pe(gamma,U1)=(E*U1/Xeq)*sin(gamma)
+nu=1+Delta_omega/omega0; f=[Delta_omega;((Pstar-Pe)/nu-Dv*Delta_omega)/Mv]
+A=[0,1;-E*U1*cos(gamma)/(Mv*Xeq*nu),-Dv/Mv-(Pstar-Pe)/(Mv*omega0*nu^2)]
+B=[0;-E*sin(gamma)/(Mv*Xeq*nu)]
+At equilibrium nu=1, Pstar=Pe: alpha1=-E*U1*cos(gamma0)/(Mv*Xeq); alpha2=-Dv/Mv
+beta2=-E*sin(gamma)/(Mv*Xeq*nu)
+beta2_dot_paper=-E*omega0*cos(gamma0)/(Mv*Xeq) [metric design coefficient]
+beta2_dot_direct=-C*cos(gamma)*Delta_omega/nu+C*sin(gamma)*f2/(omega0*nu^2)
+Method B beta2_ddot=f^T Hess(beta) f+grad(beta)*A*f; zero at true equilibrium
+Main SymF_paper=Eq15c/2, using gamma=gamma0; gamma_rep=0 saved separately.
+SymF_direct uses the SAME frozen reference Theta and its actual derivative zero.
+SymF_coordinate uses Method B and a DIFFERENT metric; reported separately.
+SymF_literal_moving includes gamma_dot=omega0 and is NOT an equilibrium path.
+
+
+Paper-style VSM-GFM contraction interval (gamma=gamma0):
+gamma0_min=47.474977198775 deg; gamma0_max=47.558615323213 deg
+gamma0_min=89.998959272182 deg; gamma0_max=89.999601868647 deg
+
+Direct-definition interval, same frozen paper metric:
+gamma0_min=47.474977198775 deg; gamma0_max=47.558615323213 deg
+gamma0_min=89.998959272182 deg; gamma0_max=89.999601868647 deg
+Method B actual-derivative metric interval: EMPTY (SymF11=0).
+Literal moving-angle derivative interval: EMPTY (SymF11=0); not a VSM equilibrium.
+Necessary diagonal sector only: 46.3207037701 < gamma0 < 90 deg
+0 <= Pstar <= 1 pu in scanned sector: 0 <= gamma0 <= 17.457603124 deg
+Contraction interval powers at boundaries [pu]:
+          2.45660738604807          2.45989366727976
+          3.33333333278344          3.33333333325286
+
+Maximum full direct/paper residual over scan: 6.561e-14
+Maximum equilibrium residual over scan: 0.000e+00
+
+Case I: Paper-metric contracting at equilibrium
+gamma0=47.516796260994 deg; Pstar=2.45825118145 pu; above 1 pu=1; residual=0.000e+00
+A=
+                         0                         1
+         -3536.25023397726                      -300
+
+B=
+                         0
+         -3861.41192616114
+
+T Eq12=
+     1     0
+     0     1
+
+alpha1=-3536.25023398; alpha2=-300; beta2=-3861.41192616
+beta2_dot_paper=-1110945.77563; beta2_dot_direct=0
+Theta_paper=
+          3861.41192616114                         0
+          1110945.77563182          3861.41192616114
+
+Theta_dot_reference=
+     0     0
+     0     0
+
+M=
+          1234215426896.24          4289819267.34304
+          4289819267.34304          14910502.0634995
+
+det(M)=2.22323071786e+14; symmetry residual=0.000e+00
+F_direct=
+         -287.704548718342                         1
+          1.20702830045945         -12.2954512816578
+
+SymF_paper=
+         -287.704548718342          1.10351415022888
+          1.10351415022888         -12.2954512816578
+
+SymF_direct=
+         -287.704548718342          1.10351415022973
+          1.10351415022973         -12.2954512816578
+
+SymF_coordinate (Method B)=
+                         0         -1767.62511698863
+         -1767.62511698863                      -300
+
+SymF_literal_moving (not equilibrium)=
+                         0          -90733.872167909
+          -90733.872167909          275.409097436684
+
+eig(A)=
+         -12.2910686773631
+         -287.708931322637
+
+eig(M)=
+          180.130940781906
+          1234230337218.17
+
+eig(SymF_paper)=
+         -287.708970227803
+         -12.2910297721967
+
+eig(SymF_direct)=
+         -287.708970227803
+         -12.2910297721966
+
+lambda_max paper=-12.2910297722; direct=-12.2910297722; coordinate=+1623.97817185; moving=+90871.681212
+norm(SymF_paper-SymF_direct)=1.202e-12
+norm(SymF_paper-SymF_literal_moving)=128319.278255
+gamma_rep=0 diagnostic lambda_max=+772.579476934 (NOT main classification)
+Case I trajectory: L0=0.3355342, Lend=1.0271948e-07, maxL=0.3355342, solver discrepancy=2.183e-12
+  nu range=[0.9999999897,1.0000000000]; actual 1/nu torque conversion retained.
+  Certified rectangle rate=-12.090515023; gamma [deg]=[47.416796261,47.616796261]; |w|<=0.1
+
+Case II: Locally stable, not contracting in selected metric
+gamma0=17.457603123722 deg; Pstar=1 pu; above 1 pu=0; residual=0.000e+00
+A=
+                         0                         1
+         -4994.81397857132                      -300
+
+B=
+                         0
+          -1570.7963267949
+
+T Eq12=
+     1     0
+     0     1
+
+alpha1=-4994.81397857; alpha2=-300; beta2=-1570.79632679
+beta2_dot_paper=-1569167.09011; beta2_dot_direct=0
+Theta_paper=
+           1570.7963267949                         0
+          1569167.09011273           1570.7963267949
+
+Theta_dot_reference=
+     0     0
+     0     0
+
+M=
+          2462287824093.94          2464841901.27651
+          2464841901.27651          2467401.10027234
+
+det(M)=6.08806818992e+12; symmetry residual=0.000e+00
+F_direct=
+         -998.962795714264                         1
+          -703232.64248555          698.962795714264
+
+SymF_paper=
+         -998.962795714264         -351615.821242775
+         -351615.821242775          698.962795714264
+
+SymF_direct=
+         -998.962795714264         -351615.821242775
+         -351615.821242775          698.962795714264
+
+SymF_coordinate (Method B)=
+                         0         -2496.90698928566
+         -2496.90698928566                      -300
+
+SymF_literal_moving (not equilibrium)=
+                         0          -899927.17685885
+          -899927.17685885          1697.92559142853
+
+eig(A)=
+          -17.692834580176
+         -282.307165419824
+
+eig(M)=
+          2.47252251720056
+          2462290291492.57
+
+eig(SymF_paper)=
+         -351766.846135192
+          351466.846135192
+
+eig(SymF_direct)=
+         -351766.846135192
+          351466.846135192
+
+lambda_max paper=+351466.846135; direct=+351466.846135; coordinate=+2351.40850585; moving=+900776.540097
+norm(SymF_paper-SymF_direct)=8.232e-11
+norm(SymF_paper-SymF_literal_moving)=775430.642449
+gamma_rep=0 diagnostic lambda_max=+349087.526941 (NOT main classification)
+Case II trajectory: L0=2738.7146, Lend=5.9440662e-05, maxL=2738.7146, solver discrepancy=3.273e-12
+  nu range=[0.9999183410,1.0000000000]; actual 1/nu torque conversion retained.
+
+Case III: Locally unstable
+gamma0=105.000249983333 deg; Pstar=3.21974899015 pu; above 1 pu=1; residual=0.000e+00
+A=
+                         0                         1
+          1355.19541752539                      -300
+
+B=
+                         0
+         -5057.56988692415
+
+T Eq12=
+     1     0
+     0     1
+
+alpha1=1355.19541753; alpha2=-300; beta2=-5057.56988692
+beta2_dot_paper=425747.196788; beta2_dot_direct=0
+Theta_paper=
+          5057.56988692415                         0
+         -425747.196787631          5057.56988692415
+
+Theta_dot_reference=
+     0     0
+     0     0
+
+M=
+          181286254585.687         -2153246201.91549
+         -2153246201.91549           25579013.161122
+
+det(M)=6.54285914297e+14; symmetry residual=0.000e+00
+F_direct=
+          84.1801905473138                         1
+         -30985.1662272508         -384.180190547314
+
+SymF_paper=
+          84.1801905473138         -15492.0831136254
+         -15492.0831136254         -384.180190547314
+
+SymF_direct=
+          84.1801905473138         -15492.0831136254
+         -15492.0831136254         -384.180190547314
+
+SymF_coordinate (Method B)=
+                         0          678.097708762694
+          678.097708762694                      -300
+
+SymF_literal_moving (not equilibrium)=
+                         0         -68383.2573593632
+         -68383.2573593632         -468.360381094627
+
+eig(A)=
+          4.45127198416134
+         -304.451271984161
+
+eig(M)=
+           3608.6223073937
+          181311829990.226
+
+eig(SymF_paper)=
+         -15643.8529604847
+          15343.8529604848
+
+eig(SymF_direct)=
+         -15643.8529604847
+          15343.8529604848
+
+lambda_max paper=+15343.8529605; direct=+15343.8529605; coordinate=+544.490102614; moving=+68149.4781456
+norm(SymF_paper-SymF_direct)=0.000e+00
+norm(SymF_paper-SymF_literal_moving)=74799.5106855
+gamma_rep=0 diagnostic lambda_max=+19308.7301538 (NOT main classification)
+Case III trajectory: L0=743.12146, Lend=2452279.7, maxL=2452279.7, solver discrepancy=1.699e-10
+  nu range=[1.0000000000,1.0991374928]; actual 1/nu torque conversion retained.
+
+Analytical Jacobian relative check: 6.177e-10; input Jacobian check: 1.505e-10
+Actual beta derivative check: 3.602e-10; speed-coordinate equivalence: 6.992e-12
+
+FINAL CASE TABLE
+       Case          gamma0_deg           Pstar_pu        AboveOnePu    EquilibriumResidual         eigA_1               eigA_2               eigM_1              eigM_2            lambdaPaper         lambdaDirect       lambdaCoordinate    lambdaLiteralMoving    lambdaRepresentative                       Classification                   
+    __________    ________________    ________________    __________    ___________________    _________________    _________________    ________________    ________________    _________________    _________________    ________________    ___________________    ____________________    ____________________________________________________
+
+    "Case I"      47.5167962609943    2.45825118145017      true                 0             -12.2910686773631    -287.708931322637    180.130940781906    1234230337218.17    -12.2910297721967    -12.2910297721966    1623.97817185248     90871.6812119573        772.579476934388      "Paper-metric contracting at equilibrium"           
+    "Case II"     17.4576031237221                   1      false                0              -17.692834580176    -282.307165419824    2.47252251720056    2462290291492.57     351466.846135192     351466.846135192    2351.40850585097     900776.540096782        349087.526941447      "Locally stable, not contracting in selected metric"
+    "Case III"    105.000249983333    3.21974899014679      true                 0              4.45127198416134    -304.451271984161     3608.6223073937    181311829990.226     15343.8529604848     15343.8529604848    544.490102614296     68149.4781456264        19308.7301537667      "Locally unstable"                                  
+
+All selected equilibrium, derivative, matrix, trajectory and envelope checks passed.
+Same MATLAB file updated; outputs: outputs

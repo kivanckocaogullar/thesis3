@@ -1,0 +1,9 @@
+20.5 deg diagnostic: limiter activated
+gamma0=20.5 deg; Pstar=1.167357937532 pu; Imax=1.2 pu; perturbation=+1 deg
+max requested current=1.243493573392 pu; max actual current=1.200000000000 pu
+max(I_req)>1.2: 1; limiterActive ever 1: 1
+First activation time=0
+Total active time=27.2632985203 (event-resolved normalized time)
+Final gamma=20.500002502255 deg; final nu=0.999999994347; min(rho)=0.965023081484
+Refined solver maximum errors: gamma=1.5e-09 rad, nu=5.36e-09 pu
+Scope: Ideal algebraic radial current-reference saturation; grid-side Pe=rho*E*U1/Xeq*sin(gamma); not full Simulink dynamics

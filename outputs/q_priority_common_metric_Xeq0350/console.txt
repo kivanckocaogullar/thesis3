@@ -1,0 +1,14 @@
+Original metric equilibrium screening (not nonlinear domains):
+   20.1680   24.4218
+   45.4596   47.5215
+
+Active stable feasible interval: (29.400102759326, 47.521506348664) deg
+{Subscripted assignment between dissimilar structures.
+
+Error in q_priority_metric_optimization_Xeq0350 (line 54)
+ res(branch)=r;
+ ^^^^^^^^^^^
+Error in run (line 112)
+evalin('caller', strcat(scriptStem, ';'));
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+} 

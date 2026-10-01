@@ -1,0 +1,9 @@
+A copy of the original file "GFM_Electrical_Xeq0350.slx" has been created because it was last saved in an earlier version of Simulink. To recover the original version, rename the file "GFM_Electrical_Xeq0350.slx.r2022b" as "GFM_Electrical_Xeq0350.slx".
+
+You can turn this feature off using the <a href="matlab:slprivate('showprefs')">Simulink Preferences</a>. Click <a href="matlab:sltipalert('never','SimulinkShowPersistentBackupNotification')">here</a> if you don't want to see this message again.
+[Warning: Block diagram 'GFMVSG1_Xeq0350_audit' contains disabled library links. Use Model Advisor to find the disabled links in
+non-library models.  The diagram has been saved but may not contain what you intended.
+Suggested Actions:
+    • You can restore or push the disabled links in the model using the Library Link Tool. - Open
+] 
+Created isolated variant GFMVSG1_Xeq0350_audit and isolated electrical reference GFM_Electrical_Xeq0350. Original files not saved.

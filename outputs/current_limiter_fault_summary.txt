@@ -1,0 +1,39 @@
+CURRENT-LIMITER VOLTAGE-SAG ANALYSIS
+Ideal algebraic radial limiter; converter inner-loop dynamics omitted
+No angle jump: gamma(0)=gamma0, nu(0)=1; Tfault=1 normalized analytical time; Pstar fixed.
+Recovery: original unwrapped angle within 0.1 deg and |nu-1|<1e-4 throughout final 10% of postfault time; final |Pe-Pstar|<1e-4 pu.
+
+Case A: gamma0=17.457603124 deg; Usag=0.5
+Pre-fault Ireq=1.011717995 pu; pre-fault limiter active=0
+Maximum requested current=1.831788455; maximum actual current=1.200000000; minimum rho=0.655097480
+Limiter ever active=1; first activation=0.000000000; active duration=1.000000000
+Final gamma=17.457603124 deg; final nu=1.000000000; recovered original equilibrium=1
+
+Case B: gamma0=17.457603124 deg; Usag=0.3
+Pre-fault Ireq=1.011717995 pu; pre-fault limiter active=0
+Maximum requested current=2.408750335; maximum actual current=1.200000000; minimum rho=0.498183636
+Limiter ever active=1; first activation=0.000000000; active duration=1.000000000
+Final gamma=17.457603124 deg; final nu=1.000000000; recovered original equilibrium=1
+
+Case C: gamma0=65.000000000 deg; Usag=0.5
+Pre-fault Ireq=3.581997389 pu; pre-fault limiter active=1
+PRE-FAULT CURRENT-LIMITED OPERATING CONDITION. Pe_pre-Pstar=-2.008956222 pu; starting point is NOT an equilibrium of this limited model. First activation=0 denotes already active at simulation start; prehistory is not simulated.
+Maximum requested current=6.666666514; maximum actual current=1.200000000; minimum rho=0.180000004
+Limiter ever active=1; first activation=0.000000000; active duration=315.399458184
+Final gamma=2119.633131005 deg; final nu=1.144663535; recovered original equilibrium=0
+
+Case D: gamma0=65.000000000 deg; Usag=0.3
+Pre-fault Ireq=3.581997389 pu; pre-fault limiter active=1
+PRE-FAULT CURRENT-LIMITED OPERATING CONDITION. Pe_pre-Pstar=-2.008956222 pu; starting point is NOT an equilibrium of this limited model. First activation=0 denotes already active at simulation start; prehistory is not simulated.
+Maximum requested current=6.666666636; maximum actual current=1.200000000; minimum rho=0.180000001
+Limiter ever active=1; first activation=0.000000000; active duration=315.399458203
+Final gamma=2120.534075216 deg; final nu=1.144768037; recovered original equilibrium=0
+
+Limiter active only during fault (sampled postfault check): A, B
+Already limited pre-fault: C, D
+Recovered original equilibrium: A, B
+gamma0=17.457603124: deeper sag active-duration change=0 normalized time (same observation horizon).
+No resolved increase in active duration (comparison tolerance 1e-5 normalized time).
+gamma0=65.000000000: deeper sag active-duration change=1.92857783e-08 normalized time (same observation horizon).
+No resolved increase in active duration (comparison tolerance 1e-5 normalized time).
+If 65 deg does not recover, it must not be interpreted as loss of a healthy pre-fault equilibrium: this Pstar exceeds the limited transfer capability.

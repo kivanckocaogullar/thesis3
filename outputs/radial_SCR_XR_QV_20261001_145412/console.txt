@@ -1,0 +1,22 @@
+SCR5/XR10 reproduction: dZ=1.47e-10,dVth=6.3e-12, E_nom=1.000698736674, gamma_nom=20.633904866585; fixed added L=8.58989549982e-05 H
+    SCR    XR      Xeq      gammaSwitch_deg    TotalPg_afterSwitch    FeasibleActive_deg    Width_deg    MinVoltageMargin        NominalStatus    
+    ___    __    _______    _______________    ___________________    __________________    _________    ________________    _____________________
+
+     3      3    0.46611        33.318                -0.2664               "none"              0              "--"          "yes/stable/inactive"
+     3      5    0.47715        33.662               -0.22086               "none"              0              "--"          "yes/stable/inactive"
+     3     10    0.48219        33.841               -0.18695               "none"              0              "--"          "yes/stable/inactive"
+     3     15    0.48316        33.883               -0.17582               "none"              0              "--"          "yes/stable/inactive"
+     5      3    0.34058         24.01               -0.20997               "none"              0              "--"          "yes/stable/inactive"
+     5      5    0.34705        24.254                -0.1695               "none"              0              "--"          "yes/stable/inactive"
+     5     10       0.35        24.373               -0.14008               "none"              0              "--"          "yes/stable/inactive"
+     5     15    0.35057          24.4               -0.13057               "none"              0              "--"          "yes/stable/inactive"
+     7      3    0.28714        20.118               -0.18061               "none"              0              "--"          "yes/stable/inactive"
+     7      5    0.29171        20.313               -0.14525               "none"              0              "--"          "yes/stable/inactive"
+     7     10    0.29379        20.406               -0.11964               "none"              0              "--"          "yes/stable/inactive"
+     7     15    0.29419        20.426               -0.11138               "none"              0              "--"          "yes/stable/inactive"
+    10      3    0.24719        17.236               -0.15361               "none"              0              "--"          "yes/stable/inactive"
+    10      5    0.25037        17.388               -0.12449               "none"              0              "--"          "yes/stable/inactive"
+    10     10    0.25181         17.46               -0.10327               "none"              0              "--"          "yes/stable/inactive"
+    10     15    0.25209        17.474              -0.096416               "none"              0              "--"          "yes/stable/inactive"
+
+No feasible positive-width limiter-active intervals in all 16 cases.

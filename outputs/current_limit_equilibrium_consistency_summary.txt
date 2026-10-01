@@ -1,0 +1,30 @@
+EQUILIBRIUM CONSISTENCY / CURRENT-LIMIT FEASIBILITY SCAN
+Imax=1.200 pu; power-equilibrium tolerance eqTol=1e-08 pu
+Refined gamma_Ilim=20.739519610955 deg (equality is inactive; active above).
+Exact old-equilibrium loss begins above gamma_Ilim; tolerance-based boundary=20.739519788598 deg; difference=1.77642974e-07 deg.
+First inconsistent 0.05-deg grid point=20.750000 deg.
+Old R1 limiter-inactive portion: 15.322599180550 < gamma0 <= 20.739519610955 deg (old region endpoints remain open).
+Old R2 limiter-inactive portion: EMPTY within its old interval. This does not establish disappearance of a new limited-model contraction region.
+gamma0=17.457603 BEFORE disturbance: Ireq=1.011717988; limiterActive=0; deltaP_eq=0.000000000; oldContractionCertified=1; equilibriumRetained=1
+gamma0=20.500000 BEFORE disturbance: Ireq=1.186290303; limiterActive=0; deltaP_eq=0.000000000; oldContractionCertified=1; equilibriumRetained=1
+gamma0=65.000000 BEFORE disturbance: Ireq=3.581997389; limiterActive=1; deltaP_eq=2.008956222; oldContractionCertified=1; equilibriumRetained=0
+
+    <strong>gamma0_deg</strong>    <strong>oldPstar_pu</strong>    <strong>Ireq_pu</strong>    <strong>Iout_pu</strong>      <strong>rho</strong>      <strong>limiterActive</strong>    <strong>Pe_limited_pu</strong>    <strong>deltaP_eq_pu</strong>     <strong>nudot0</strong>     <strong>equilibriumResidual</strong>    <strong>equilibriumRetained</strong>    <strong>insideOldR1</strong>    <strong>insideOldR2</strong>    <strong>oldContractionCertified</strong>
+    <strong>__________</strong>    <strong>___________</strong>    <strong>_______</strong>    <strong>_______</strong>    <strong>_______</strong>    <strong>_____________</strong>    <strong>_____________</strong>    <strong>____________</strong>    <strong>________</strong>    <strong>___________________</strong>    <strong>___________________</strong>    <strong>___________</strong>    <strong>___________</strong>    <strong>_______________________</strong>
+
+          10        0.57883      0.58104    0.58104          1        false           0.57883               0              0                0                 true               false          false                false         
+          12        0.69304      0.69686    0.69686          1        false           0.69304               0              0                0                 true               false          false                false         
+        15.8         0.9076       0.9163     0.9163          1        false            0.9076               0              0                0                 true               true           false                true          
+      17.458              1       1.0117     1.0117          1        false                 1               0              0                0                 true               true           false                true          
+          19         1.0852       1.1003     1.1003          1        false            1.0852               0              0                0                 true               true           false                true          
+        20.5         1.1674       1.1863     1.1863          1        false            1.1674               0              0                0                 true               true           false                true          
+          25         1.4087       1.4429        1.2    0.83164        true             1.1716         0.23717       0.034878         0.034878                 false              false          false                false         
+          35         1.9119       2.0047        1.2    0.59859        true             1.1445         0.76746        0.11286          0.11286                 false              false          false                false         
+          55         2.7305       3.0783        1.2    0.38982        true             1.0644          1.6661        0.24501          0.24501                 false              false          true                 true          
+          65          3.021        3.582        1.2    0.33501        true             1.0121           2.009        0.29543          0.29543                 false              false          true                 true          
+         100         3.2827        5.107        1.2    0.23497        true            0.77135          2.5113        0.36932          0.36932                 false              false          false                false         
+         120         2.8868       5.7735        1.2    0.20785        true                0.6          2.2868        0.33629          0.33629                 false              false          false                false         
+
+
+The old limiter-free equilibrium/contraction analysis is no longer directly applicable where current limitation modifies the electrical operating point.
+No conclusion about instability or a new current-limited contraction region is drawn. No disturbance is applied in this scan.

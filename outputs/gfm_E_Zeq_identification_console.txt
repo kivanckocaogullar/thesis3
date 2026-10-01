@@ -1,0 +1,7 @@
+Previously assumed: E=1 pu; Xeq=0.3 pu; Imax=1.2 pu; gamma_lim=20.739519610955 deg
+Identified 50-Hz reduction: E_nom=0.999003208451; Zeq=0.016884633807+j0.066199725744 pu
+Base: 2 MVA, 690 V LL; Imax=1.2 pu of converter current reference. Ubus_referred=0.980392156863; Uth=0.983680194662 pu
+gamma_lim: frozen nominal E=4.656220274236; algebraic Q-V=4.628267728730 deg
+Static measurement correction: E_nom=0.999422979702; gamma_lim_QV=4.626919841582 deg
+Recommendation: structurally revise electrical algebraic closure and power measurement, then rerun; do not change only Xeq.
+No contraction calculation rerun; both analysis scripts untouched.

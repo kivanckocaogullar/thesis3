@@ -1,0 +1,319 @@
+{
+  "assumptions": "Balanced positive sequence, 50 Hz, normal closed breaker, inactive limits; quasi-steady control tracking and algebraic Q-V droop. Not EMT validation.",
+  "selected_E_node": "Physical capacitor/filter node voltage; measured-reference tracking approximation stated separately.",
+  "E_pu": 0.9990032084514411,
+  "U1_pu": 0.9836801946622287,
+  "Req_pu": 0.016884633806754673,
+  "Xeq_pu": 0.06619972574417128,
+  "Zeq_mag_pu": 0.06831906430412887,
+  "Zeq_angle_deg": 75.69143832628522,
+  "Imax_pu": 1.2,
+  "gamma_lim_deg": 4.6562202742363095,
+  "gamma_lim_definition": "Frozen nominal E, gamma relative to Thevenin voltage, unity measurement approximation. See threshold_algebraic_QV for the variable-E closure.",
+  "common_Sbase": 2000000.0,
+  "common_Vbase": 690.0,
+  "common_Ibase": 1673.47904112935,
+  "common_Zbase": 0.23805,
+  "U1_physical_bus_referred_pu": 0.9803921568627451,
+  "Thevenin_source": {
+    "real": 0.98367976331524,
+    "imag": -0.0009212029057544161,
+    "magnitude": 0.9836801946622287,
+    "angle_deg": -0.0536567134076812
+  },
+  "Zeq": {
+    "real": 0.016884633806754673,
+    "imag": 0.06619972574417128,
+    "magnitude": 0.06831906430412887,
+    "angle_deg": 75.69143832628522
+  },
+  "passive_series_sum": {
+    "real": 0.01677631139938483,
+    "imag": 0.06600964385018351,
+    "magnitude": 0.0681081324468466,
+    "angle_deg": 75.74021767926683
+  },
+  "measurement_gain": {
+    "real": 0.9988019536838871,
+    "imag": 0.019955151101442487,
+    "magnitude": 0.9990012766449456,
+    "angle_deg": 1.144565088589612
+  },
+  "physical_Imax_with_measurement_gain": 1.201199666160678,
+  "base_HV_transformer": {
+    "V": 20400.0,
+    "I": 56.60296756761038,
+    "Z": 208.08
+  },
+  "base_HV_measurement": {
+    "V": 20000.0,
+    "I": 57.735026918962575,
+    "Z": 200.0
+  },
+  "nominal_unity_measurement": {
+    "Pstar_pu": 1.0,
+    "E_pu": 0.9990032084514411,
+    "Eref_pu": 0.9990032084514411,
+    "gamma_bus_deg": 3.8497905631205342,
+    "gamma_thevenin_deg": 3.9034472765282153,
+    "gamma_vsg_referred_bus_deg": 3.8497905631205342,
+    "Ireq": {
+      "real": 1.011663856372691,
+      "imag": 0.06061022761468326,
+      "magnitude": 1.0134778527340242,
+      "angle_deg": 3.428573812340826
+    },
+    "Iref_pu": 1.0134778527340242,
+    "grid_power": {
+      "real": 1.0000000000017173,
+      "imag": 0.009967915484336613,
+      "magnitude": 1.0000496784372952,
+      "angle_deg": 0.5711005735705605
+    },
+    "measured_Pe_pu": 1.0000000000017173,
+    "measured_Qe_pu": 0.009967915484336613,
+    "capacitor_injection_power_pu": 1.0124402666322443,
+    "passive_power_loss_pu": 0.012440266630526997,
+    "bridge_voltage_pu": 1.0017287662243792,
+    "raw_voltage_reference_pu": 1.2041316277703207,
+    "gamma_lim_frozen_E_deg": 4.6562202742363095,
+    "arccos_argument": 0.9966997051128661,
+    "residual": 1.7172929744901921e-12,
+    "naive_series_I_pu": 1.013676995903571,
+    "naive_series_complex_current_error_pct": 5.015306953963653
+  },
+  "nominal_static_measurement_correction": {
+    "Pstar_pu": 1.0,
+    "E_pu": 0.9994229797023559,
+    "Eref_pu": 0.9984248326309492,
+    "gamma_bus_deg": 3.850187944758671,
+    "gamma_thevenin_deg": 3.903844658166352,
+    "gamma_vsg_referred_bus_deg": 4.994753033348283,
+    "Ireq": {
+      "real": 1.0136750918793382,
+      "imag": 0.054803562438248195,
+      "magnitude": 1.015155467084972,
+      "angle_deg": 3.0946393494912914
+    },
+    "Iref_pu": 1.0141416076109833,
+    "grid_power": {
+      "real": 1.0020004430448894,
+      "imag": 0.015783184016254136,
+      "magnitude": 1.0021247411175147,
+      "angle_deg": 0.9024297921284968
+    },
+    "measured_Pe_pu": 1.0000000000000804,
+    "measured_Qe_pu": 0.015751673690176524,
+    "capacitor_injection_power_pu": 1.0144814902888648,
+    "passive_power_loss_pu": 0.012481047243975363,
+    "bridge_voltage_pu": 1.0024556743212056,
+    "raw_voltage_reference_pu": 1.2051144868915753,
+    "gamma_lim_frozen_E_deg": 4.655387145755415,
+    "arccos_argument": 0.9967008853881948,
+    "residual": 8.038014698286133e-14,
+    "naive_series_I_pu": 1.0156497900674015,
+    "naive_series_complex_current_error_pct": 5.008962668876018
+  },
+  "threshold_algebraic_QV": {
+    "E_pu": 1.0009905590719825,
+    "gamma_bus_deg": 4.574611015322213,
+    "gamma_lim_deg": 4.628267728729894,
+    "gamma_vsg_referred_bus_deg": 4.574611015322213,
+    "Pstar_pu": 1.184595576796378,
+    "raw_voltage_reference_pu": 1.2438533999537775,
+    "residual": 1.5543122344752192e-15
+  },
+  "threshold_static_measurement_correction": {
+    "E_pu": 1.001405140714184,
+    "gamma_bus_deg": 4.573263128174515,
+    "gamma_lim_deg": 4.626919841582197,
+    "gamma_vsg_referred_bus_deg": 5.7178282167641274,
+    "Pstar_pu": 1.1838567854902577,
+    "raw_voltage_reference_pu": 1.244738515918176,
+    "residual": 1.3322676295501878e-15
+  },
+  "saved_model_setpoints": [
+    {
+      "Pstar_pu": 0.1,
+      "E_pu": 0.9895772738746714,
+      "Eref_pu": 0.9895772738746714,
+      "gamma_bus_deg": 0.283066329620746,
+      "gamma_thevenin_deg": 0.3367230430284272,
+      "gamma_vsg_referred_bus_deg": 0.283066329620746,
+      "Ireq": {
+        "real": 0.10369640015917009,
+        "imag": -0.06245581868207306,
+        "magnitude": 0.12105235517419195,
+        "angle_deg": -31.060343386230418
+      },
+      "Iref_pu": 0.12105235517419195,
+      "grid_power": {
+        "real": 0.09999999999999876,
+        "imag": 0.104227261253289,
+        "magnitude": 0.14444141368859942,
+        "angle_deg": 46.185785120279775
+      },
+      "measured_Pe_pu": 0.09999999999999876,
+      "measured_Qe_pu": 0.104227261253289,
+      "capacitor_injection_power_pu": 0.10230900674421499,
+      "passive_power_loss_pu": 0.0023090067442162326,
+      "bridge_voltage_pu": 0.992903758351162,
+      "raw_voltage_reference_pu": 1.013594339182276,
+      "gamma_lim_frozen_E_deg": 4.749981349027517,
+      "arccos_argument": 0.9965655294535091,
+      "residual": 1.2490009027033011e-15,
+      "naive_series_I_pu": 0.152618057535413,
+      "naive_series_complex_current_error_pct": 41.63956375147519
+    },
+    {
+      "Pstar_pu": 0.35,
+      "E_pu": 0.9921512743933549,
+      "Eref_pu": 0.9921512743933549,
+      "gamma_bus_deg": 1.2796119549992129,
+      "gamma_thevenin_deg": 1.3332686684068942,
+      "gamma_vsg_referred_bus_deg": 1.2796119549992129,
+      "Ireq": {
+        "real": 0.3570621801632906,
+        "imag": -0.03316061015502541,
+        "magnitude": 0.358598698504074,
+        "angle_deg": -5.305879022345267
+      },
+      "Iref_pu": 0.358598698504074,
+      "grid_power": {
+        "real": 0.35000000000000187,
+        "imag": 0.07848725606645085,
+        "magnitude": 0.358692416096078,
+        "angle_deg": 12.639437696886533
+      },
+      "measured_Pe_pu": 0.35000000000000187,
+      "measured_Qe_pu": 0.07848725606645085,
+      "capacitor_injection_power_pu": 0.35343663468599745,
+      "passive_power_loss_pu": 0.0034366346859955876,
+      "bridge_voltage_pu": 0.9947686768360536,
+      "raw_voltage_reference_pu": 1.065896117153042,
+      "gamma_lim_frozen_E_deg": 4.730667167020809,
+      "arccos_argument": 0.9965933870430614,
+      "residual": 1.887379141862766e-15,
+      "naive_series_I_pu": 0.3665994526335625,
+      "naive_series_complex_current_error_pct": 14.088883309275337
+    },
+    {
+      "Pstar_pu": 0.4,
+      "E_pu": 0.9926701975828814,
+      "Eref_pu": 0.9926701975828814,
+      "gamma_bus_deg": 1.4783651017247983,
+      "gamma_thevenin_deg": 1.5320218151324796,
+      "gamma_vsg_referred_bus_deg": 1.4783651017247983,
+      "Ireq": {
+        "real": 0.40762854755680994,
+        "imag": -0.026848350724287887,
+        "magnitude": 0.40851177060139754,
+        "angle_deg": -3.768329040139068
+      },
+      "Iref_pu": 0.40851177060139754,
+      "grid_power": {
+        "real": 0.40000000000000513,
+        "imag": 0.07329802417119329,
+        "magnitude": 0.4066603009237623,
+        "angle_deg": 10.383964539802333
+      },
+      "measured_Pe_pu": 0.40000000000000513,
+      "measured_Qe_pu": 0.07329802417119329,
+      "capacitor_injection_power_pu": 0.4038184251684729,
+      "passive_power_loss_pu": 0.003818425168467754,
+      "bridge_voltage_pu": 0.9951962791602305,
+      "raw_voltage_reference_pu": 1.0764223295422852,
+      "gamma_lim_frozen_E_deg": 4.726204566679073,
+      "arccos_argument": 0.9965998075178919,
+      "residual": 5.10702591327572e-15,
+      "naive_series_I_pu": 0.4149307800441916,
+      "naive_series_complex_current_error_pct": 12.373203966090983
+    }
+  ],
+  "components": {
+    "ZT1": {
+      "real": 0.005,
+      "imag": 0.02,
+      "magnitude": 0.020615528128088305,
+      "angle_deg": 75.96375653207353
+    },
+    "ZT2": {
+      "real": 0.005,
+      "imag": 0.02,
+      "magnitude": 0.020615528128088305,
+      "angle_deg": 75.96375653207353
+    },
+    "ZS": {
+      "real": 0.0019127973668012093,
+      "imag": 0.019127973668012093,
+      "magnitude": 0.019223375624759707,
+      "angle_deg": 84.28940686250037
+    },
+    "ZL": {
+      "real": 0.004815455594002306,
+      "imag": 0.0068816701821714146,
+      "magnitude": 0.008399166451142354,
+      "angle_deg": 55.017555840661196
+    },
+    "ZBR": {
+      "real": 4.805843858131488e-05,
+      "imag": 0.0,
+      "magnitude": 4.805843858131488e-05,
+      "angle_deg": 0.0
+    },
+    "YM": {
+      "real": 0.002,
+      "imag": -0.002,
+      "magnitude": 0.00282842712474619,
+      "angle_deg": -45.0
+    },
+    "YC": {
+      "real": 0.00014351944076022331,
+      "imag": 0.04568954917852668,
+      "magnitude": 0.045689774588707315,
+      "angle_deg": 89.82002380553443
+    },
+    "Yline_half": {
+      "real": 0.0,
+      "imag": 0.009883983302307539,
+      "magnitude": 0.009883983302307539,
+      "angle_deg": 90.0
+    },
+    "Yfault_pu": 0.00020808,
+    "ZF": {
+      "real": 0.001,
+      "imag": 0.05097,
+      "magnitude": 0.0509798087481701,
+      "angle_deg": 88.87603630026224
+    }
+  },
+  "grid_voltage_coeff_E": {
+    "real": 0.3945344628259749,
+    "imag": -0.0017011242198709071,
+    "magnitude": 0.39453813019908734,
+    "angle_deg": -0.2470421304416064
+  },
+  "grid_voltage_coeff_U": {
+    "real": 0.6057158911981267,
+    "imag": 0.00163596500190914,
+    "magnitude": 0.6057181004654132,
+    "angle_deg": 0.15474856031018672
+  },
+  "grid_current_coeff_E": {
+    "real": 3.615958274343291,
+    "imag": -14.227431855063411,
+    "magnitude": 14.6797469812073,
+    "angle_deg": -75.7399717963094
+  },
+  "grid_current_coeff_U": {
+    "real": -3.61690579383171,
+    "imag": 14.234702848128867,
+    "magnitude": 14.687027360769145,
+    "angle_deg": 104.25662374775258
+  },
+  "max_nodal_and_thevenin_residual": 7.275957614183426e-12,
+  "script_hashes": {
+    "baseline_gfm_contraction.m": "c532dca6af2188fa0bd8fd8fffca74e0d02d6f345df0ebd368fb9a0401b128d0",
+    "gfm_current_limiter_analysis.m": "8fecab20a0ead40f07d10bcba4315ab85418c01a662f246eaa2fb7e404e312ed"
+  }
+}

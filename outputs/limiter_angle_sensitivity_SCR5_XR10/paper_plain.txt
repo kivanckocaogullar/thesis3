@@ -1,0 +1,1383 @@
+
+PAGE 1
+198 IEEE TRANSACTIONS ON POWER SYSTEMS, VOL. 41, NO. 1, JANUARY 2026
+Uniﬁed Model of Current-Limiting Grid-Forming
+Inverters for Large-Signal Analysis
+Nathan Baeckeland , Member , IEEE,B o w e nY a n g, Member , IEEE, and Gab-Su Seo , Senior Member , IEEE
+Abstract—Grid-forming (GFM) inverters can hardly withstand
+any overloading. As such, GFM inverters need a current limiter in
+their control system to avoid hardware damage during overloading
+or grid disturbances. When the current limiter is engaged for
+inverter protection, however, it dynamically changes the inverter
+output impedance, which can signiﬁcantly affect the system be-
+havior against large disturbances. For example, when the current
+limiter curtails the output power, the primary controller of the
+GFM inverter—which generates the voltage and angle reference—
+is prone to losing synchronization with the grid. This can cause
+large-signal instability in the network. This paper presents a uniﬁed
+GFM current-limiter model to gain a deeper understanding of
+the impact of the GFM inverter current limiting on large-signal
+instability and other system behaviors. The uniﬁed model captures
+several well-known current limiters for GFM inverters, and it
+reveals their large-signal equivalence characterized by the lim-
+iter angle. We use the uniﬁed model to present in-depth insights
+into the driving forces that cause large-signal instability in GFM
+inverter-driven grids. Further, this paper illustrates that the uniﬁed
+model can be used as a tool for assessing the system-level impacts
+of various GFM current-limiter designs during grid disturbances.
+Using numerical, analytical, electromagnetic transient models, and
+a hardware setup, the validity of the uniﬁed model is evaluated.
+Index Terms —Grid-forming inverter current limiting, large-
+signal stability, equivalent-circuit model, power-angle curve,
+virtual impedance, power system transient stability.
+I. I NTRODUCTION
+GRID-FORMING (GFM) inverter research and development
+has gained signiﬁcant traction in recent years. Unlike their
+contemporary grid-following (GFL) counterpart, GFM inverters
+create their own voltage and frequency reference, enabling grids
+to operate at high levels of inverter-based resources (IBRs).
+For these reasons, adopting GFM capabilities in grid-connected
+inverters has been urgently called for by system operators,
+research institutions, and companies around the world [1], [2],
+Received 3 September 2024; revised 22 March 2025 and 13 June 2025;
+accepted 30 June 2025. Date of publication 10 July 2025; date of current version
+12 January 2026. This work was supported in part by the National Renewable
+Energy Laboratory (NREL) for the U.S. Department of Energy (DOE) under
+Contract DE-AC36-08GO28308, in part by the Laboratory Directed Research
+and Development (LDRD) Program at NREL, and in part by the U.S. Department
+of Energy Ofﬁce of Energy Efﬁciency and Renewable Energy through Solar
+Energy Technologies Ofﬁce under Award 38637. Paper no. TPWRS-01477-
+2024. (Nathan Baeckeland and Bowen Yang contributed equally to this work.)
+(Corresponding author: Gab-Su Seo.)
+The authors are with the Power Systems Engineering Center, Na-
+tional Renewable Energy Laboratory, Golden, CO 80401 USA (e-mail:
+nathan.baeckeland@nrel.gov; bowen.yang@nrel.gov; gabsu.seo@nrel.gov).
+Color versions of one or more ﬁgures in this article are available at
+https://doi.org/10.1109/TPWRS.2025.3587224.
+Digital Object Identiﬁer 10.1109/TPWRS.2025.3587224
+Fig. 1. Inverter-level and system-level ramiﬁcations of GFM inverter current
+limiting [13].
+[3], [4], [5], [6]. However, the transition from synchronous-
+generator (SG) dominated grids toward grids with (GFM) IBRs
+proves challenging, and many research questions are yet to be
+answered [7], [8]. Especially determining how GFM inverters
+should behave during grid disturbances (such as (un)balanced
+faults, frequency or phase jumps, or overloading), their system-
+level inﬂuence (small- and large-signal stability and power
+system protection), and how to design the controls accordingly
+are ongoing research topics [9], [10], [11]. At the center of
+these research questions lies the inability of inverters to inject
+high fault currents. Power-processing components of power
+electronics inverters, such as semiconductor switches, have
+limited overloading capabilities that barely exceed the nomi-
+nal values—typically ranging from 1.05 pu–1.20 pu—because
+of their low thermal inertia and the design practice for cost
+optimization [12]. To that end, a current limiter is an essential
+block in the inverter control system which strictly limits the
+output current to not cross hardware limitations that can cause
+irreversible inverter damage. Although the existential purpose
+of the limiter is solely to prevent the inverter output currents
+from exceeding the acceptable value, the limiter design pro-
+foundly inﬂuences the entire dynamic behavior of the inverter
+during current-limited conditions. Namely, because the current
+limiter dynamically alters the output impedance of the inverter,
+network-wide attributes for a power system, such as transient
+stability, power system protection, and voltage support, can be
+compromised. The device-level and system-level impacts of the
+GFM inverter current limiter are visually represented in Fig. 1,
+and it illustrates the need to investigate the GFM current limiting
+to understand system resilience during large disturbances in an
+IBR-dominated grid [13].
+Because the limiter curtails the output current—and hence
+reshapes the active and reactive power output—it is the
+main contributor to GFM inverter instability during grid
+0885-8950 © 2025 IEEE. All rights reserved, including rights for text and data mining, and training of artiﬁcial intelligence and similar technologi es.
+Personal use is permitted, but republication/redistribution requires IEEE permission. See https://www.ieee.org/publications/rights/index. html for more information.
+Authorized licensed use limited to: Universitaetsbibliothek der RWTH Aachen. Downloaded on September 28,2026 at 12:55:07 UTC from IEEE Xplore.  Restrictions apply. 
+
+PAGE 2
+BAECKELAND et al.: UNIFIED MODEL OF CURRENT-LIMITING GRID-FORMING INVERTERS FOR LARGE-SIGNAL ANAL YSIS 199
+disturbances [14], [15]. This issue has been discussed in the
+literature: In [16], [17], [18], the pernicious effects of GFM
+current limiting on transient stability are illustrated through
+simulations and hardware experiments. These works assume
+idealized scenarios without ﬁlter or line resistance or assume a
+current limiter where the current-phasor angle is ﬁxed. In [19],
+the authors present an equivalent circuit model to compile the
+power-angle characteristic for a GFM inverter with a circular
+current-reference limiter and validate the theoretical results
+through hardware tests. In [20], a similar study is presented
+for virtual impedance (VI)-based current limiters. The authors
+illustrate that inductive VI limiters inherently induce better
+stability margins compared to resistive VI limiters, which we
+further acknowledge in this work. In an attempt to guarantee
+GFM inverter transient stability, despite the stringent current
+limits, other works have proposed additional control blocks to
+the primary controller, which—directly or indirectly—modify
+the perceived output power of the inverter and with it, the power-
+angle dynamics [21], [22], [23], [24], [25], [26]. A comparative
+overview of these methods is given in [27].
+To better map and understand the inﬂuence of GFM current
+limiting on large-signal stability, this paper presents a uniﬁed
+model framework for GFM current-limiting methodologies. In
+that way, this work has a similar approach to [28], where the
+authors present a uniﬁed equivalent-circuit model that captures
+circular current limiting and virtual impedance limiting. In addi-
+tion to the work in [28], this paper presents deeper understand-
+ings into the driving mechanisms behind large-signal instability
+with GFM inverters, based on novel theoretical derivations, and
+provides an in-depth sensitivity analysis of various attributes
+that induce instability. Initiated from the uniﬁed current-limiting
+framework, we aim to provide answers to the following ques-
+tions: How can we intuitively understand the power-angle char-
+acteristics of GFM inverters under various types of current
+limiting? How do various current-limiting methods affect GFM
+inverter transient stability, both on a device level and system
+level? How can we derive an analytical model that captures
+various current-limiting methods to understand the power-angle
+dynamics of GFM inverters and derive critical clearing angles
+and times? With these questions in mind, this paper presents the
+following contributions:
+C1 Proposing a uniﬁed GFM inverter current limiter model
+that captures the large-signal behavior of GFM inverters
+with inner control loop-based current limiters, including
+the current-reference saturation limiter (also known as
+the circular current limiter or magnitude limiter) with
+anti-windup feedback, and the VI limiter. This gener-
+alized framework can be used to perform theoretical
+analyses of grid-connected GFM inverters under various
+current-limiting scenarios, such as large-signal stability
+analysis.
+C2 Deriving a numerical and analytical model for the power-
+angle characteristics of GFM inverters under current
+limitations. This provides a deeper understanding of the
+signiﬁcant impact of current limiting on the GFM inverter
+stability during grid disturbances and the inﬂuence of
+control parameters and grid conditions.
+C3 Presenting full-order electromagnetic transient (EMT)
+simulations—both of a single-inverter and a realistic
+multi-inverter network simulation—along with a hard-
+ware setup, to support the theoretical ﬁndings on the
+large-signal stability of GFM inverters under current-
+limited conditions.
+The rest of this paper is structured as follows. In Section II,
+we begin by introducing pertinent notations used throughout
+the paper. In Section III, we introduce the generic GFM inverter
+control architecture which will serve as a baseline throughout
+this work, and propose the concept of the uniﬁed current limiter
+framework. Following, in Section IV, we set up a numerical
+and analytical model to characterize the current-limited GFM
+inverter while encompassing all current limiter variations within
+the uniﬁed framework. Based on the analytical model, we pro-
+vide an in-depth analysis of GFM inverter power-angle charac-
+teristics under current limiting and examine limiter dynamics
+under various grid conditions. In Section V, we dive deeper
+into the mechanism driving GFM inverter large-signal instabil-
+ity under various current-limiting strategies. We visualize and
+validate the numerical and analytical results through full-order
+EMT simulations—both in a single-inverter and multi-inverter
+network simulation—and a hardware setup of various grid dis-
+turbances. Finally, Section VI concludes the paper.
+II. N OTA TION ANDPRELIMINARIES
+In this work, complex phasors are denoted by Xx ∈C, with
+|Xx|∈ R≥0 denoting the amplitude, and the angle denoted by
+∠Xx or ϕx ∈R. The complex conjugate operator is denoted
+byX. The complex imaginary unit is denoted by j. We deﬁne a
+vector in the direct-quadrature plane asxdq ∈R2×1 =[ xd,x q]⊤
+and signals in the natural reference frame as xabc ∈R3×1 =
+[xa,x b,x c]⊤. On occasion, we use the same notation to de-
+note complex phasors as a vector, such that Xdq ∈R2×1 =
+[Xd,X q]⊤, withXd andXq representing the real and imaginary
+parts of the complex phasor, X ∈C. Scalars are denoted by
+x ∈R and can be ﬁxed or time/parameter varying. Rotation of
+a vector counterclockwise by angle θin the Euclidean space is
+captured by:
+T(θ)=
+[
+cos(θ) −sin(θ)
+sin(θ)c o s (θ)
+]
+.
+We deﬁne the unit vectors as e1 =[ 1, 0]⊤ and e2 =[ 0, 1]⊤.
+Notations not captured in this section are explicitly denoted in
+the text.
+III. U NIFIED GFM-INVERTER CURRENT-LIMITING
+FRAMEWORK
+In this section, we introduce the GFM inverter control struc-
+ture that will serve as the baseline for all our analyses throughout
+this work, and we introduce a uniﬁed current-limiting framework
+that captures two well-established current-limiting strategies in
+one model.
+Authorized licensed use limited to: Universitaetsbibliothek der RWTH Aachen. Downloaded on September 28,2026 at 12:55:07 UTC from IEEE Xplore.  Restrictions apply. 
+
+PAGE 3
+200 IEEE TRANSACTIONS ON POWER SYSTEMS, VOL. 41, NO. 1, JANUARY 2026
+Fig. 2. GFM inverter control structure with the uniﬁed current limiter model.
+A. GFM Inverter Control Design
+Fig. 2 shows a prototypical GFM inverter control structure,
+built in the synchronous reference frame (dq frame), comprising
+inner current and outer voltage controllers, and a primary con-
+troller that governs the internal reference angle, frequency, and
+voltage magnitude. In this study, we consider the droop primary
+controller that is characterized by:
+dθ
+dt = ω0 +mp(p⋆ −˜p), (1)
+e⋆ = e0 +mq(q⋆ −˜q), (2)
+where θdenotes the instantaneous internal GFM inverter refer-
+ence angle; ω0 denotes the nominal grid angular frequency; mp
+and mq denote the droop gains; ˜p and ˜q denote the low-pass
+ﬁltered active and reactive output power, respectively, with p⋆
+andq⋆ denoting the active and reactive power setpoints, respec-
+tively;e⋆ and e0 respectively denote the reference and nominal
+terminal voltage magnitude. In the control system, the sensed
+LCL ﬁlter currents and voltages are transformed using the Park
+transformation, denoted by Ii
+dq, Edq, and Ig
+dq.T h e LCL ﬁlter
+parameters are denoted by Li, Ri, C, Lg, and Rg. The inner-
+current and outer-voltage controllers employ PI controllers for
+whichkcc
+p ,kvc
+p ,kcc
+i , andkvc
+i denote their proportional and integral
+gains, respectively. In the cross-coupling terms between the d-
+and q-axis, the matrix T(θ) denotes the counterclock rotation
+matrix, as deﬁned in Section II. The uniﬁed current limiter
+representation is depicted in red, which we introduce next.
+B. Uniﬁed GFM-Inverter Current-Limiting Framework
+Hereafter, we introduce the uniﬁed GFM-inverter current-
+limiter model. Deriving such model has several merits. It allows
+for building one theoretical model that captures two common
+current-limiter variations without the need for mode switches.
+This simpliﬁes implementation in particular for numerical com-
+putations. Leveraging the uniﬁed model, we can derive both a
+numerical and analytical expression for the power-angle relation
+of a GFM inverter, which further deepens the understanding of
+the large-signal behavior and stability of GFM inverters and the
+attributes inﬂuencing instability.
+The uniﬁed current limiter structure is highlighted in red
+in Fig. 2. The model captures current-reference saturation lim-
+iting with an integrator anti-windup in the voltage controller
+(SatLim) [29], sometimes also referred to as a circular current
+limiter [19], and VI-based limiting with a threshold function
+(VI-Lim) [9]. In the uniﬁed current limiter,ρdenotes the current-
+reference saturation gain, which we deﬁne as:
+ρ=m i n
+(
+1, imax
+|Ii⋆
+dq|
+)
+. (3)
+The gain, ρ, ensures that the reference current feeding into the
+current controller is saturated to imax. The function, Ψ, denotes
+a threshold function to activate (or deactivate) the VI-Lim. We
+deﬁneΨas used in [9]:
+Ψ=m a x
+(
+0,
+ρ|Ii⋆
+dq|−σ
+imax −ith
+)
+, (4)
+where σdenotes a parameter to enable or disable the VI-Lim,
+and ith denotes the threshold current upon which the VI-Lim
+starts curtailing the current. The VI impedance in the uniﬁed
+model—denoted by Zvi with angle ϕvi—comprises a resistive
+part, Rvi, and an inductive part, Lvi, and is cast in the dq
+frame as illustrated in Fig. 2. We tune the VI magnitude ac-
+cording to classical anti-windup tuning techniques, such that
+|Zvi| =( kvc
+p )−1. The VI angle is tuned depending on the type
+of limiter (see further in this section). Last, we set the gain,
+k = ϵvkvc
+p i−1
+max, where ϵv denotes the maximum possible volt-
+age error, |E⋆
+dq −Edq|max, that can feed into the outer-voltage
+controller, which occurs when the primary controller is 180◦
+phase shifted relative to a healthy grid voltage at the inverter
+terminals, in which case ϵv =2 pu. By tuning the gain, k,i n
+this manner, we ensure that, when current limiting with the
+VI-Lim, the output current cannot surpass imax even during the
+absolute worst-case scenario (except during excessive voltage
+swells, which requires more conservative (greaterk) design) [9].
+As illustrated in Fig. 3, we can obtain either the SatLim or
+VI-Lim by tuning the parametersσandϕvi in the uniﬁed current
+limiter model. If we set σ≥imax we retrieve the SatLim, as
+shown in Fig. 3(a). Namely, for σ≥imax, the function Ψ=0
+Authorized licensed use limited to: Universitaetsbibliothek der RWTH Aachen. Downloaded on September 28,2026 at 12:55:07 UTC from IEEE Xplore.  Restrictions apply. 
+
+PAGE 4
+BAECKELAND et al.: UNIFIED MODEL OF CURRENT-LIMITING GRID-FORMING INVERTERS FOR LARGE-SIGNAL ANAL YSIS 201
+Fig. 3. From the uniﬁed current limiter framework, we can obtain the (a)
+SatLim, or (b) VI-Lim, by tuning σandϕvi.
+Fig. 4. Equivalent circuit representation of a GFM inverter during current
+limiting. The ﬁlter capacitor has been omitted for simplicity.
+under all circumstances, according to (4). Further notice that
+settingϕvi =0 ◦disables the VI inductance and yields a classical
+anti-windup gain, Rvi =( kvc
+p )−1; however, leveraging the VI
+in the anti-windup feedback loop of the SatLim allows for
+more control over the output current-phasor angle [30].I fw e
+set σ= ith and 0◦<ϕvi<90◦, we retrieve a threshold VI-Lim,
+as shown in Fig. 3(b). Namely, Ψ starts increasing as soon as
+ρ|Ii⋆
+dq|≥ ith, which is set lower than the maximum rated current,
+imax. Because we tune k such that imax is never breached, ρ
+will always be 1, which leaves us with the traditional threshold
+VI-Lim implementation.
+Similar to an SG, we recognize that the behavior of a GFM
+inverter can be captured by a voltage source (of which the
+amplitude and angle is governed by the GFM primary con-
+troller) behind an impedance (the output ﬁlter impedance), as
+shown in Fig. 4. However, when the inverter output current is
+curtailed by the limiter—irrespective of what type of limiter
+is leveraged—the capacitor voltage, E, can no longer track
+the reference voltage, E⋆, and the inverter output impedance
+increases. As such, a current limiter can be represented as a
+variable output impedance, Zlim (see Fig. 4), of which the
+magnitude and angle depend on the current-limiter design and
+the present grid conditions. Further, we recognize that, during
+quasi-steady-state conditions, the fast inner controls can be as-
+sumed to be operating in steady state—the error feeding into the
+voltage and current controller are zero. From the aforementioned
+observations, and considering the uniﬁed framework in Fig. 3,
+we can ﬁnd an expression for the equivalent limiter impedance,
+Zlim, for quasi-steady-state conditions:
+{
+SatLim: Zlim = (1−ρ)
+ρ Zvi → ϕlim = ϕvi,
+VI-Lim: Zlim = kΨZvi → ϕlim = ϕvi. (5)
+Notice in (5), the angle of the equivalent-limiter impedance,
+ϕlim, is identical to the impedance angle of the limiter virtual
+impedance, ϕvi. Understanding how the output impedance of a
+GFM inverter behaves during disturbances in the grid is critical
+for a variety of network-wide attributes and systems, such as
+network-wide stability, voltage support during faults, and power
+system protection [13].
+In the following section, we utilize the uniﬁed current-limiting
+model and the equivalent circuit impedance of the limiters to
+compute the power-angle characteristics which serves as a tool
+to assess the transient stability margins of GFM inverters.
+IV . THEORETICAL ANAL YSIS OFUNIFIED MODEL AND
+LARGE-SIGNAL ST ABILITY
+Following the conceptual introduction of the uniﬁed frame-
+work presented in Section III, this section establishes theoretical
+models to provide deeper insights into how various current lim-
+iter types impact the transient-stability characteristics of GFM
+inverters and how these dynamics interact with different grid
+conditions. In this section, we ﬁrst refresh the classic concepts
+of large-signal stability analysis rooted in traditional power
+systems theory, as we continue to use these well-established
+methods to analyze GFM-inverter stability boundaries. Then,
+we present a numerical model of the uniﬁed framework as
+a benchmark, followed by an analytical model for in-depth
+analysis.
+A. Large-Signal Stability With Synchronous Generators
+In its most simpliﬁed form, an SG can be represented as
+a voltage source, E, behind an impedance, ZSG. Assuming a
+purely inductive internal impedance, the SG active output power
+can be expressed as a function of the rotor angle using the
+well-known power-angle equation [31]:
+p = |Vs||E|
+|ZSG| sin(δ), (6)
+where E denotes the no-load excitation voltage; Vs denotes the
+terminal voltage; ZSG represents the internal impedance of the
+SG with an impedance angle, ϕSG; and δdenotes the angle
+between the voltage phasors, E and Vs (δ= ∠E −∠Vs). The
+internal rotor angle of the SG follows the droop equations in (1),
+where, in the context of SGs, θdenotes the instantaneous rotor
+angle. By leveraging (6) and (1), the rotor stability of SGs can
+be assessed. Fig. 5 illustrates the power-angle curve from (6) for
+|Vs| = 1 pu and |Vs| = 0.5 pu, which represents a grid voltage
+drop caused by a disturbance or fault. Consider the scenario
+where the SG is operating at the equilibrium point ‘a’ with
+a power reference of p⋆ = 1 pu when a sudden voltage drop
+to 0.5 pu occurs in the grid. The output power will follow a
+trajectory ‘a-b-c-d’ as shown in Fig. 5, where we assume the
+fault is cleared at point ‘c’. To simplify the discussion, no
+inertia is considered in Fig. 5. The mechanical inertia of the
+SG can lead to angle ( δ) overshoot and oscillations during and
+after the disturbance, which in turn can reduce the transient
+stability margins of the generator; however, the principle behind
+the trajectory on the power-angle curves, and the position of
+equilibrium points remains valid.
+Authorized licensed use limited to: Universitaetsbibliothek der RWTH Aachen. Downloaded on September 28,2026 at 12:55:07 UTC from IEEE Xplore.  Restrictions apply. 
+
+PAGE 5
+202 IEEE TRANSACTIONS ON POWER SYSTEMS, VOL. 41, NO. 1, JANUARY 2026
+Fig. 5. (a) Power-angle curve of a generic SG for different grid voltages, Vs.
+(b) Conceptual trajectory of the active output power and rotor angle, δ, during a
+generic voltage drop (no inertia response considered).
+Based on the interpretations of (6) and (1), we can extend
+this analysis to assess the transient stability of GFM inverters;
+however, to do so, we must modify the interpretation of a power-
+angle curve. For SGs, the p(δ) curves map the output power as
+a function of the rotor angle relative to the grid-voltage phasor
+angle [31]. In contrast, for GFM inverters, which do not have a
+physical rotor, we refer to the primary-controller internal angle,
+θ. We denote the angle δ′ = θ−∠Vg. We use the notation δ′ to
+differentiate from the classical interpretation of δwith SGs.
+B. Numerical Model of the Uniﬁed Framework
+In this subsection, we leverage the uniﬁed current-limiting
+framework to establish a system of continuous nonlinear alge-
+braic equations from which we can compute thep(δ′) curves for
+any of the two limiter types. This numerical model serves as a
+benchmark for our analytical model and stability analysis.
+Power-angle characteristics can only capture quasi-steady-
+state characteristics of the inverter; therefore, we can once more
+assume the fast inner-controls to be in steady state, and the
+error signals feeding into the voltage and current controller to
+be zero. The assumptions, starting from the equivalent-network
+representation of a GFM inverter in Fig. 4, lead to:
+0= E⋆ −E −Vvi
+= E⋆ −ρI⋆Zg −Vs −(1−ρ+ρkΨ)I⋆Zvi, (7)
+where Vvi denotes the voltage drop across the VI of the uniﬁed
+current limiter; Zg denotes the grid-side inductive output-ﬁlter
+impedance; ρI⋆ denotes the output current of the inverter, for
+which we make the approximation that ρI⋆ = Ii = Ig, i.e., we
+neglect the LCL ﬁlter capacitor current for simplicity, though
+adding the capacitor into the model adds only one branch and
+can straightforwardly be integrated into the present model [32];
+and ρand Ψare discontinuous functions as deﬁned in (3) and
+(4), respectively. For a system of nonlinear algebraic equations
+to be solvable, we rewrite the discontinuous functions of (3) and
+(4) into continuous forms using the smooth maximum unit [33]:
+ρ= −1
+2
+⎛
+⎝−1−imax
+|I⋆| +
+√( imax
+|I⋆| −1
+) 2
+⎞
+⎠ , (8)
+Fig. 6. Numerically computed p(δ′) curves for the two considered current
+limiters when (top) |Vs| =1 pu and (bottom) |Vs| =0 .5 pu. The angle of the
+VI in the VI-Lim and the SatLim is set to 0◦(left) and 80◦(right).
+Ψ= 1
+2
+⎛
+⎝ρ|I⋆|−σ
+imax −ith
++
+√( ρ|I⋆|−σ
+imax −ith
+) 2
+⎞
+⎠ , (9)
+where we substitute(8) and (9) in (7), respectively. From(7), (8),
+and (9), along with the droop equations that govern the voltage
+reference (1)–(2), we derive the following system of nonlinear
+algebraic equations. Because (7) is a complex equation, we split
+(7) into a real and imaginary part, denoted by the subscripts ‘ d’
+and ‘q’, respectively:
+⎧
+⎪⎪⎪⎪⎪⎪⎪⎪⎪⎪⎪⎪⎨
+⎪⎪⎪⎪⎪⎪⎪⎪⎪⎪⎪⎪⎩
+0= E⋆
+dq −ρ(Rg +T(π
+2)ωsLg)I⋆
+dq −Vs,dq
+−(1−ρ+ρkΨ)(Rvi+T(π
+2)ωsLvi)I⋆
+dq,
+0= −E⋆
+dq +(e0 +mq(q⋆ −q))T(−π
+2)e1,
+0= −Edq +Vs,dq +ρ(Rg +T(π
+2)ωsLg)I⋆
+dq,
+0= −q +ρ(I⋆
+dq ×Edq)
+(10)
+More details on how to setup this continuous algebraic system
+of equations, while incorporating the ﬁlter capacitor is given
+in [32].F r o m(10), we compute the output power for a given δ′
+as:
+p = ρE⊤
+dqI⋆
+dq. (11)
+We retrievep(δ′) by computing (11) while sweeping forδ′.F i g .6
+shows the resulting p(δ′) curves for the two current limiters
+while the grid voltage is operating at |Vs|=1 pu (top graphs)
+and when considering a voltage drop at the inverter terminals of
+0.5 pu (bottom graphs). The curves are computed for two cases:
+ϕvi = ϕlim =0 ◦and ϕvi = ϕlim =8 0◦. (We retrieve from (5)
+that ϕlim = ϕvi.) Here, the maximum rated current is set to
+imax =1 .2 pu, and the threshold current for the VI-Lim is set
+to ith =1 .1 pu. Notice that the p(δ′) curves for the SatLim and
+the VI-Lim are nearly identical. Only a slight difference in
+output power between the SatLim and VI-Lim remains during
+light overcurrent conditions: VI-Lim is inherently designed to
+only hit imax in the worst case scenario, which translates to
+an under-usage of the overcurrent capabilities during all other
+Authorized licensed use limited to: Universitaetsbibliothek der RWTH Aachen. Downloaded on September 28,2026 at 12:55:07 UTC from IEEE Xplore.  Restrictions apply. 
+
+PAGE 6
+BAECKELAND et al.: UNIFIED MODEL OF CURRENT-LIMITING GRID-FORMING INVERTERS FOR LARGE-SIGNAL ANAL YSIS 203
+Fig. 7. Conceptual impedance phasor diagrams for GFM inverters: (a) one
+with Lim 0 and (b) with Lim 90. For severe limiting, the inverter impedance
+asymptotically nears the equivalent limiter impedance angle.
+current-limiting conditions that are not worst case. If we ne-
+glect this small difference in the output power between the
+VI-Lim and the SatLim, we conclude that the p(δ′) curves
+of the uniﬁed current-limiter model are solely deﬁned by the
+equivalent current limiter impedance angle, ϕlim. Based on this
+equivalence, in the remainder of this work, we refer to limiters
+by their respective equivalent-network impedance angle, ϕlim,
+rather than calling upon the individual limiter types, and we
+denote them by ‘Limϕlim ’. For example, the limiter Lim 0 could
+be the SatLim with ϕvi =0 ◦, or the VI-Lim with ϕvi =0 ◦, and
+both will have nearly identical p(δ′) characteristics. Remark:
+Although the p(δ′) curves for SatLim and VI-Lim are nearly
+identical, one must be mindful that the p(δ′) curves only cap-
+ture quasi-static behaviors, and do not capture the small-signal
+response of current limiters.
+This numerical model sets the benchmark to compute p(δ′)
+curves which can be leveraged to assess the large-signal stability
+of GFM inverters; however, it might not provide insights into
+how these unconventional curves are formulated or what drives
+the behavior of such characteristics. The following derivation of
+the analytical model provides an answer to these questions.
+C. Analytical Model of p(δ′) Characteristics
+In this subsection, we derive an analytical expression for the
+p(δ′) curves by taking an intuitive approach to understanding
+the mechanisms driving the GFM inverter p(δ′) behavior. We
+start off by examining two extreme cases: limiters with an
+equivalent-network impedance angle, ϕlim =0 ◦, and limiters
+withϕlim =9 0◦. Assuming the internal inverter reference volt-
+age magnitude,|E⋆|, to remain close to the nominal value, 1 pu,
+we represent the GFM controls as a controlled voltage source,
+E⋆, behind an impedance, Zg. The current limiter appears as
+a variable impedance, Zlim, which, lumped with Zg,f o r m st h e
+total inverter output impedance,Zinv, as shown in Fig. 7.F o rs e -
+vere limiting conditions, Fig.7 illustrates that the current-limiter
+impedance,Zlim, dominates the total inverter output impedance
+such that Zinv ≈Zlim. In other words, for a current limiter
+with ϕlim =0 ◦, the inverter behaves more resistively under
+current limiting (Fig. 7(a)), while for limiters with ϕlim =9 0◦,
+it behaves more inductively (Fig.7(b)). From Fig. 7, we can now
+understand how the GFM inverter output power,p, behaves as a
+function of δ′ under these different current-limiting conditions,
+which is illustrated in Fig. 8. For the Lim 0 GFM inverter in
+Fig. 8(b), the inverter output impedance becomes increasingly
+resistive as the limiter engages more forcefully (see Fig. 7(a)),
+causing the output power to drop rapidly along the δ′ axis. In
+contrast, in case of the Lim 90 GFM inverter in Fig. 8(c),t h e
+inverter output impedance becomes increasingly inductive as the
+limiter engages more forcefully (see Fig. 7(b)), which translates
+into an output power that remains near rated values longer along
+theδ′ axis.
+Leveraging these insights, we now derive an analytical ex-
+pression to describe p(δ′). To simplify the analytical deriva-
+tion, we make the assumption that |E⋆| =1 pu under all cir-
+cumstances; namely, from (2), considering typical values for
+mq =1 %−5%, and knowing that the maximum reactive output
+power is curtailed, this assumption is reasonable. We illustrate
+the validity of this assumption later in this section by comparing
+the analytical and numerical results.
+Based on the equivalent circuit depicted in Fig. 8(a), we can
+write the GFM inverter output power as:
+S = E ·I =
+(
+Vs +(E⋆ −Vs)· Zg
+Zinv
+)
+·
+( E⋆ −Vs
+Zinv
+)
+, (12)
+After some algebraic manipulations, and recognizing thatZinv =
+Zlim +Zg, we get
+S = 1
+|Zinv|2
+(
+|E⋆|2Zg −|Vs|2Zlim −E⋆VsZg +E⋆VsZlim
+)
+,
+from which we retrieve the active power:
+p = Re{S} = |E⋆|2
+|Zinv|2{|Zg|cosϕg − |Vs|2
+|E⋆|2|Zlim|cosϕlim
+− |Vs|
+|E⋆||Zg|cos(δ′ +ϕg)+ |Vs|
+|E⋆||Zlim|cos(ϕlim −δ′)}.
+(13)
+Deﬁningkf = |Vs|
+|E∗| as a grid voltage ratio coefﬁcient, we simplify
+(13) to:
+p = |E⋆|2
+|Zinv|2{|Zg|(cosϕg −kf cos(δ′ +ϕg))
+−kf|Zlim|(kf cosϕlim −cos(δ′ −ϕlim))}, (14)
+where |Zinv| and |Zlim| are both functions of δ′; during normal
+operation, the limiter is disabled, leaving Zinv = Zg, Zlim =0 ;
+under limiting conditions, the output current of the inverter
+saturates at the maximum rated value, independent of terminal
+voltage. Thus, the equivalent inverter impedance magnitude is:
+|Zinv| =m a x
+(
+|Zg|, |ΔE|
+imax
+)
+, (15)
+where|ΔE| = |E⋆ −Vs| is once more a function of δ′, and can
+be determined using the cosine law:
+|ΔE| = |E⋆|
+√
+1+ k2
+f −2kf cosδ′. (16)
+Authorized licensed use limited to: Universitaetsbibliothek der RWTH Aachen. Downloaded on September 28,2026 at 12:55:07 UTC from IEEE Xplore.  Restrictions apply. 
+
+PAGE 7
+204 IEEE TRANSACTIONS ON POWER SYSTEMS, VOL. 41, NO. 1, JANUARY 2026
+Fig. 8. Graphical explanation of how the p(δ′) characteristics are manipulated for the different current limiters: (a) the phasor impedance diagram of the GFM
+inverter, (b) the voltage-current phasor diagrams along with the p(δ′) relation for the Lim 0 GFM inverter, and (c) a Lim 90 GFM inverter.
+Fig. 9. (a) p(δ′) curves with different ϕlim when |Vs| =1 .0 pu (top) and |Vs| =0 .5 pu (bottom); (b) Differences between numerical and analytical p(δ′)
+curves with differentϕlim when|Vs| =1 .0 pu (top) and|Vs| =0 .5 pu (bottom); (c)q −δ′ curves with differentϕlim when|Vs| =1 .0 pu (top) and|Vs| =0 .5 pu
+(bottom).
+Leveraging the cosine law, we can express the limiter impedance
+as:
+|Zlim| = −|Zg|cos(ϕg −ϕlim)
++
+√
+|Zinv|2 −|Zg|2 sin2(ϕg −ϕlim). (17)
+Substituting (16) in (15), (15) in (17) and (14), and (17) in (14)
+ﬁnally delivers an analytical expression for the active output
+power as a function of δ′. For analysis, (14) can be decomposed
+into three components, with each component inﬂuencing the
+active power injection:
+Γ= |E⋆|
+|Zinv|, (18)
+Λsyn = |Zg|(cosϕg −kf cos(δ′ +ϕg)), (19)
+Λlim = kf|Zlim|(kf cosϕlim −cos(δ′ −ϕlim)). (20)
+Substituting (18), (19), and (20) back into (14), yields a concise
+analytical expression for the output power:
+p =Γ2(Λsyn −Λlim). (21)
+Fig. 9(a) depicts the matching p(δ′) curves of the analytical
+and numerically model for increasing values of the current-
+limiter impedance angle, ϕlim, ranging from 0◦−90◦, and
+thereby validating the analytical derivation of p(δ′).F i g .9(b)
+illustrates the difference between the numerical and analytical
+p(δ′) characteristics. Notice the maximum error between the two
+models remains within±0.06 pu. Forϕlim =9 0◦, the peak error
+decreases to ±0.01 pu due to better power support. This error
+is attributed to the assumption of a constant |E⋆| = e⋆ =1 pu
+in the analytical model. We can clarify this as follows: The
+reference-voltage magnitude, e⋆, in the numerical model fol-
+lows the droop equation in (2). Consider q⋆ =0 pu, e0 =1 pu,
+mq =0 .05 pu, and imax =1 .2 pu, which are default settings
+Authorized licensed use limited to: Universitaetsbibliothek der RWTH Aachen. Downloaded on September 28,2026 at 12:55:07 UTC from IEEE Xplore.  Restrictions apply. 
+
+PAGE 8
+BAECKELAND et al.: UNIFIED MODEL OF CURRENT-LIMITING GRID-FORMING INVERTERS FOR LARGE-SIGNAL ANAL YSIS 205
+Fig. 10. (a) Γ−δ′ curves and (b) Λsyn −δ′ curves for different kf .
+throughout this paper, then we recognize that:
+e⋆
+min,max = e0 +mq(0±qmax)= e0 ±mqe0imax
+= e0 ± 0.06 pu. (22)
+In other words, in the most severe case, the difference ( e⋆
+aly −
+e⋆
+num), and by extension ( p⋆
+aly −p⋆
+num), cannot surpass ±0.06 pu
+(subscripts aly and num denote their respective values from an-
+alytical and numerical models). Hence, we conclude that ﬁxing
+e⋆
+aly = e0 is reasonable, yielding acceptable errors even under
+worst-case fault scenarios. Although for different parameter
+choices ofq⋆,mq, andimax, this error can vary, under reasonable
+practical constraints, this variation will remain minimal.
+In a similar fashion as outlined above, we can compile an
+analytical expression for the reactive output power, q(δ′),b y
+taking the imaginary part of (12):
+q = |E⋆|2
+|Zinv|2{|Zg|(sinϕg +kf sin(δ′ +ϕg))
+−kf|Zlim|(kf sinϕlim −sin(δ′ −ϕlim))}. (23)
+Fig. 9(c) portrays the q(δ′) curves for various ϕlim and grid
+voltages. Notice the Lim90 provides signiﬁcantly higher reactive
+power support in the early stage of current limiting, which
+translates to better voltage support during grid faults.
+1) Virtual Short-Circuit Current Γ: From (18), it is evident
+thatΓrepresents a virtual short-circuit power as a function of δ′
+under current-constrained conditions (|Zinv| is a function of δ′).
+Fig. 10(a) illustrates the Γ−δ′ curves for various grid voltage
+ratios, kf . During normal operation, when Zinv = Zg, Γis a
+constant value independent of δ′, with the short-circuit power
+curtailed only by the value of the output ﬁlter impedance,Zg (this
+coincides with Γ=6 pu in Fig. 10(a)). Under current-limiting
+conditions, the inverter output impedance, |Zinv|, increases due
+to the current-limiting action, which in turn, reduces the virtual
+short-circuit power of the inverter, Γ. More severe grid-voltage
+drops—denoted by kf —increase the engagement of the limiter,
+which further reduces the virtual GFM inverter short-circuit
+power, as illustrated in Fig. 10(a).
+2) Synchronous Machine Component Λsyn: Λsyn,a si n t r o -
+duced in (19), is inﬂuenced by the grid-side ﬁlter impedance,Zg ,
+and the grid-voltage ratio,kf . As such,Λsyn is unrelated to current
+limiting, and therefore reﬂects the inherent characteristics of the
+GFM inverter under non current-limiting conditions, similar to
+Fig. 11. Λlim −δ′ curves with different ϕlim when |Vs| =1 .0 pu (a) and
+|Vs| =0 .5 pu (b).
+a synchronous generator. Namely, if in (14) we set |Zlim| =0 ,
+which implies that Zinv = Zg and|Λlim| =0 , we get:
+p =Γ2Λsyn = |E⋆|2
+|Zg| cosϕg −|E⋆||Vs|
+|Zg| cos(δ′ +ϕg),
+which is analogous to the well-known power-angle equation of
+SGs or constant voltage source with a ﬁxed output impedance.
+Fig. 10(b) displays the Λsyn −δ′ curve for various grid voltage
+ratios,kf . The parallels between Figs.5 and 10(b) further support
+thatΛsyn embodies the ‘synchronous-machine-like’ behaviors of
+the GFM inverter.
+3) Current-Limiter Component Λlim: In (20) and (21),t h e
+current limiter component, Λlim, represents the reduction in
+GFM inverter power injection due to current limiting. Fig. 11
+illustrates theΛlim −δ′ curves for different values ofϕlim at (a)
+|Vs| =1 .0 pu and (b) |Vs| =0 .5 pu.
+Λlim is inﬂuenced by two factors: the gain kf|Zlim| and a
+sum of cosine terms,kf cosϕlim −cos(δ′ +ϕlim). The primary
+factors inﬂuencing the gain kf|Zlim| are the grid voltage differ-
+ence,ΔE, the grid-side ﬁlter impedance,Zg, and the maximum
+current limit, imax. Since Zg and imax are ﬁxed values, kf|Zlim|
+acts as a scaling factor that inﬂuences the extent of power
+reduction as a function of the grid voltage. Second, the term
+kf cosϕlim −cos(δ′ +ϕlim) is inﬂuenced by the grid voltage,
+the limiter impedance angle, ϕlim, and δ′.F i g . 11 illustrates
+that more inductive settings for ϕlim reduces Λlim across the
+δ′ spectrum. In other words, an inductive current limiter leads
+to more active power support under limiting conditions than a
+resistive current limiter.
+4) Inﬂuence of Grid Strength: Lastly, we can leverage the
+uniﬁed current-limiter model to analyze the inﬂuence of the
+grid strength on the power-angle behavior of the GFM in-
+verter. Figs. 12 and 13 display the p(δ′) curves for various grid
+impedance magnitudes ( |Zℓ|) and angles ( |ϕℓ|), respectively.
+Fig. 12 shows that an increase in grid impedance—i.e., a weaker
+grid condition—allows for more angle swing to achieve the same
+power injection. This translates to a larger unstable-equilibrium
+angle,δ′
+u, during current limiting. In other words, a weaker grid
+condition can aid the GFM inverter to remain grid-synchronized
+during current limiting. This effect is more pronounced for the
+Lim0 in Fig. 12(a) where the stable operating region is much
+smaller than the Lim 80 in Fig. 12(b).F i g . 13 shows that the
+Authorized licensed use limited to: Universitaetsbibliothek der RWTH Aachen. Downloaded on September 28,2026 at 12:55:07 UTC from IEEE Xplore.  Restrictions apply. 
+
+PAGE 9
+206 IEEE TRANSACTIONS ON POWER SYSTEMS, VOL. 41, NO. 1, JANUARY 2026
+Fig. 12. p(δ′) curves with different |Zg| (|Vs| =1 .0˜pu) when ϕlim =0 ◦
+(a) and ϕlim =8 0◦(b).
+Fig. 13. p(δ′) curves with differentϕg (|Vs| =1 .0˜pu): when (a)ϕlim =0 ◦
+and (b) ϕlim =8 0◦.
+grid-impedance angle has a signiﬁcant inﬂuence on the active
+power injection of the GFM inverter during current limiting.
+For predominantly resistive grids,p(δ′) andq −V are no longer
+decoupled, i.e., aδ′ increase doesn’t drive a greater active power
+injection. In these resistive-grid scenarios, Fig. 13(b) illustrates
+that an inductive current limiter can aid the active power injection
+during limiting; the ‘virtually’ created inductiveness by the
+limiter compensates for the lack of inductiveness in the grid. This
+further supports the importance of GFM inverters with inductive
+current limiters in maintaining grid stability.
+In summary, this section illustrated how the uniﬁed current-
+limiter model is set up, and how it enables the derivation of
+numerical and analytical power-angle characteristics of current-
+limited GFM inverters. Deriving the analytical power-angle
+curves illustrated that the behavior of current-limited GFM
+inverters is inﬂuenced by three parameters: i) the virtual short-
+circuit current, ii) the synchronous-machine component, and iii)
+the GFM current-limiter component. Each of these attributes il-
+lustrates key features of GFM inverters under current constraints
+in a clear and concise manner. A sensitivity analysis leveraging
+the analytical power-angle characteristics showed that a more
+inductive current limiter increases the overall inductiveness of
+the inverter output impedance, which: i) increases the stability
+margins of the inverter, ii) increases active power support during
+current limiting under angle-related conditions, and iii) improves
+grid-voltage support during voltage drops.
+How all the aforementioned parameters and power-angle be-
+haviors eventually inﬂuence the transient stability margins of
+GFM inverter is investigated in the next section.
+Fig. 14. p(δ′) curves for a Lim 0 GFM inverter under different grid voltage
+conditions, along with the conceptual p(δ′) trajectories for a generic voltage
+drop with (b) p⋆ =1 pu and (c) p⋆ =0 .2 pu.
+V. L ARGE-SIGNAL ST ABILITYANAL YSIS OFGFM INVERTERS
+AND IBR-DOMINANT POWER SYSTEMS
+Leveraging the derived p(δ′) characteristics, we can analyze
+the large-signal stability (i.e., transient stability) of GFM invert-
+ers and inverter-dominated power systems in a similar manner
+as with SGs. Analyzing and mapping the transient-stability
+margins of GFM inverters provides insight into how robust a
+GFM-dominated power system is during transients and distur-
+bances. Similar to classical transient-stability approaches, we
+start from a single inverter connected to an inﬁnite bus setup
+and expand to investigating the stability of a multi-generator
+inverter-driven power grid.
+We ﬁrst consider a generic grid voltage drop to 0.5 pu and
+conceptually explain the differences in the power-angle dynam-
+ics of GFM inverters when employing either a Lim0 (i.e., purely
+resistive) or Lim 90 (i.e., purely inductive) limiter. (Though in-
+ertia response in the primary controller is not considered, the
+following outlined principles remain the same.) Through simu-
+lations, we then assess the GFM transient stability under three
+generic fault types: voltage sag, phase jump, and frequency shift.
+Notice that these fault types, or a combination of those, constitute
+all realistic faults that can occur in a grid (e.g., a line fault is
+a combination of a voltage drop, phase shift, and potentially
+followed by a frequency swing). Following, we validate the
+device-level results through a hardware experiment. Lastly, we
+present simulation results of a multi-inverter 14-bus network
+that is subjected to realistic unbalanced line faults and illustrate
+system-level transient stability and unbalanced voltage support
+characteristics of the interconnected GFM inverters using the
+proposed uniﬁed model.
+A. Lim 0 GFM Inverter
+Fig. 14 shows the p(δ′) curves for an inertia-less GFM in-
+verter with a Lim 0. The dark blue curve represents nominal
+grid-voltage conditions ( |Vs| =1 pu), while the yellow curve
+represents a degraded grid voltage (|Vs| =0 .5 pu). In Fig. 14(b)
+where p⋆ = 1 pu, the GFM inverter operates in the pre-fault
+Authorized licensed use limited to: Universitaetsbibliothek der RWTH Aachen. Downloaded on September 28,2026 at 12:55:07 UTC from IEEE Xplore.  Restrictions apply. 
+
+PAGE 10
+BAECKELAND et al.: UNIFIED MODEL OF CURRENT-LIMITING GRID-FORMING INVERTERS FOR LARGE-SIGNAL ANAL YSIS 207
+Fig. 15. p(δ′) curves for a Lim 90 GFM inverter under different grid voltage
+conditions (a), along with the conceptual p(δ′) trajectories for a generic voltage
+drop with (b) p⋆ =1 pu and (c) p⋆ =0 .2 pu.
+stable equilibrium point ‘a’. The voltage drop is initiated, caus-
+ing the inverter output power to drop to point ‘b’. Because
+pb <p ⋆, δ′ starts increasing as per (1), and the operating point
+shifts along the yellow curve. At operating point ‘c’, the fault
+is cleared, and the inverter output power jumps to point ’d’.
+Because δ′ has exceeded the unstable equilibrium point, δ′
+u,
+the inverter becomes transient unstable. The inverter will only
+return to equilibrium if δ′ never surpasses δ′
+u (both during and
+post fault). In Fig. 14(c), with p⋆ = 0.2 pu, the voltage drop
+causes the inverter to suddenly increase its output power and
+jumps from the pre-fault stable equilibrium point ‘a’ to point
+‘b’. Because pb >p ⋆, the GFM inverter frequency and angle
+decelerate as per (1). At point ‘c’, the inverter reaches a new
+stable equilibrium. After the voltage drop clears, the inverter
+jumps to point ‘d’, returning to the prefault equilibrium point
+‘a’, all the while drawing signiﬁcant active power from the grid
+which is not desired during a fragile post-fault recovery process.
+Both cases shown in Fig.14 illustrate that the Lim0 GFM inverter
+has stability drawbacks during large disturbances.
+B. Lim 90 GFM Inverter
+Fig. 15 shows the p(δ′) curves for a GFM inverter with a
+Lim90 for|Vs| =1 pu (dark blue) and|Vs| =0 .5 pu (yellow). In
+Fig. 15(b), in normal operation withp⋆ = 1 pu, the GFM inverter
+operates at the stable equilibrium point ‘a’. Once a voltage drop
+initiates, the inverter output power jumps to point ‘b’. Because
+pb <p ⋆, the inverter reference angle starts increasing, and the
+operating point shifts along the yellow curve. When the voltage
+drop clears at point ‘c’, the inverter jumps to point ‘d’ where
+the current is still being curtailed; however, δ′ did not exceed
+the unstable equilibrium point (note δ′
+u is signiﬁcantly greater
+than for the Lim0), allowing the inverter to return to the pre-fault
+stable equilibrium point, ‘a’. If the voltage drop prolongs pastδ′
+u,
+the inverter will eventually become unstable. In Fig. 15(c), with
+p⋆ = 0.2 pu, the inverter reaches a stable equilibrium at point ‘c’.
+Once the fault clears, the inverter jumps to point ‘d’, after which
+it can return to the pre-fault operating point without momentary
+TABLE I
+SIMULA TIONPARAMETERS
+negative power injection. Note that these insights obtained apply
+to any inner-control-loop-based limiter (i.e., either using current-
+control or voltage-control based) as long as the limiter angles
+are identical, based on the proposed uniﬁed model framework.
+In the following subsection, we illustrate this through full-order
+simulations.
+C. Single-Inverter Fault Simulations
+We validate the theoretical p(δ′) curves and ﬁndings using
+full-order EMT simulations of a single-machine-inﬁnite-bus
+(SMIB) scenario. We utilize the GFM inverter control system
+shown in Fig. 2, with parameters listed in Table I. We simulate
+three generic grid disturbance scenarios—a 0.5-pu voltage drop
+for1s , a 1-Hz frequency jump for0.2s , and a30◦phase jump—
+while considering Lim0 and Lim75 SatLim and VI-Lim current
+limiters. The p(δ′) trajectories from simulations are depicted
+as solid lines in Fig. 16, alongside theoretical curves from the
+uniﬁed analytical current-limiter model shown as dashed lines.
+Notice that the droop primary controller has ﬁltering on the
+measured power, which induces a small inertia-like dynamic
+response during transients.
+Fig. 16 shows that the simulation results align with the ana-
+lytical curves. For increasing δ′, the output power of the Lim 0
+GFM inverter (left graphs in Fig. 16) degrades much faster
+compared to the Lim 75 GFM inverter (right graphs in Fig. 16)
+upon current limiting. This translates to signiﬁcantly smaller
+stability margins for the Lim 0 compared to the Lim 75 GFM
+inverter. Consequently, all three fault scenarios trigger instability
+for the Lim 0 GFM inverter, whereas the Lim 75 GFM inverter
+can ride through all the faults and recover to pre-fault operation.
+Fig. 17 further illustrates these phenomena through time-domain
+plots of the phase portrait and the inverter output power. The
+solid lines represent Lim75, and the dashed lines represent Lim0.
+The output-power plots indicate that the Lim0 causes signiﬁcant
+active power drops during limiting, prompting the droop laws to
+increase the GFM inverter frequency, which results in a signif-
+icant increase in δ′. During and after fault clearance, the Lim 0
+phase plots diverges due to a loss of synchronism, preventing
+direct restoration to the original steady state. Conversely, the
+Lim75 continues to inject active power during and after the fault,
+keeping the frequency and angle deviations relatively small,
+which enables the GFM inverter to return to the pre-fault steady
+state.
+Authorized licensed use limited to: Universitaetsbibliothek der RWTH Aachen. Downloaded on September 28,2026 at 12:55:07 UTC from IEEE Xplore.  Restrictions apply. 
+
+PAGE 11
+208 IEEE TRANSACTIONS ON POWER SYSTEMS, VOL. 41, NO. 1, JANUARY 2026
+Fig. 16. Analytical and simulated p(δ′) curves for (a) a 0.5-pu voltage drop
+for1s , (b) 1-Hz frequency jump for 0.2s ,a n d( c )a30◦phase jump, for SatLim
+and VI-Lim GFM inverters with Lim 0 (left) and Lim75 (right).
+Notice in Fig. 16 the offset between the SatLim and VI-Lim
+output powers. This is attributed to the VI-Lim not being able
+to fully use the overcurrent capabilities of the inverter because
+limiting initiates as soon as |Ii
+dq| >i th. As illustrated in Fig. 6,
+SatLim and VI-Lim with the same impedance angle would have
+identical δ′
+u, but due to the under-use of overcurrent capabil-
+ity, the VI-Lim angle diverges more, yielding shorter critical
+clearing time (not shown), i.e., less stability margin. Overall,
+the simulation results align with the analyses presented, which
+conﬁrms the validity of the uniﬁed model and demonstrates
+exemplary use of them.
+D. Single-Inverter Hardware Experiment
+To validate the uniﬁed model proposed in this paper, we use
+a hardware test bed forming a SMIB setup running two case
+studies. The test cases impose two typical grid contingencies:
+(i) a grid-side voltage frequency jump from 60 Hz to 59.4 Hz for
+0.15 s, and (ii) a grid-side voltage magnitude drop from 1.0 pu to
+0.5 pu for 0.5 s. In each case study, both the VI-Lim and SatLim
+conﬁgurations are implemented and tested with different virtual
+impedance angles ( 0◦and 50◦). Figs. 18 and 19 illustrate the
+hardware experimental setup, and Table II shows the inverter
+hardware and control parameters.
+Fig. 17. Simulated Δf -Δδ′ (Δf = fGFM −fg and Δδ′ = δ′ −δ′
+0)a n d
+P(t) curves for (a) a 0.5-pu voltage drop, (b) 1-Hz frequency jump, and (c)
+a30◦phase jump, for Lim 0 and Lim75 SatLim GFM inverters.
+Fig. 18. SMIB hardware test bed for experimental validation.
+Fig. 20 presents the experimental results with measured GFM
+inverter output line-to-line voltages and line currents, calcu-
+lated powers (active, reactive, and apparent output powers,
+respectively, denoted by S ∈R≥0, P ∈R, and Q ∈R), and
+the anti-windup/virtual impedance voltage magnitude fed to
+the voltage controller via the digital-to-analog converter of the
+Authorized licensed use limited to: Universitaetsbibliothek der RWTH Aachen. Downloaded on September 28,2026 at 12:55:07 UTC from IEEE Xplore.  Restrictions apply. 
+
+PAGE 12
+BAECKELAND et al.: UNIFIED MODEL OF CURRENT-LIMITING GRID-FORMING INVERTERS FOR LARGE-SIGNAL ANAL YSIS 209
+Fig. 19. Schematic of the hardware test bed with grid disturbance implemented
+through a programmable inverter and measurements illustrated.
+TABLE II
+HARDW AREEXPERIMENT PARAMETERS
+digital signal processor, (i.e., Vvi). The results clearly show that
+the system dynamics of VI-Lim and SatLim GFM inverters
+during and after the disturbances are comparable when they use
+the sameϕvi, thereby validating the proposed uniﬁed model and
+demonstrating the large-signal equivalence of the VI-Lim and
+SatLim approaches with the same limiter angle. Furthermore, as
+s h o w ni nC a s e1( s e eF i g .20(a)–(d)), for ϕvi =0 ◦, the system
+loses synchronism with the grid under the frequency drop, which
+is indicated by the negative power injections from the GFM in-
+verters. In contrast, employing the more inductive limiter angle,
+ϕvi =5 0◦, increases the large-signal stability margins (larger
+unstable equilibrium point) which enables the system to swiftly
+converge back to the nominal operating point without a loss of
+synchronism. Similarly, in Case 2 (see Fig. 20(e)–(h)), aside
+from the similar large-signal behavior between the VI-Lim and
+SatLim GFM inverters, more inductive limiters provide more
+reactive power support during the voltage disturbance. These
+ﬁndings further corroborate the theoretical analysis outlined in
+this work on the proposed uniﬁed model.
+E. Large-Signal Analysis of Power Systems Using
+Multi-Inverter Network Simulations
+Leading up to this point, we analyzed large-signal stability for
+one GFM inverter connected to an inﬁnite bus. In this section,
+we illustrate, through simulations, that general trends derived in
+the theoretical analysis of this paper carry over to network-wide
+fault conditions. We also illustrate and discuss the impact of the
+GFM inverter current-limiter settings on other network-wide
+attributes, including system stability and system-wide voltage
+support. The goal of this network-wide simulation effort is
+threefold. First, we aim to showcase the validity of the uniﬁed
+current limiter model framework in a realistic network and grid
+disturbances. To that end, we consider the IEEE 14-bus network
+shown in Fig. 21, where ﬁve GFM inverters are interconnected,
+featuring 12 constant-impedance loads. The load values and line
+parameters are one-to-one translated from the standard IEEE
+14-bus benchmark model. For a realistic mix of GFM inverter
+control topologies, we implement the dispatchable virtual oscil-
+lator primary controller (dVOC) in the GFM inverters at bus
+1 and 4, the GFM inverters at bus 2 and 5 have the droop
+primary controllers, and the GFM inverter at bus 3 has the virtual
+synchronous machine (VSM) primary controller[34]. The active
+power setpoints for each of the GFM inverters are: p⋆
+1 =0 .5 pu,
+p⋆
+2 =0 .2 pu,p⋆
+3 =0 .9 pu,p⋆
+4 =0 .4 pu, and p⋆
+5 =0 .9 pu. All in-
+verters employ either the SatLim or VI-Lim current limiter, with
+a tunable limiter angle,ϕlim. In the middle of line 3, as illustrated
+in Fig. 21, we apply an unbalanced line-to-line fault at t=0s
+that prolongs for 100 ms before being cleared, and we assess
+the system stability of the network during and after the fault.
+We deliberately apply an unbalanced fault as it presents a more
+realistic grid disturbance and allows for illustrating that the uni-
+ﬁed current-limiting framework remains valid even during un-
+balanced operating conditions. To be able to handle unbalanced
+conditions, we translate the GFM controls into the stationary
+reference frame, according to [9]. Second, we illustrate that the
+large-signal fault behavior of the GFM inverters is primarily dic-
+tated by the current-limiter angle,ϕlim; therefore, in accordance
+with the proposed uniﬁed current-limiting modeling framework,
+SatLim and VI-Lim react similarly, if they employ the same
+limiter angle,ϕlim, even during network-wide disturbances. This
+clearly demonstrates its use for system-level transient-stability
+studies. Lastly, we illustrate that a more inductive (resistive)
+current-limiter angle increases (decreases) the stability mar-
+gins during grid disturbances, independent of limiter types. We
+further illustrate that the current limiter—by manipulating the
+inverter output impedance during disturbances—has a direct
+effect on network-wide voltage support and system stability.
+1) System-Wide Transient Stability: We consider two sim-
+ulation cases: one, where all ﬁve GFM inverters employ a
+signiﬁcantly resistive limiter, Lim10, and two, where all inverters
+leverage a primarily inductive limiter, Lim 85. Both cases are
+performed with the SatLim and VI-Lim (i.e., four simulations in
+total), allowing us to compare their respective dynamic response
+to the network fault. Inverter parameters are in Table III.
+Fig. 22 portrays the EMT simulation results in the form of the
+GFM-inverter positive-sequence output voltage, E+
+x ,i n v e r t e r
+active output power, Px, inverter reactive output power, Qx,
+internal reference frequency, ω−ω0, and relative angle, θ−θ1,
+of each of the ﬁve inverters, with θ1 denoting the internal
+reference angle of GFM 1.F i g .22(a) and (b) show the results
+when, respectively, a Lim10 and Lim85 are leveraged in the GFM
+inverter controls. From Fig.22, we observe: i) in accordance with
+the ideas postulated in the uniﬁed framework, the large-signal
+behavior of the GFM inverters when employing the SatLim or
+VI-Lim are comparable when their current-limiter angles are
+the same; ii) employing the predominantly resistive Lim 10 (see
+Fig. 22(a)) causes the GFM inverters to lose synchronization
+with each other during and after the fault in the given fault
+Authorized licensed use limited to: Universitaetsbibliothek der RWTH Aachen. Downloaded on September 28,2026 at 12:55:07 UTC from IEEE Xplore.  Restrictions apply. 
+
+PAGE 13
+210 IEEE TRANSACTIONS ON POWER SYSTEMS, VOL. 41, NO. 1, JANUARY 2026
+Fig. 20. Experimental results from the SMIB hardware tests under a frequency jump disturbance (Case 1) and grid-side voltage drop (Case 2).
+= =
+=
+=
+=
+Fig. 21. IEEE 14-bus network with ﬁve GFM inverters interconnected while
+applying unbalanced line-to-line faults on line 3.
+TABLE III
+GFM INVERTER PARAMETERS FOR IEEE 14-BUS SYSTEMS
+condition. The bus voltages in the network collapse as a result.
+In contrast, employing the more inductive Lim85 (see Fig. 22(b))
+enables the various primary controllers of the GFM invert-
+ers to converge back to synchronization. Fig. 23 portrays the
+three-phase voltages and currents at the terminals of the GFM
+Authorized licensed use limited to: Universitaetsbibliothek der RWTH Aachen. Downloaded on September 28,2026 at 12:55:07 UTC from IEEE Xplore.  Restrictions apply. 
+
+PAGE 14
+BAECKELAND et al.: UNIFIED MODEL OF CURRENT-LIMITING GRID-FORMING INVERTERS FOR LARGE-SIGNAL ANAL YSIS 211
+Fig. 22. IEEE 14-bus simulation results for an unbalanced fault at line 3: (a) results when employing a Lim 10, and (b) results when employing a Lim 85,
+implemented via the SatLim (left) and the VI-Lim (right).
+Fig. 23. V oltages and currents at bus 3 of the IEEE 14-bus simulation: (a)
+when employing the Lim 10 and (b) Lim85 in the GFM inverters.
+inverter connected to bus 3 for the SatLim case with (a) Lim 10
+and (b) Lim 85, and illustrates the unbalanced nature of the
+fault. Notice that the line currents are neatly limited to imax by
+the current limiter. Further, the more inductive limiter, Lim 85,
+yields a fast and stable fault recovery, which agrees with the
+inverter-level analysis and validates its use for system-level
+studies.
+2) Network-Wide V oltage Support: As explained in the intro-
+duction, the presence of a current limiter in a GFM inverter poses
+various challenges affecting both inverter-level and system-level
+attributes. Apart from the effects on large-signal stability, GFM
+inverter current limiters and their design have a direct im-
+pact on, e.g., network-wide voltage support and compatibility
+with traditional power system protection systems. The uniﬁed
+current-limiter framework can serve as a tool to analyze these
+network-wide ripple effects. In this section, we illustrate this
+for grid voltage support. Once more, consider the IEEE 14-bus
+network in Fig. 21 with an unbalanced fault on line 3. To
+better illustrate the effect of the current-limiter angle on the
+network-wide voltage support, we decrease the grid strength by
+uniformly increasing all the line impedances by a factor of two,
+since the voltage degradation is more pronounced in weaker
+grids. We simulate the fault four times while changing the
+equivalent current-limiter angle from ϕlim =0 ◦to ϕlim =6 0◦.
+Fig. 24 portrays the positive and negative sequence voltages at
+each of the inverter buses during the unbalanced fault (data was
+extracted after the initial transients have died out). The bar charts
+convey that, because of the inductive nature of the network,
+higher current-limiter angles result in better voltage support, i.e.,
+higher (lower) positive (negative) sequence bus voltages. This is
+a direct consequence of the inﬂuence that the current limiter has
+on the output impedance of the inverter during the disturbance.
+Note that the objective of this simulation is not to optimize the
+current limiter design for network-wide voltage support, but to
+illustrate how the presented uniﬁed current-limiter framework
+can serve as a design and analysis tool.Authorized licensed use limited to: Universitaetsbibliothek der RWTH Aachen. Downloaded on September 28,2026 at 12:55:07 UTC from IEEE Xplore.  Restrictions apply. 
+
+PAGE 15
+212 IEEE TRANSACTIONS ON POWER SYSTEMS, VOL. 41, NO. 1, JANUARY 2026
+Fig. 24. Positive and negative sequence bus voltages for various current-
+limiter settings during the unbalanced fault in line 3.
+These network-wide simulations of unbalanced grid distur-
+bances demonstrate the use of the uniﬁed current-limiter mod-
+eling framework in system-level analysis. This framework can
+effectively enhance the understanding of critical system behav-
+iors during transients, such as network stability, voltage support,
+and system protection.
+VI. C ONCLUSION
+The current limiter in a GFM inverter is an essential part of the
+control system to protect the inverter against overcurrents caused
+by system disturbances. As a side effect of curtailing the output
+current during contingencies, the current limiter dynamically
+alters the output impedance of the GFM inverter. This has signif-
+icant implications for network-wide attributes and systems, such
+as network-wide stability, inverter synchronization with the grid,
+power system protection, and dynamic network voltage support.
+To deepen the understanding of GFM inverter current limiting
+and its effects on large-signal stability, this paper presented
+a uniﬁed current-limiter model. The model incorporates two
+common current-limiting methods into one continuous alge-
+braic model, which enables various theoretical analyses, such
+as large- and small-signal stability analysis and model order
+reduction. From the uniﬁed model and building on classical
+power system stability concepts, we derived an analytical ex-
+pression for the power-angle characteristics of GFM invert-
+ers under various current-limiting conditions. This theoretical
+framework elucidates the mechanisms of large-signal stability
+in GFM inverters and the role of current limiting in exacerbating
+instability in a refreshing and succinct manner. We validated the
+proposed uniﬁed model and analytical model-based power-angle
+characteristics using numerical computation, full-order EMT
+simulations for various fault scenarios, and hardware exper-
+iments. The system-level stability and network-wide voltage
+support studies illustrated how the proposed uniﬁed current-
+limiter model framework can serve as a tool for system-level
+analyses. The multifaceted modeling and analysis conﬁrm the
+validity of the uniﬁed models of current-limiting GFM inverters
+for device-level and system-level large-signal studies. Notably,
+using the uniﬁed model, this work revealed the equivalence of
+inner-control-based current-limiting methods. Regardless of the
+limiter type, e.g., SatLim or VI-Lim, their large-signal behavior
+can be characterized by their impedance angle. Future work
+includes extending the uniﬁed current-limiter model to more
+current-limiter types and exploring the applications of the model
+for large power system studies in greater detail.
+VI. A CKNOWLEDGMENT
+The views expressed in the article do not necessarily represent
+the views of the DOE or the U.S. Government. The U.S. Gov-
+ernment retains and the publisher, by accepting the article for
+publication, acknowledges that the U.S. Government retains a
+nonexclusive, paid-up, irrevocable, worldwide license to publish
+or reproduce the published form of this work, or allow others to
+do so, for U.S. Government purposes.
+REFERENCES
+[1] B. Kroposki et al., “UNIFI speciﬁcations for grid-forming inverter-based
+resources (V . 2),”Nat. Renewable Energy Lab., Golden, CO, USA, Tech.
+Rep. NREL/TP-5D00-89269, 2024. [Online]. Available: https://www.nrel.
+gov/docs/fy24osti/89269.pdf
+[2] “Application of advanced grid-scale inverters in the national electricity
+market,” Australian Energy Market Operator , Melbourne, Victoria,
+Australia, Tech. Rep., 2021. [Online]. Available: https://aemo.com.au/-
+/media/ﬁles/initiatives/engineering-framework/2021/application-of-
+advanced-grid-scaleinverters-in-the-nem.pdf
+[3] Renew Economy, “South Australia may be ﬁrst big grid in
+world to go without synchronous generation,” May 2022. [On-
+line]. Available: https://reneweconomy.com.au/south-Australia-may-be-
+ﬁrst-big-grid-in-world-to-go-without-synchronous-generation/
+[4] I. Theologitis, “High penetration of power electronic interfaced power
+sources and the potential contribution of grid forming converters, ENTSO-
+E Tech. Group High Penetration Power Electron. Interfaced Power
+Sources, Brussels, Belgium, 2020. [Online]. Available: https://euagenda.
+eu/upload/publications/untitled-292051-ea.pdf
+[5] European Commission, “Migrate consortium,” 2020. [Online]. Available:
+https://www.h2020-migrate.eu/
+[6] “Draft grid code - grid forming converter speciﬁcation,” National Grid
+ESO, Faraday House, Warwick, United Kingdom, Tech. Rep., Tech. Rep.,
+2020. [Online]. Available: https://www.neso.energy/document/159296/
+download
+[7] Y . Lin et al., “Research roadmap on grid-forming inverters,” Nat. Renew-
+able Energy Lab., Golden, CO, USA, Tech. Rep. NREL/TP-5D00-73476,
+2020.
+[8] B. Kroposki, “Summarizing the technical challenges of high levels of
+inverter-based resources in power grids,” Nat. Renewable Energy Lab.,
+Golden, CO, USA, Tech. Rep. NREL/PR-5D00-73869, 2019.
+[9] N. Baeckeland, D. V enkatramanan, M. Kleemann, and S. Dhople,
+“Stationary-frame grid-forming inverter control architectures for unbal-
+anced fault-current limiting,” IEEE Trans. Energy Convers., vol. 37, no. 4,
+pp. 2813–2825, Dec. 2022.
+[10] M. Kleemann and N. Baeckeland, “Converter meets distance protection:
+A good match,” in Proc. Eur . Conf. Power Electron. Appl., 2021, pp. 1–10.
+[11] N. Baeckeland and M. Kleemann, “Novel fault distance estimation method
+for lines connected to converter-based generation,” in Proc. IEEE PES
+Innov. Smart Grid Technol. Europe, 2021, pp. 1–6.
+[12] S. Cherevatskiy et al., “Grid forming energy storage system addresses
+challenges of grids with high penetration of renewables (a case study),” in
+Proc. CIGRÉ Session, vol. 2, 2020, pp. 1–13.
+[13] N. Baeckeland, D. Chatterjee, M. Lu, B. Johnson, and G. -S. Seo, “Overcur-
+rent limiting in grid-forming inverters: A comprehensive review and dis-
+cussion,” IEEE Trans. Power Electron., vol. 39, no. 11, pp. 14493–14517,
+Nov. 2024.
+[14] L. Huang, L. Zhang, H. Xin, Z. Wang, and D. Gan, “Current limiting
+leads to virtual power angle synchronous instability of droop-controlled
+converters,” in Proc. IEEE Power Energy Soc. Gen. Meeting , 2016,
+pp. 1–5.
+[15] D. Orihara et al., “Theoretical comparison of current limiting algorithms in
+grid-forming inverter in terms of transient stability,” IEEE Open J. Power
+Electron., vol. 6, pp. 109–119, 2025.
+[16] T. Qoria, F. Gruson, F. Colas, X. Kestelyn, and X. Guillaud, “Current
+limiting algorithms and transient stability analysis of grid-forming VSCs,”
+Electric Power Syst. Res., vol. 189, 2020, Art. no. 106726.
+[17] K. G. Saffar, S. Driss, and F. B. Ajaei, “Impacts of current limiting on
+the transient stability of the virtual synchronous generator,” IEEE Trans.
+Power Electron., vol. 38, no. 2, pp. 1509–1521, Feb. 2023.
+[18] E. Rokrok, T. Qoria, A. Bruyere, B. Francois, and X. Guillaud, “Transient
+stability assessment and enhancement of grid-forming converters embed-
+ding current reference saturation as current limiting strategy,”IEEE Trans.
+Power Syst., vol. 37, no. 2, pp. 1519–1531, Mar. 2022.Authorized licensed use limited to: Universitaetsbibliothek der RWTH Aachen. Downloaded on September 28,2026 at 12:55:07 UTC from IEEE Xplore.  Restrictions apply. 
+
+PAGE 16
+BAECKELAND et al.: UNIFIED MODEL OF CURRENT-LIMITING GRID-FORMING INVERTERS FOR LARGE-SIGNAL ANAL YSIS 213
+[19] B. Fan and X. Wang, “Equivalent circuit model of grid-forming converters
+with circular current limiter for transient stability analysis,” IEEE Trans.
+Power Syst., vol. 37, no. 4, pp. 3141–3144, Jul. 2022.
+[20] Y . Zhang, C. Zhang, R. Y ang, M. Molinas, and X. Cai, “Current-
+constrained power-angle characterization method for transient stability
+analysis of grid-forming voltage source converters,” IEEE Trans. Energy
+Convers., vol. 38, no. 2, pp. 1338–1349, Jun. 2023.
+[21] C. Collados-Rodriguez, D. W. Spier, M. Cheah-Mane, E. Prieto-Araujo,
+and O. Gomis-Bellmunt, “Preventing loss of synchronism of droop-based
+grid-forming converters during frequency excursions,”Int. J. Elect. Power
+Energy Syst., vol. 148, 2023, Art. no. 108989.
+[22] M. G. Taul, X. Wang, P . Davari, and F. Blaabjerg, “Current limiting
+control with enhanced dynamics of grid-forming converters during fault
+conditions,” IEEE Trans. Emerg. Sel. Topics Power Electron., vol. 8, no. 2,
+pp. 1062–1073, Jun. 2020.
+[23] L. Huang, H. Xin, Z. Wang, L. Zhang, K. Wu, and J. Hu, “Transient stability
+analysis and control design of droop-controlled voltage source converters
+considering current limitation,” IEEE Trans. Smart Grid , vol. 10, no. 1,
+pp. 578–591, Jan. 2019.
+[24] T. Qoria, X. Wang, and R. Kadri, “Grid-forming control VSC-based
+including current limitation and re-synchronization functions to deal with
+symmetrical and asymmetrical faults,” Electric Power Syst. Res., vol. 223,
+2023, Art. no. 109647.
+[25] P . Wang, S. Li, W. Wang, and D. Xu, “A transient stability-enhanced
+method for grid-forming VSCs considering the current limiting algorithm,”
+IEEE Trans. Ind. Appl., vol. 61, no. 1, pp. 383–394, Jan./Feb. 2025.
+[26] S. Jiang, Y . Zhu, T. Xu, and G. Konstantinou, “Current-synchronization
+control of grid-forming converters for fault current limiting and enhanced
+synchronization stability,” IEEE Trans. Power Electron. , vol. 39, no. 5,
+pp. 5271–5285, May 2024.
+[27] N. Baeckeland, B. Y ang, and G. -S. Seo, “Transient stability-enhancing
+method for grid-forming inverters under current limiting,” IEEE Trans.
+Power Electron., vol. 40, no. 5, pp. 6714–6725, May 2025.
+[28] L. Zhan, B. Hu, L. Chen, Y . Liao, M. Li, and H. Nian, “Transient stability
+enhancement of current limited-GFM inverters based on varying virtual
+impedance,” IEEE Trans. Ind. Electron., vol. 71, no. 12, pp. 15946–15958,
+Dec. 2024.
+[29] O. Ajala, M. Lu, B. Johnson, S. V . Dhople, and A. Domínguez-García,
+“Model reduction for inverters with current limiting and dispatchable
+virtual oscillator control,” IEEE Trans. Energy Convers. , vol. 37, no. 4,
+pp. 2250–2259, Dec. 2022.
+[30] N. Baeckeland and G. -S Seo, “Novel hybrid current limiter for grid-
+forming inverter control during unbalanced faults,” in Proc. Int. Conf.
+Power Electron. ECCE Asia, 2023, pp. 1517–1522.
+[31] P . Kundur, Power System Stability and Control. New Y ork, NY , USA:
+McGraw-Hill Education, 1994.
+[32] N. Baeckeland, G. -S. Seo, A. Dominguez-Garcia, D. Ramasubramanian,
+D. Gross, and S. Dhople, “Equivalent-circuit models for grid-forming
+inverters under unbalanced steady-state operating conditions,” in Proc.
+Hawaii Int. Conf. Syst. Sci. , 2025, pp. 1–10.
+[33] K. Biswas, S. Kumar, S. Banerjee, and A. K. Pandey, “Smooth maximum
+unit: Smooth activation function for deep networks using smoothing
+maximum technique,” in Proc. IEEE/CVF Conf. Comput. Vis. Pattern
+Recognit., 2022, pp. 794–803.
+[34] O. Ajala, N. Baeckeland, S. Dhople, and A. Domínguez-García, “Un-
+covering the Kuramoto model from full-order models of grid-forming
+inverter-based power networks,” inProc. IEEE 60th Conf. Decis. Control,
+2021, pp. 4944–4949.
+Nathan Baeckeland (Member, IEEE) received the
+B.S., M.S., and Ph.D. degrees in electrical engineer-
+ing from KU Leuven, Leuven, Belgium, in 2017,
+2018, and 2022, respectively. From 2020 to 2021,
+he was a Doctoral Fellow with the University of
+Minnesota, Minneapolis, MN, USA, supported by the
+Belgian American Education Foundation (BAEF).
+He joined National Renewable Energy Laboratory,
+Golden, CO, USA, as a Director’s Fellow focusing
+on advancing grid-forming inverter control design
+for system-wide grid support and regulation during
+non-ideal network conditions. He is currently a Research Engineer with NREL,
+where he continues his work on grid-forming inverter controls, and all aspects
+related to grid integration of advanced energy technologies.
+Bowen Yang (Member, IEEE) received the B.Sc. de-
+gree in electrical engineering from the Huazhong Uni-
+versity of Science and Technology, Wuhan, China, in
+2018, and the Ph.D. degree in electrical and computer
+engineering from the University of Georgia, Athens,
+GA, USA, in 2023. During his doctoral studies, he
+contributed as a Research Assistant, focusing on ad-
+vanced control and condition monitoring of motor
+drives and power electronics systems. He is currently
+a Postdoctoral Researcher with National Renewable
+Energy Laboratory, Golden, CO, USA, where he spe-
+cializes in cutting-edge research on power electronics and grid modernization.
+His research interests include advanced control strategies for grid-forming
+inverters and multilevel modular converters, power system black-start with
+inverter-based-resources, and machine-learning-assisted condition monitoring.
+Gab-Su Seo (Senior Member, IEEE) received the
+Ph.D. degree in electrical engineering from Seoul Na-
+tional University, Seoul, South Korea, in 2015. From
+2016 to 2017, he was a Research Associate with Col-
+orado Power Electronics Center, University of Col-
+orado, Boulder, CO, USA. Since 2018, he has been
+with Power Systems Engineering Center, National
+Renewable Energy Laboratory (NREL), Golden, CO,
+USA, where he is currently a Principal Engineer and
+leads research projects focused on power electronics
+and power systems applications for electric grids with
+high integrations of inverter-based resources. His research interests include
+power electronics for sustainable energy systems and microgrids and power
+systems engineering for grid modernization, grid-forming inverter control and
+inverter-driven power system black start for low- or zero-inertia grids to improve
+grid resilience and stability. He has coauthored more than 100 journal and
+peer-reviewed conference papers. He won one IEEE Transactions Best Paper
+Award. He has been listed in the World’s Top 2% Scientists by Stanford
+University since 2022. He coauthored the Research Roadmap on Grid-Forming
+Inverters (NREL, 2020). Dr. Seo is an IEEE Roadmap Working Group Chair of
+the International Technology Roadmap of Power Electronics for Distributed
+Energy Resources (ITRD)—WG3 Integration and Control of DERs. He is
+an Associate Editor for the IEEE T RANSACTIONS ON POWER ELECTRONICS,
+IEEE JOURNAL OF EMERGING AND SELECTED TOPICS IN POWER ELECTRONICS,
+IEEE TRANSACTIONS ON INDUSTRY APPLICA TIONS, and IEEE O PEN JOURNAL
+OF POWER ELECTRONICS. He is currently the Vice Chair of the IEEE Power
+Electronics Society Technical Committee on Sustainable Energy Systems (IEEE
+PELS TC5), IEEE Industrial Electronics Society TC on Smart Grid (Microgrids
+and DERs), and IEEE PELS Denver Section.
+Authorized licensed use limited to: Universitaetsbibliothek der RWTH Aachen. Downloaded on September 28,2026 at 12:55:07 UTC from IEEE Xplore.  Restrictions apply. 

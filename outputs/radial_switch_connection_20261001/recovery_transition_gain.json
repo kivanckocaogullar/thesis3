@@ -1,0 +1,10 @@
+{
+  "nu_switch_bounds": [
+    0.9992,
+    1.0008
+  ],
+  "gain_active_to_inactive_quadratic": 4,
+  "gain_inactive_to_active_quadratic": 2,
+  "scope": "energy recovery sublevel H<=.0063 only",
+  "small_integral_corrections_verified": true
+}

@@ -1,0 +1,30 @@
+Original metric equilibrium screening (not nonlinear domains):
+   20.1680   24.4218
+   45.4596   47.5215
+
+Active stable feasible interval: (29.400102759326, 47.521506348664) deg
+Box=[0.020000000000,24.401813345295] deg; family=[0.040000000000,24.381813345295] deg; search lower=0.000000000000 deg
+minM=0.0516552793828; worstQ=-0.166427815167; numerical rate bound=0.0879651389904; I margin=0.000967803166945; voltage margin=0.0552534637565
+Invariant ellipsoid rho=2.59354118354e-08; coordinate extents=(0.0141421356237 deg, 0.000684478614084 nu); fixed-P Jacobian error=3.24e-10
+Branch 1 common M (trace=1):
+    0.8849    0.2299
+    0.2299    0.1151
+
+Box=[29.437028775316,47.501506348664] deg; family=[29.457028775316,47.481506348664] deg; search lower=29.417028775316 deg
+minM=0.105647858147; worstQ=-1.75458423097e-05; numerical rate bound=2.06327063139e-05; I margin=-4.4408920985e-16; voltage margin=0.000143574036696
+Invariant ellipsoid rho=3.27808444651e-08; coordinate extents=(0.0141421356237 deg, 0.000534802516741 nu); fixed-P Jacobian error=3.06e-10
+Branch 2 common M (trace=1):
+    0.8244    0.2242
+    0.2242    0.1756
+
+      Branch      OriginalLower_deg    OriginalUpper_deg     NewFamily_deg        GammaBox_deg         NuBox        minEigM     WorstQEigenvalue    Lambda    CurrentMargin    VoltageMargin    NumericalRateBound
+    __________    _________________    _________________    ________________    ________________    ____________    ________    ________________    ______    _____________    _____________    __________________
+
+    "Inactive"         20.168               24.422            0.04    24.382      0.02    24.402    0.99    1.01    0.051655         -0.16643       1e-05        0.0009678        0.055253            0.087965    
+    "Active"            45.46               47.522          29.457    47.482    29.437    47.502    0.99    1.01     0.10565      -1.7546e-05       1e-05      -4.4409e-16      0.00014357          2.0633e-05    
+
+Degree 0 succeeded: Mdot=0 exactly; quadratic optimization unnecessary for this enlargement.
+Numerical common-Jacobian vertex test; electrical extrema use dense samples and refined extrema, not directed rounding.
+Therefore numerical nonlinear-neighbourhood evidence, NOT a mathematically uniform certificate.
+Separate common M per smooth branch; no switched-system certificate or bridging.
+Invariant ellipsoid construction is conditional on the numerical domain inequalities holding everywhere.

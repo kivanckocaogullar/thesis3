@@ -1,0 +1,30 @@
+Current instantaneous gamma scan: gamma_scan_min=-180 deg; gamma_scan_max=180 deg.
+Original steps: coarse=0.25, fine=0.1 deg. Diagnostic step=0.05 deg with root refinement.
+No wider range is requested: the existing range is already +/-180 deg.
+Neighbor comparison: large cliff threshold = 10 deg.
+Fine grid: 64 2-to-1 edges; 64 large cliffs; 0 large cliffs away from topology change.
+Coarse grid: 21 2-to-1 edges; 21 large cliffs; 0 large cliffs away from topology change.
+Example 1 before: H=2.95 D_eff=20 count=2 R1=[16.5315227, 31.8191015] R2=[32.4974128, 81.2301202] gap=0.678311288 deg.
+Example 1 at (numeric bracket): H=2.950260481 D_eff=20 count=2 R1=[16.5329455, 32.1573794] R2=[32.1574936, 81.2292989] gap=0.000114246445 deg.
+Example 1 after: H=2.950760481 D_eff=20 count=1 R1=[16.5356767, 81.2277224] R2=[NaN, NaN] gap=NaN deg.
+Example 2 before: H=3.75 D_eff=24.1818263 count=2 R1=[17.4253892, 33.0313263] R2=[33.8755766, 80.2212111] gap=0.844250325 deg.
+Example 2 at (numeric bracket): H=3.75 D_eff=24.1793263 count=1 R1=[17.4271264, 80.2204124] R2=[NaN, NaN] gap=NaN deg.
+Example 2 after: H=3.75 D_eff=24.1768263 count=1 R1=[17.428864, 80.2196135] R2=[NaN, NaN] gap=NaN deg.
+Example 3 before: H=4.5 D_eff=28.00559498 count=2 R1=[18.1103072, 33.9743255] R2=[34.7667089, 79.4181843] gap=0.792383436 deg.
+Example 3 at (numeric bracket): H=4.5 D_eff=28.00309498 count=1 R1=[18.1118769, 79.417415] R2=[NaN, NaN] gap=NaN deg.
+Example 3 after: H=4.5 D_eff=28.00059498 count=1 R1=[18.1134468, 79.4166457] R2=[NaN, NaN] gap=NaN deg.
+
+1) Region-1 upper-boundary cliff coincides with merging of the two certified intervals.
+2) Scan-limit-near flags=0; definitively truncated boundaries=0.
+3) No scan-truncated surfaces / H-D_eff areas identified.
+Internal crossing checks passed: 11956 / 11956 finite re-found boundaries.
+Maximum change old vs re-found finite boundaries: 1.529e-09 deg.
+4) Selected tuning H=3.4, D_eff=25:
+Region 1: gamma0=[15.322599180517, 21.091668254769] deg; instantaneous=[-17.079031446794, 89.750003002677] deg.
+Lower: True internal boundary; upper: True internal boundary; scan-limited flags=[0 0].
+Region 2: gamma0=[48.626361830614, 81.415962806193] deg; instantaneous=[-72.329391787231, 84.607391337239] deg.
+Lower: True internal boundary; upper: True internal boundary; scan-limited flags=[0 0].
+No finite endpoint is replaced by a search edge. Unavailable endpoint means: No finite sampled instantaneous boundary identified within +/-180 deg.
+Final 3D figures and original sweep files remain unchanged; diagnostics are separate.
+Selected tuning numberOfCertifiedRegions=2; original tuning H=0.1, D_eff=60.
+H-D_eff sensitivity sweep completed. Numerical results and exports retained; H-D_eff visualization disabled.

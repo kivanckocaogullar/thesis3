@@ -1,0 +1,5 @@
+% Optional isolated execution of the additive sweep preserves existing exports.
+if strcmp(getenv('GFM_HD_SWEEP_ONLY'),'1')
+    hd_parameter_sweep(fileparts(mfilename('fullpath')));
+    return
+end

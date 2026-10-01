@@ -1,0 +1,22 @@
+{
+  "validated": true,
+  "equilibriumGammaBracket_rad": [
+    0.36012957762191905,
+    0.36012957762391906
+  ],
+  "P": [
+    [
+      0.001122016393126452,
+      0.005840231645732315
+    ],
+    [
+      0.005840231645732315,
+      0.878671873769381
+    ]
+  ],
+  "halfwidth_gamma_rad": ".001",
+  "halfwidth_nu": ".00005",
+  "rho": "5.415991846817519e-10",
+  "definition": "(x-xeq)^T P (x-xeq) <= rho; xeq is exact unique implicit equilibrium, nu=1",
+  "proof": "J^T P+P J negative throughout containing box; mean-value integral establishes Vdot<0; ellipsoid contained strictly in box."
+}
