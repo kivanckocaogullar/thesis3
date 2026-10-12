@@ -1,0 +1,41 @@
+{
+  "branch": "inactive",
+  "status": "VERIFIED",
+  "gamma_bounds_deg": [
+    10.0,
+    24.323400000000003
+  ],
+  "nu_bounds": [
+    0.98,
+    1.0199999999999998
+  ],
+  "lambda": 1,
+  "epsilon": "1E-5",
+  "upper": 10,
+  "certified_min_eig_M_lower_bound": 9.999999999999999e-06,
+  "certified_min_eig_10I_minus_M_lower_bound": 0.025609340988099742,
+  "certified_max_eig_contraction_matrix_upper_bound": -9.999999999999999e-06,
+  "epsilon_margin_holds_in_all_boxes": true,
+  "verified_boxes": 2228,
+  "unresolved_boxes": 0,
+  "counterexample_boxes": 0,
+  "tested_boxes": 4455,
+  "max_depth": 14,
+  "budget_exhausted": false,
+  "failures_before_subdivision": {
+    "root bracket": 1,
+    "mode": 93,
+    "Q": 1941,
+    "M lower": 188,
+    "eps margin only": 3,
+    "M upper": 1
+  },
+  "min_certified_current_margin_pu": 0.0010422487422231729,
+  "min_certified_voltage_margin_pu": 0.04867750488381456,
+  "mode_or_voltage_violations": [],
+  "counterexamples": [],
+  "unresolved": [],
+  "precision_decimal_digits": 30,
+  "elapsed_s": 23.68323063850403,
+  "notes": "Directed-rounding interval arithmetic (mpmath iv, 30 digits) on fixed decimal coefficients from metric.json; omega=100*pi exact; Mdot = dM/dz * f/scale with the nonlinear vector field of the branch."
+}

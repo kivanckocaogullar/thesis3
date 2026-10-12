@@ -1,0 +1,44 @@
+Saved baseline clearing time = 0.100000 s. New results: C:\Users\KIVANÇKOCAOĞULLAR\Documents\MATLAB2\GFM Contraction Analsys\fault cases\CCT_analysis_20261011_181410\results_20261011_181504_864
+Uret 0.90: baseline verified; coarse scan (23 times)
+Uret 0.90: NO_TRANSITION_UP_TO_MAX, estimate NaN, bounds [1.000000, NaN]
+Uret 0.80: baseline verified; coarse scan (23 times)
+Uret 0.80: NO_TRANSITION_UP_TO_MAX, estimate NaN, bounds [1.000000, NaN]
+Uret 0.70: baseline verified; coarse scan (23 times)
+Uret 0.70: NUMERICAL_CCT, estimate 0.437328, bounds [0.436937, 0.437719]
+Uret 0.65: baseline verified; coarse scan (23 times)
+Uret 0.65: NUMERICAL_CCT, estimate 0.325609, bounds [0.325219, 0.326000]
+Uret 0.60: baseline verified; coarse scan (23 times)
+Uret 0.60: NUMERICAL_CCT, estimate 0.256078, bounds [0.255687, 0.256469]
+Uret 0.55: baseline verified; coarse scan (23 times)
+Uret 0.55: NUMERICAL_CCT, estimate 0.209039, bounds [0.208656, 0.209422]
+Uret 0.50: baseline verified; coarse scan (23 times)
+Uret 0.50: NUMERICAL_CCT, estimate 0.177953, bounds [0.177563, 0.178344]
+Uret 0.45: baseline verified; coarse scan (23 times)
+Uret 0.45: UNRESOLVED_ENDPOINT_CHECK, estimate NaN, bounds [0.155688, 0.156469]
+Uret 0.40: baseline verified; coarse scan (23 times)
+Uret 0.40: NUMERICAL_CCT, estimate 0.141234, bounds [0.140844, 0.141625]
+Uret 0.35: baseline verified; coarse scan (23 times)
+Uret 0.35: NUMERICAL_CCT, estimate 0.129516, bounds [0.129125, 0.129906]
+Uret 0.30: baseline verified; coarse scan (23 times)
+Uret 0.30: NUMERICAL_CCT, estimate 0.120922, bounds [0.120531, 0.121312]
+Uret 0.25: baseline verified; coarse scan (23 times)
+Uret 0.25: NUMERICAL_CCT, estimate 0.113891, bounds [0.113500, 0.114281]
+    Uret    Sag_Depth_percent     CCT_s               Status               CCT_lower_s    CCT_upper_s
+    ____    _________________    _______    ___________________________    ___________    ___________
+
+     0.9           10                NaN    "NO_TRANSITION_UP_TO_MAX"              1            NaN  
+     0.8           20                NaN    "NO_TRANSITION_UP_TO_MAX"              1            NaN  
+     0.7           30            0.43733    "NUMERICAL_CCT"                  0.43694        0.43772  
+    0.65           35            0.32561    "NUMERICAL_CCT"                  0.32522          0.326  
+     0.6           40            0.25608    "NUMERICAL_CCT"                  0.25569        0.25647  
+    0.55           45            0.20904    "NUMERICAL_CCT"                  0.20866        0.20942  
+     0.5           50            0.17795    "NUMERICAL_CCT"                  0.17756        0.17834  
+    0.45           55                NaN    "UNRESOLVED_ENDPOINT_CHECK"      0.15569        0.15647  
+     0.4           60            0.14123    "NUMERICAL_CCT"                  0.14084        0.14163  
+    0.35           65            0.12952    "NUMERICAL_CCT"                  0.12912        0.12991  
+     0.3           70            0.12092    "NUMERICAL_CCT"                  0.12053        0.12131  
+    0.25           75            0.11389    "NUMERICAL_CCT"                   0.1135        0.11428  
+
+Full valid integration; all stored postfault samples at t>=0.9*tEnd have abs(gamma-gammaEq)<0.1 deg and abs(nu-1)<1e-4; final abs(Pe-1)<1e-4. Absolute tEnd=8 s; endpoint horizon check tEnd=16 s. Unwrapped gamma, no modulo.
+NOT_RECOVERED is finite-horizon non-recovery, not proven instability.
+Saved to C:\Users\KIVANÇKOCAOĞULLAR\Documents\MATLAB2\GFM Contraction Analsys\fault cases\CCT_analysis_20261011_181410\results_20261011_181504_864

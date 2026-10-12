@@ -1,0 +1,12 @@
+{
+  "status": "complete",
+  "Tclear_s": 0.25,
+  "cases": 12,
+  "recovered": 5,
+  "not_recovered_within_8s": 7,
+  "PNG_updated": 18,
+  "FIG_updated": 18,
+  "CSV_MAT_and_trajectory_clearing_times_verified": true,
+  "widened_regions_preserved": true,
+  "previous_state_archived_outside_active_folder": true
+}

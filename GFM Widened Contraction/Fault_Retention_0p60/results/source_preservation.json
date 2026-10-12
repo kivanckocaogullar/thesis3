@@ -1,0 +1,10 @@
+{
+  "reference_files_checked": 16,
+  "all_SHA256_unchanged": true,
+  "model_and_recovery_functions_verbatim": true,
+  "new_ODE_cases_total": 10,
+  "CCT_recalculations": 0,
+  "metric_optimizations": 0,
+  "interval_rechecks": 0,
+  "figures_each_format": 6
+}

@@ -1,0 +1,54 @@
+LIMITERLI CONTRACTION ANALIZI - GENISLETILMIS DIKDORTGENLER
+
+Kaynak: GFM Contraction Analsys/limiter region (eski klasor degistirilmedi).
+Ayni model, ayni lambda degerleri, ayni M<10I siniri, ayni ikinci dereceden metrik yapisi.
+Iki ayri metrik kullanilir (limiter inactive / active). Gecis boslugu kapsanmaz.
+
+INTERVAL-DOGRULANMIS DIKDORTGENLER (surekli bolge, grid degil)
+  Inactive: gamma [10, 24.3234] derece, nu [0.98, 1.02], lambda = 1 s^-1
+  Active:   gamma [24.4234, 43] derece, nu [0.98, 1.02], lambda = 0.1 s^-1
+  Gecis (switch) gamma ~24.373430419712 derece; 24.3234-24.4234 boslugu dogrulanmadi.
+Eski dikdortgenler: inactive gamma [16.43, 24.32], nu [0.99653, 1.00206];
+                    active gamma [24.42, 33.86], nu [0.99617, 1.00518].
+
+Interval sonuclari (plots/interval_certificates.csv):
+  Inactive: VERIFIED, 2228 kutu, cozulemeyen 0, karsi ornek 0.
+    eig(M) >= 1e-5, eig(10I-M) >= 0.0256, eig(Q) <= -1e-5 (epsilon marji her yerde).
+    Akim marji |q| <= Imax-0.00104; gerilim marji >= 0.0487 pu.
+  Active: VERIFIED, 64491 kutu, cozulemeyen 0, karsi ornek 0.
+    M > 0, 10I-M >= 0.0438, Q < 0 kesin (strict) olarak dogrulandi.
+    1e-5 optimizasyon marji her kutuda dogrulanamadi (grid min eig(M)=1.28e-5).
+    Akim marji |q| >= Imax+0.00117; gerilim marji >= 0.0011 pu.
+  Q = J'M + MJ + Mdot + 2*lambda*M; Mdot dalin nonlineer vektor alani ile hesaplanir.
+  Yonlu yuvarlamali interval aritmetigi (mpmath iv, 30 basamak), adaptif bolme,
+  Q-V koku icin interval Newton kapsamasi, Q icin ortalama-deger (Taylor) yedegi.
+  Limiter modu ve Vmax=1.3 her kutuda zorunlu kontrol edilir.
+  Checker once eski dikdortgenlerde test edildi ve eski sonucu birebir verdi (1294 kutu).
+  MATLAB ile 10 noktada M, Mdot, Q capraz kontrolu: bagil fark ~1e-14.
+
+Bu sonuclar degismezlik (invariance), ortak switching veya cekim bolgesi (ROA)
+sertifikasi DEGILDIR. Temizleme noktasinin dikdortgen icinde olmasi toparlanmayi
+garanti etmez (ornek: FCT 0.15; active modda P=1 kararsiz denge gamma_u ~ 64.9 derece).
+
+DOSYALAR
+  plot_widened_contraction.m   Tum grafik ve kontrolleri uretir (plots/).
+  widen_nu_contraction.m       Metrik yeniden fit + bisection (search_runs/ altina yazar).
+  export_widened_metric_json.m Metrikleri checker icin JSON'a aktarir.
+  widened_interval_checker.py  Interval dogrulama:
+                               python widened_interval_checker.py metrics/inactive inactive
+                               python widened_interval_checker.py metrics/active active
+  inputs/model_inputs.mat      p, n (radial_active_transient_20261001_152918/results.mat'tan).
+  metrics/<dal>/               metric.mat, metric.json, interval_verification.json, loglar.
+  reference_old_metrics/<dal>/ Eski sertifikali metrikler (karsilastirma ve fit baslangici).
+  deps/                        mpmath 1.4.1 (checker icin).
+
+GRAFIKLER (plots/)
+  current_limited_contraction_regions.png/.fig  Yeni dikdortgenler (gamma-nu).
+  old_vs_widened_rectangles.png/.fig            Eski ve yeni dikdortgenlerin karsilastirmasi.
+  current_limited_J_M_SymF.png/.fig             Ic/dis noktalarda J, M, Sym(F) ozdegerleri.
+    Inactive: 0, 20.634 (ic), 5 derece. Active: 50, 33.712 (ic), 60 derece; nu=1.
+    Active 50 ve 60 derecede Sym(F) pozitif: ayni metrik orada contraction saglamaz.
+  current_limited_matrix_slices.png/.fig        nu=1 kesitinde ozdeger egrileri.
+  metric_checks.csv, matrix_spectra.csv, interval_certificates.csv, plot_data.mat
+
+Sonra eklenecek: FCT trajektorileri (script yolu henuz bulunmadi).

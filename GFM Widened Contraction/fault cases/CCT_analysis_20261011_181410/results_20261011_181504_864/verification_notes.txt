@@ -1,0 +1,11 @@
+Final audit: MATLAB batch exit code 0; all 12 cases processed.
+Baseline regressions passed: 12.
+Search and endpoint trial records: 376.
+Numerical CCTs with <=1 ms brackets and verified 8/16 s endpoints: 9.
+0.25 s cross-check: 5 recovered, 7 finite-horizon not recovered.
+No validity stops or numerical unresolved trial evaluations: True.
+The 0.45 case has an unresolved CCT, because its upper 8 s endpoint recovers by 16 s.
+At that endpoint (0.15646875 s), final Pe at 8 s is 1.00019038199679,
+so the 1e-4 power tolerance fails; at 16 s the full recovery test passes.
+Its CSV bounds describe the 8 s criterion bracket, NOT a reliable asymptotic CCT bracket.
+No figures generated; no previous source or results overwritten.

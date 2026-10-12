@@ -1,0 +1,77 @@
+function seg=segment(span,x0,p,n,rel,ab,maxstep)
+ d=coupled(x0(1),1,p,n,0);
+ if abs(d.u)>p.Vmax||x0(2)<=.5
+  seg=struct('t',span(1),'x',x0','sol',struct('xe',[],'ye',zeros(2,0),'ie',[]),'activeDuration',0);return;
+ end
+ opt=odeset('RelTol',rel,'AbsTol',ab,'MaxStep',maxstep,'Events',@(t,x)events(t,x,p,n));
+ sol=ode45(@(t,x)rhs(x,p,n),span,x0,opt);
+ count=6001;if span(1)==0,count=501;end
+ t=unique(sort([linspace(span(1),sol.x(end),count) sol.x sol.xe]));x=deval(sol,t)';
+ cut=unique(sort([span(1),sol.xe(sol.ie==1),sol.x(end)]));duration=0;
+ for j=1:numel(cut)-1,mid=mean(cut(j:j+1));xx=deval(sol,mid);dd=coupled(xx(1),1,p,n,0);if dd.rawI>1.2,duration=duration+diff(cut(j:j+1));end;end
+ seg=struct('t',t','x',x,'sol',sol,'activeDuration',duration);
+end
+function f=rhs(x,p,n)
+ d=coupled(x(1),1,p,n,0);f=rhs_power(x,p,d.P);
+end
+function f=rhs_power(x,p,P)
+ f=[p.omega*(x(2)-1);((1-P)/x(2)-p.D*(x(2)-1))/p.mass];
+end
+function [v,term,dir]=events(~,x,p,n)
+ d=coupled(x(1),1,p,n,0);v=[d.rawI-p.Imax;p.Vmax-abs(d.u);x(2)-.5];term=[0;1;1];dir=[0;-1;-1];
+end
+function P=electrical_power(g,p,n)
+ d=coupled(g,1,p,n,0);P=d.P;
+end
+function s=switchvalue(g,p,n)
+ d=coupled(g,1,p,n,1);s=d.rawI-1.2;
+end
+function d=coupled(g,vs,p,n,mode)
+ E=vs+zeros(size(g));
+ for it=1:60
+  d=raw(g,E,p,n,mode);h=E+.1*d.Q-vs;he=1+.1*d.QE;
+  if max(abs(h),[],'all')<2e-14,break;end
+  E=E-max(-.1,min(.1,h./he));
+ end
+ assert(all(E>0,'all')&&max(abs(h),[],'all')<1e-11&&all(abs(he)>1e-6,'all'));
+ d.E=E;d.hE=he;d.Eg=-.1*d.Qg./he;d.totalPg=d.Pg+d.PE.*d.Eg;
+end
+function d=raw(g,E,p,n,mode)
+ rot=exp(1i*(g+angle(n.Vth)));v=E.*rot;q=(v-n.Vth)/n.Zeq;qg=1i*v/n.Zeq;qE=rot/n.Zeq;r=abs(q);
+ active=r>p.Imax;if mode==1,active=false(size(q));elseif mode==2,active=true(size(q));end
+ ic=q;icg=qg;icE=qE;
+ if any(active(:))
+  ii=active;qa=q(ii);ra=r(ii);
+  ic(ii)=p.Imax*qa./ra;
+  icg(ii)=p.Imax*(qg(ii)./ra-qa.*real(conj(qa).*qg(ii))./ra.^3);
+  icE(ii)=p.Imax*(qE(ii)./ra-qa.*real(conj(qa).*qE(ii))./ra.^3);
+ end
+ vc=n.Vth+n.Zeq*ic;vg=n.vgE*vc+n.vgU*p.U;ig=n.igE*vc+n.igU*p.U;
+ vcg=n.Zeq*icg;vcE=n.Zeq*icE;
+ S=vg.*conj(ig);Sg=n.vgE*vcg.*conj(ig)+vg.*conj(n.igE*vcg);SE=n.vgE*vcE.*conj(ig)+vg.*conj(n.igE*vcE);
+ d=struct('P',real(S),'Q',imag(S),'Pg',real(Sg),'Qg',imag(Sg),'PE',real(SE),'QE',imag(SE),'vc',vc,'vg',vg,'ig',ig,'ic',ic,'u',vc+(n.Zconverter+p.AD)*ic,'rawI',r,'active',active);
+end
+function n=rebuild(x,p,n0)
+n=n0;z1=n0.Zt1+1i*x;z2=n0.Zt2;zg=n0.Zgrid;zb=n0.Zbreaker;
+y=[1/z1+1/z2+n0.Ym,-1/z2;-1/z2,1/z2+1/(zg+zb)];co=y\diag([1/z1,1/(zg+zb)]);
+iv=co(2,1)/(zg+zb);iu=(co(2,2)-1)/(zg+zb);av=co(2,1)-zb*iv;au=co(2,2)-zb*iu;
+icv=(1-co(1,1))/z1+n0.Yc;icu=-co(1,2)/z1;
+n.Zt1=z1;n.nodalY=y;n.nodeCoefficients=co;n.vgE=av;n.vgU=au;n.igE=iv;n.igU=iu;n.icE=icv;n.icU=icu;n.Zeq=1/icv;n.Vth=-icu/icv*p.U;
+end
+
+function r=find_roots(g,y,f)
+ix=find(y(1:end-1).*y(2:end)<0);r=g(abs(y)<1e-12);for j=ix',r(end+1,1)=fzero(f,g(j+[0 1]),optimset('TolX',1e-12));end;r=uniquetol(r,1e-9,'DataScale',1);
+end
+
+
+
+
+
+
+
+
+
+
+
+
+

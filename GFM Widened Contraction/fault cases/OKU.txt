@@ -1,0 +1,30 @@
+NOMINAL Pstar=1 FAULT SWEEP - Tclear=0.25 s
+
+Ana kod: Tclear_0p25/fixed_Pstar_recovery_SCR5_XR10_batch.m
+Girdi: ayni klasordeki model_inputs.mat
+Baslangic: gamma0=20.633904875622 derece, nu0=1, Pstar=1.
+12 Uret: 0.9 0.8 0.7 0.65 0.6 0.55 0.5 0.45 0.4 0.35 0.3 0.25.
+Her case ayni nominal noktadan baslar; degisen fault gerilim derinligidir.
+Tclear sabit fault temizleme suresidir; bu kod CCT aramasi yapmaz.
+Sonuclar: fixed_Pstar_sag_sweep.csv, summary TXT, results MAT.
+Case bazinda trajectory ve limiter_events CSV dosyalari mevcuttur.
+verify_affected_cases.m ek sayisal dogrulama kodudur.
+Grafik kodu: Tclear_0p25/plot_fixed_Pstar_nominal_sag_sweep_SCR5_XR10.m
+Bu kod kayitli CSV sonuclarindan grafikleri uretir; simulasyonu yeniden calistirmaz.
+Batch simulasyon kodu grafik uretmez; grafik icin yukaridaki plot kodunu calistirin.
+0.25 s: 5/12 recovered; ilk non-recovered Uret=0.55; validity stop yok.
+Non-recovered, 8 saniyelik gozlemde recovery kriterini saglamamak anlamindadir.
+Kaynak dosyalar korunmustur.
+
+GRAFIKLER (PNG ve MATLAB FIG): Tclear_0p25/grafikler
+01_fault_and_clearing_zoom: tum caseler, fault ve clearing yakin gorunum.
+02_recovered_cases: toparlanan 5 case.
+03_nonrecovered_cases: 8 saniyede toparlanmayan 7 case.
+04_limiter_activity: kayitli event zamanlarindan limiter aktif sureleri.
+05_fault_paths_and_clearing_states: ayni nominal noktadan fault yollari ve clearing noktalari.
+06_recovery_transition_060_vs_055: Uret=0.60 ve 0.55 davranislari.
+case_by_case: 12 case icin gamma, nu, akim, Pe, gerilim ve faz duzlemi.
+plot_case_index.csv: case ve grafik dosyasi eslestirmesi.
+Fault t=0 aninda uygulanir, t=0.25 s aninda temizlenir.
+Gamma unwrapped gosterilir; faz kaymalari gizlenmez.
+Grafikler simulasyon davranisini gosterir; contraction/invariance sertifikasi degildir.

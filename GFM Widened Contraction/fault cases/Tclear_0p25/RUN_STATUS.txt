@@ -1,0 +1,1 @@
+COMPLETE: 12 cases recomputed at Tclear=0.25 s, standard/tight comparisons passed; affected case Uret=0.65 additionally verified at extra-tight settings. 5 recovered and 7 not recovered within 8 s. All 18 PNG and 18 FIG plots regenerated. Current CSV/MAT/trajectory/event data, membership tables, summaries and plot index belong to Tclear=0.25 s. Widened regions retained.

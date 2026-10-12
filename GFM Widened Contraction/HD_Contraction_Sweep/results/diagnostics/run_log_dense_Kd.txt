@@ -1,0 +1,243 @@
+=== H-Kd contraction sweep [dense_Kd] 12-Oct-2026 17:13:29
+baseline inactive: dense minM 0.000988109 maxQ -0.000922243 reproduced=1 interval=VERIFIED
+baseline active: dense minM 1.27997e-05 maxQ -1.08629e-05 reproduced=1 interval=VERIFIED
+108 of 124 (H,Kd) points to compute
+Starting parallel pool (parpool) using the 'Processes' profile ...
+Connected to parallel pool with 4 workers.
+done H=3.4 Kd=2 (261 s)
+done H=3.4 Kd=1 (389 s)
+done H=8 Kd=1 (480 s)
+done H=8 Kd=2 (485 s)
+done H=1 Kd=2 (238 s)
+done H=1 Kd=1 (248 s)
+done H=1 Kd=7 (196 s)
+done H=5.5 Kd=1 (394 s)
+done H=5.5 Kd=2 (450 s)
+done H=5.5 Kd=13 (684 s)
+done H=3.4 Kd=10 (323 s)
+done H=8 Kd=6 (394 s)
+done H=1 Kd=10 (217 s)
+done H=8 Kd=17 (535 s)
+done H=3.4 Kd=13 (320 s)
+done H=1 Kd=13 (258 s)
+done H=8 Kd=9 (412 s)
+done H=5.5 Kd=6 (607 s)
+done H=5.5 Kd=17 (471 s)
+done H=3.4 Kd=6 (298 s)
+done H=3.4 Kd=17 (250 s)
+done H=8 Kd=12 (456 s)
+done H=5.5 Kd=9 (484 s)
+done H=1 Kd=6 (213 s)
+done H=1 Kd=17 (268 s)
+done H=8 Kd=4 (382 s)
+done H=3.4 Kd=9 (459 s)
+done H=5.5 Kd=12 (615 s)
+done H=1 Kd=9 (202 s)
+done H=8 Kd=16 (521 s)
+done H=3.4 Kd=12 (284 s)
+done H=5.5 Kd=4 (497 s)
+done H=1 Kd=12 (235 s)
+done H=8 Kd=8 (409 s)
+done H=5.5 Kd=16 (411 s)
+done H=3.4 Kd=4 (316 s)
+done H=3.4 Kd=16 (339 s)
+done H=8 Kd=11 (520 s)
+done H=1 Kd=4 (364 s)
+done H=5.5 Kd=8 (541 s)
+done H=1 Kd=16 (330 s)
+done H=3.4 Kd=8 (322 s)
+done H=8 Kd=3 (456 s)
+done H=1 Kd=8 (209 s)
+done H=5.5 Kd=11 (599 s)
+done H=8 Kd=14 (671 s)
+done H=3.4 Kd=11 (269 s)
+done H=8 Kd=7 (334 s)
+done H=5.5 Kd=3 (457 s)
+done H=1 Kd=11 (181 s)
+done H=3.4 Kd=3 (272 s)
+done H=5.5 Kd=7 (410 s)
+done H=8 Kd=10 (336 s)
+done H=1 Kd=3 (234 s)
+done H=5.5 Kd=14 (596 s)
+done H=3.4 Kd=14 (266 s)
+done H=3.4 Kd=7 (416 s)
+done H=3.4 Kd=22 (202 s)
+done H=5.5 Kd=10 (559 s)
+done H=1 Kd=14 (243 s)
+done H=8 Kd=20 (520 s)
+done H=1 Kd=22 (215 s)
+done H=3.4 Kd=19 (240 s)
+done H=5.5 Kd=20 (325 s)
+done H=1 Kd=19 (266 s)
+done H=8 Kd=13 (496 s)
+done H=3.4 Kd=20 (218 s)
+done H=8 Kd=21 (535 s)
+done H=1 Kd=20 (235 s)
+done H=8 Kd=23 (449 s)
+done H=8 Kd=18 (671 s)
+done H=5.5 Kd=23 (277 s)
+done H=8 Kd=19 (506 s)
+done H=5.5 Kd=21 (627 s)
+done H=3.4 Kd=23 (234 s)
+done H=3.4 Kd=21 (212 s)
+done H=5.5 Kd=19 (371 s)
+done H=1 Kd=23 (280 s)
+done H=1 Kd=21 (260 s)
+done H=5.5 Kd=18 (681 s)
+done H=5.5 Kd=24 (238 s)
+done H=3.4 Kd=25 (159 s)
+done H=3.4 Kd=24 (215 s)
+done H=3.4 Kd=18 (350 s)
+done H=1 Kd=25 (202 s)
+done H=8 Kd=22 (500 s)
+done H=1 Kd=24 (252 s)
+done H=1 Kd=18 (254 s)
+done H=5.5 Kd=22 (303 s)
+done H=3.4 Kd=27 (197 s)
+done H=1 Kd=26 (232 s)
+done H=8 Kd=24 (647 s)
+done H=1 Kd=27 (277 s)
+done H=3.4 Kd=28 (234 s)
+done H=8 Kd=26 (587 s)
+done H=8 Kd=25 (568 s)
+done H=8 Kd=27 (463 s)
+done H=1 Kd=28 (241 s)
+done H=5.5 Kd=26 (285 s)
+done H=5.5 Kd=29 (230 s)
+done H=5.5 Kd=25 (313 s)
+done H=3.4 Kd=26 (176 s)
+done H=5.5 Kd=27 (337 s)
+done H=1 Kd=29 (215 s)
+done H=3.4 Kd=29 (222 s)
+done H=8 Kd=28 (389 s)
+done H=8 Kd=29 (441 s)
+done H=5.5 Kd=28 (179 s)
+    H_s    K     Kd    D        A_status_inactive       A_status_active       B_status_inactive       B_status_active
+    ___    __    __    __    _______________________    _______________    _______________________    _______________
+
+      1    20     0    20    "feasible"                   "feasible"       "feasible"                   "feasible"   
+      1    20     1    21    "feasible"                   "feasible"       "feasible"                   "feasible"   
+      1    20     2    22    "feasible"                   "feasible"       "feasible"                   "feasible"   
+      1    20     3    23    "feasible"                   "feasible"       "feasible"                   "feasible"   
+      1    20     4    24    "feasible"                   "feasible"       "feasible"                   "feasible"   
+      1    20     5    25    "feasible"                   "feasible"       "feasible"                   "feasible"   
+      1    20     6    26    "feasible"                   "feasible"       "feasible"                   "feasible"   
+      1    20     7    27    "feasible"                   "feasible"       "feasible"                   "feasible"   
+      1    20     8    28    "feasible"                   "feasible"       "feasible"                   "feasible"   
+      1    20     9    29    "feasible"                   "feasible"       "feasible"                   "feasible"   
+      1    20    10    30    "feasible"                   "feasible"       "feasible"                   "feasible"   
+      1    20    11    31    "feasible"                   "feasible"       "feasible"                   "feasible"   
+      1    20    12    32    "feasible"                   "feasible"       "feasible"                   "feasible"   
+      1    20    13    33    "feasible"                   "feasible"       "feasible"                   "feasible"   
+      1    20    14    34    "feasible"                   "feasible"       "feasible"                   "feasible"   
+      1    20    15    35    "feasible"                   "feasible"       "feasible"                   "feasible"   
+      1    20    16    36    "feasible"                   "feasible"       "feasible"                   "feasible"   
+      1    20    17    37    "feasible"                   "feasible"       "feasible"                   "feasible"   
+      1    20    18    38    "feasible"                   "feasible"       "feasible"                   "feasible"   
+      1    20    19    39    "feasible"                   "feasible"       "feasible"                   "feasible"   
+      1    20    20    40    "feasible"                   "feasible"       "feasible"                   "feasible"   
+      1    20    21    41    "feasible"                   "feasible"       "feasible"                   "feasible"   
+      1    20    22    42    "feasible"                   "feasible"       "feasible"                   "feasible"   
+      1    20    23    43    "feasible"                   "feasible"       "feasible"                   "feasible"   
+      1    20    24    44    "feasible"                   "feasible"       "feasible"                   "feasible"   
+      1    20    25    45    "feasible"                   "feasible"       "feasible"                   "feasible"   
+      1    20    26    46    "feasible"                   "feasible"       "feasible"                   "feasible"   
+      1    20    27    47    "feasible"                   "feasible"       "feasible"                   "feasible"   
+      1    20    28    48    "feasible"                   "feasible"       "feasible"                   "feasible"   
+      1    20    29    49    "feasible"                   "feasible"       "feasible"                   "feasible"   
+      1    20    30    50    "feasible"                   "feasible"       "feasible"                   "feasible"   
+    3.4    20     0    20    "feasible"                   "feasible"       "feasible"                   "feasible"   
+    3.4    20     1    21    "feasible"                   "feasible"       "feasible"                   "feasible"   
+    3.4    20     2    22    "feasible"                   "feasible"       "feasible"                   "feasible"   
+    3.4    20     3    23    "feasible"                   "feasible"       "feasible"                   "feasible"   
+    3.4    20     4    24    "feasible"                   "feasible"       "feasible"                   "feasible"   
+    3.4    20     5    25    "feasible"                   "feasible"       "feasible"                   "feasible"   
+    3.4    20     6    26    "feasible"                   "feasible"       "feasible"                   "feasible"   
+    3.4    20     7    27    "feasible"                   "feasible"       "feasible"                   "feasible"   
+    3.4    20     8    28    "feasible"                   "feasible"       "feasible"                   "feasible"   
+    3.4    20     9    29    "feasible"                   "feasible"       "feasible"                   "feasible"   
+    3.4    20    10    30    "feasible"                   "feasible"       "feasible"                   "feasible"   
+    3.4    20    11    31    "feasible"                   "feasible"       "feasible"                   "feasible"   
+    3.4    20    12    32    "feasible"                   "feasible"       "feasible"                   "feasible"   
+    3.4    20    13    33    "feasible"                   "feasible"       "feasible"                   "feasible"   
+    3.4    20    14    34    "feasible"                   "feasible"       "feasible"                   "feasible"   
+    3.4    20    15    35    "feasible"                   "feasible"       "feasible"                   "feasible"   
+    3.4    20    16    36    "feasible"                   "feasible"       "feasible"                   "feasible"   
+    3.4    20    17    37    "feasible"                   "feasible"       "feasible"                   "feasible"   
+    3.4    20    18    38    "feasible"                   "feasible"       "feasible"                   "feasible"   
+    3.4    20    19    39    "feasible"                   "feasible"       "feasible"                   "feasible"   
+    3.4    20    20    40    "feasible"                   "feasible"       "feasible"                   "feasible"   
+    3.4    20    21    41    "feasible"                   "feasible"       "feasible"                   "feasible"   
+    3.4    20    22    42    "feasible"                   "feasible"       "feasible"                   "feasible"   
+    3.4    20    23    43    "feasible"                   "feasible"       "feasible"                   "feasible"   
+    3.4    20    24    44    "feasible"                   "feasible"       "feasible"                   "feasible"   
+    3.4    20    25    45    "feasible"                   "feasible"       "feasible"                   "feasible"   
+    3.4    20    26    46    "feasible"                   "feasible"       "feasible"                   "feasible"   
+    3.4    20    27    47    "feasible"                   "feasible"       "feasible"                   "feasible"   
+    3.4    20    28    48    "feasible"                   "feasible"       "feasible"                   "feasible"   
+    3.4    20    29    49    "feasible"                   "feasible"       "feasible"                   "feasible"   
+    3.4    20    30    50    "feasible"                   "feasible"       "feasible"                   "feasible"   
+    5.5    20     0    20    "no_feasible_rectangle"      "feasible"       "no_feasible_rectangle"      "feasible"   
+    5.5    20     1    21    "no_feasible_rectangle"      "feasible"       "no_feasible_rectangle"      "feasible"   
+    5.5    20     2    22    "no_feasible_rectangle"      "feasible"       "no_feasible_rectangle"      "feasible"   
+    5.5    20     3    23    "feasible"                   "feasible"       "feasible"                   "feasible"   
+    5.5    20     4    24    "feasible"                   "feasible"       "feasible"                   "feasible"   
+    5.5    20     5    25    "feasible"                   "feasible"       "feasible"                   "feasible"   
+    5.5    20     6    26    "feasible"                   "feasible"       "feasible"                   "feasible"   
+    5.5    20     7    27    "feasible"                   "feasible"       "feasible"                   "feasible"   
+    5.5    20     8    28    "feasible"                   "feasible"       "feasible"                   "feasible"   
+    5.5    20     9    29    "feasible"                   "feasible"       "feasible"                   "feasible"   
+    5.5    20    10    30    "feasible"                   "feasible"       "feasible"                   "feasible"   
+    5.5    20    11    31    "feasible"                   "feasible"       "feasible"                   "feasible"   
+    5.5    20    12    32    "feasible"                   "feasible"       "feasible"                   "feasible"   
+    5.5    20    13    33    "feasible"                   "feasible"       "feasible"                   "feasible"   
+    5.5    20    14    34    "feasible"                   "feasible"       "feasible"                   "feasible"   
+    5.5    20    15    35    "feasible"                   "feasible"       "feasible"                   "feasible"   
+    5.5    20    16    36    "feasible"                   "feasible"       "feasible"                   "feasible"   
+    5.5    20    17    37    "feasible"                   "feasible"       "feasible"                   "feasible"   
+    5.5    20    18    38    "feasible"                   "feasible"       "feasible"                   "feasible"   
+    5.5    20    19    39    "feasible"                   "feasible"       "feasible"                   "feasible"   
+    5.5    20    20    40    "feasible"                   "feasible"       "feasible"                   "feasible"   
+    5.5    20    21    41    "feasible"                   "feasible"       "feasible"                   "feasible"   
+    5.5    20    22    42    "feasible"                   "feasible"       "feasible"                   "feasible"   
+    5.5    20    23    43    "feasible"                   "feasible"       "feasible"                   "feasible"   
+    5.5    20    24    44    "feasible"                   "feasible"       "feasible"                   "feasible"   
+    5.5    20    25    45    "feasible"                   "feasible"       "feasible"                   "feasible"   
+    5.5    20    26    46    "feasible"                   "feasible"       "feasible"                   "feasible"   
+    5.5    20    27    47    "feasible"                   "feasible"       "feasible"                   "feasible"   
+    5.5    20    28    48    "feasible"                   "feasible"       "feasible"                   "feasible"   
+    5.5    20    29    49    "feasible"                   "feasible"       "feasible"                   "feasible"   
+    5.5    20    30    50    "feasible"                   "feasible"       "feasible"                   "feasible"   
+      8    20     0    20    "no_feasible_rectangle"      "feasible"       "no_feasible_rectangle"      "feasible"   
+      8    20     1    21    "no_feasible_rectangle"      "feasible"       "no_feasible_rectangle"      "feasible"   
+      8    20     2    22    "no_feasible_rectangle"      "feasible"       "no_feasible_rectangle"      "feasible"   
+      8    20     3    23    "no_feasible_rectangle"      "feasible"       "no_feasible_rectangle"      "feasible"   
+      8    20     4    24    "no_feasible_rectangle"      "feasible"       "no_feasible_rectangle"      "feasible"   
+      8    20     5    25    "no_feasible_rectangle"      "feasible"       "no_feasible_rectangle"      "feasible"   
+      8    20     6    26    "no_feasible_rectangle"      "feasible"       "no_feasible_rectangle"      "feasible"   
+      8    20     7    27    "no_feasible_rectangle"      "feasible"       "no_feasible_rectangle"      "feasible"   
+      8    20     8    28    "no_feasible_rectangle"      "feasible"       "no_feasible_rectangle"      "feasible"   
+      8    20     9    29    "no_feasible_rectangle"      "feasible"       "no_feasible_rectangle"      "feasible"   
+      8    20    10    30    "no_feasible_rectangle"      "feasible"       "no_feasible_rectangle"      "feasible"   
+      8    20    11    31    "no_feasible_rectangle"      "feasible"       "no_feasible_rectangle"      "feasible"   
+      8    20    12    32    "no_feasible_rectangle"      "feasible"       "no_feasible_rectangle"      "feasible"   
+      8    20    13    33    "feasible"                   "feasible"       "feasible"                   "feasible"   
+      8    20    14    34    "feasible"                   "feasible"       "feasible"                   "feasible"   
+      8    20    15    35    "feasible"                   "feasible"       "feasible"                   "feasible"   
+      8    20    16    36    "feasible"                   "feasible"       "feasible"                   "feasible"   
+      8    20    17    37    "feasible"                   "feasible"       "feasible"                   "feasible"   
+      8    20    18    38    "feasible"                   "feasible"       "feasible"                   "feasible"   
+      8    20    19    39    "feasible"                   "feasible"       "feasible"                   "feasible"   
+      8    20    20    40    "feasible"                   "feasible"       "feasible"                   "feasible"   
+      8    20    21    41    "feasible"                   "feasible"       "feasible"                   "feasible"   
+      8    20    22    42    "feasible"                   "feasible"       "feasible"                   "feasible"   
+      8    20    23    43    "feasible"                   "feasible"       "feasible"                   "feasible"   
+      8    20    24    44    "feasible"                   "feasible"       "feasible"                   "feasible"   
+      8    20    25    45    "feasible"                   "feasible"       "feasible"                   "feasible"   
+      8    20    26    46    "feasible"                   "feasible"       "feasible"                   "feasible"   
+      8    20    27    47    "feasible"                   "feasible"       "feasible"                   "feasible"   
+      8    20    28    48    "feasible"                   "feasible"       "feasible"                   "feasible"   
+      8    20    29    49    "feasible"                   "feasible"       "feasible"                   "feasible"   
+      8    20    30    50    "feasible"                   "feasible"       "feasible"                   "feasible"   
+
+=== finished 12-Oct-2026 20:00:57

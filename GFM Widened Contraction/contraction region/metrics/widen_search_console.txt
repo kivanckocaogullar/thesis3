@@ -1,0 +1,6 @@
+
+=== inactive | lambda=1 | gamma [10.0000 24.3234] deg | old nu [0.996527 1.002061] -> target [0.980000 1.020000]
+  RESULT nu [0.980000 1.020000] (t=1.0000) minM 0.000988 maxM 9.93 worstQ -0.000922
+
+=== active | lambda=0.1 | gamma [24.4234 43.0000] deg | old nu [0.996175 1.005178] -> target [0.980000 1.020000]
+  RESULT nu [0.980000 1.020000] (t=1.0000) minM 1.28e-05 maxM 9.95 worstQ -1.09e-05

@@ -1,0 +1,10 @@
+{
+  "inactive_floor_deg": -24.51,
+  "inactive_floor_reason": "inactive mode / voltage validity",
+  "active_ceiling_deg": 64.830551979056153,
+  "active_ceiling_reason": "active-branch saddle equilibrium gamma_u",
+  "gamma_eq_deg": 20.633904875622232,
+  "gamma_switch_deg": 24.373430419712097,
+  "gamma_u_deg": 64.88055197905615,
+  "note": "Independent of H and Kd (electrical closure does not use m or D)."
+}

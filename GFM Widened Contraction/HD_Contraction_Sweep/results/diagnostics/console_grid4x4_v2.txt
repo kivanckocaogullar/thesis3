@@ -1,0 +1,62 @@
+=== H-Kd contraction sweep [grid4x4_v2] 12-Oct-2026 16:20:17
+baseline inactive: dense minM 0.000988109 maxQ -0.000922243 reproduced=1 interval=VERIFIED
+baseline active: dense minM 1.27997e-05 maxQ -1.08629e-05 reproduced=1 interval=VERIFIED
+16 of 16 (H,Kd) points to compute
+Starting parallel pool (parpool) using the 'Processes' profile ...
+Connected to parallel pool with 4 workers.
+done H=1 Kd=0 (251 s)
+done H=3.4 Kd=0 (291 s)
+done H=5.5 Kd=0 (432 s)
+done H=8 Kd=0 (498 s)
+done H=3.4 Kd=5 (345 s)
+done H=3.4 Kd=15 (313 s)
+done H=8 Kd=5 (492 s)
+done H=1 Kd=5 (270 s)
+done H=1 Kd=15 (279 s)
+done H=8 Kd=15 (534 s)
+done H=1 Kd=30 (227 s)
+done H=5.5 Kd=30 (257 s)
+done H=5.5 Kd=5 (546 s)
+done H=3.4 Kd=30 (206 s)
+done H=5.5 Kd=15 (651 s)
+done H=8 Kd=30 (442 s)
+    init_grid    gamma_min_inactive_deg    status_inactive    gamma_max_active_deg    status_active
+    _________    ______________________    _______________    ____________________    _____________
+
+        7                -24.51              "feasible"              45.047            "feasible"  
+        9                -24.51              "feasible"              45.047            "feasible"  
+       11                -24.51              "feasible"              45.047            "feasible"  
+
+    H_s    K     Kd    D        A_status_inactive       A_status_active       B_status_inactive       B_status_active
+    ___    __    __    __    _______________________    _______________    _______________________    _______________
+
+      1    20     0    20    "feasible"                   "feasible"       "feasible"                   "feasible"   
+      1    20     5    25    "feasible"                   "feasible"       "feasible"                   "feasible"   
+      1    20    15    35    "feasible"                   "feasible"       "feasible"                   "feasible"   
+      1    20    30    50    "feasible"                   "feasible"       "feasible"                   "feasible"   
+    3.4    20     0    20    "feasible"                   "feasible"       "feasible"                   "feasible"   
+    3.4    20     5    25    "feasible"                   "feasible"       "feasible"                   "feasible"   
+    3.4    20    15    35    "feasible"                   "feasible"       "feasible"                   "feasible"   
+    3.4    20    30    50    "feasible"                   "feasible"       "feasible"                   "feasible"   
+    5.5    20     0    20    "no_feasible_rectangle"      "feasible"       "no_feasible_rectangle"      "feasible"   
+    5.5    20     5    25    "feasible"                   "feasible"       "feasible"                   "feasible"   
+    5.5    20    15    35    "feasible"                   "feasible"       "feasible"                   "feasible"   
+    5.5    20    30    50    "feasible"                   "feasible"       "feasible"                   "feasible"   
+      8    20     0    20    "no_feasible_rectangle"      "feasible"       "no_feasible_rectangle"      "feasible"   
+      8    20     5    25    "no_feasible_rectangle"      "feasible"       "no_feasible_rectangle"      "feasible"   
+      8    20    15    35    "feasible"                   "feasible"       "feasible"                   "feasible"   
+      8    20    30    50    "feasible"                   "feasible"       "feasible"                   "feasible"   
+
+=== finished 12-Oct-2026 17:00:20
+
+ans = 
+
+  struct with fields:
+
+    rows: [16x24 table]
+       G: [1x1 struct]
+       U: [1x1 struct]
+      SA: [4x4x2 string]
+      SB: [4x4x2 string]
+
+Parallel pool using the 'Processes' profile is shutting down.

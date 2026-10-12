@@ -1,0 +1,50 @@
+=== H-Kd contraction sweep [grid4x4] 12-Oct-2026 15:48:47
+baseline inactive: dense minM 0.000988109 maxQ -0.000922243 reproduced=1 interval=VERIFIED
+baseline active: dense minM 1.27997e-05 maxQ -1.08629e-05 reproduced=1 interval=VERIFIED
+16 of 16 (H,Kd) points to compute
+Starting parallel pool (parpool) using the 'Processes' profile ...
+Connected to parallel pool with 4 workers.
+done H=1 Kd=0 (161 s)
+done H=8 Kd=0 (185 s)
+done H=5.5 Kd=0 (265 s)
+done H=3.4 Kd=5 (309 s)
+done H=3.4 Kd=0 (472 s)
+done H=8 Kd=15 (363 s)
+done H=1 Kd=5 (152 s)
+done H=8 Kd=5 (220 s)
+done H=3.4 Kd=15 (430 s)
+done H=1 Kd=30 (133 s)
+done H=1 Kd=15 (221 s)
+done H=5.5 Kd=5 (318 s)
+done H=5.5 Kd=15 (494 s)
+done H=5.5 Kd=30 (243 s)
+done H=3.4 Kd=30 (358 s)
+done H=8 Kd=30 (504 s)
+    init_grid    gamma_min_inactive_deg    status_inactive    gamma_max_active_deg    status_active 
+    _________    ______________________    _______________    ____________________    ______________
+
+        7                -24.51            "feasible"                  NaN            "inconclusive"
+        9                   NaN            "inconclusive"              NaN            "inconclusive"
+       11                   NaN            "inconclusive"            44.05            "feasible"    
+
+    H_s    K     Kd    D        A_status_inactive       A_status_active       B_status_inactive       B_status_active
+    ___    __    __    __    _______________________    _______________    _______________________    _______________
+
+      1    20     0    20    "feasible"                 "feasible"         "feasible"                   "feasible"   
+      1    20     5    25    "feasible"                 "feasible"         "feasible"                   "feasible"   
+      1    20    15    35    "feasible"                 "feasible"         "feasible"                   "feasible"   
+      1    20    30    50    "feasible"                 "feasible"         "feasible"                   "feasible"   
+    3.4    20     0    20    "feasible"                 "feasible"         "feasible"                   "feasible"   
+    3.4    20     5    25    "inconclusive"             "inconclusive"     "feasible"                   "feasible"   
+    3.4    20    15    35    "inconclusive"             "feasible"         "feasible"                   "feasible"   
+    3.4    20    30    50    "feasible"                 "feasible"         "feasible"                   "feasible"   
+    5.5    20     0    20    "no_feasible_rectangle"    "inconclusive"     "no_feasible_rectangle"      "feasible"   
+    5.5    20     5    25    "inconclusive"             "inconclusive"     "feasible"                   "feasible"   
+    5.5    20    15    35    "inconclusive"             "inconclusive"     "feasible"                   "feasible"   
+    5.5    20    30    50    "feasible"                 "inconclusive"     "feasible"                   "feasible"   
+      8    20     0    20    "no_feasible_rectangle"    "inconclusive"     "no_feasible_rectangle"      "feasible"   
+      8    20     5    25    "no_feasible_rectangle"    "inconclusive"     "no_feasible_rectangle"      "feasible"   
+      8    20    15    35    "inconclusive"             "inconclusive"     "feasible"                   "feasible"   
+      8    20    30    50    "inconclusive"             "inconclusive"     "feasible"                   "feasible"   
+
+=== finished 12-Oct-2026 16:17:11

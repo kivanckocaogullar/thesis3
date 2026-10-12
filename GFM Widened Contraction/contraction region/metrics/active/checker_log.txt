@@ -1,0 +1,105 @@
+{"tested": 2000, "passed": 994, "pending": 13, "depth": 17, "counterexamples": 0, "seconds": 11.1, "last": "Q"}
+{"tested": 4000, "passed": 1998, "pending": 5, "depth": 18, "counterexamples": 0, "seconds": 21.5, "last": "pass"}
+{"tested": 6000, "passed": 2997, "pending": 7, "depth": 18, "counterexamples": 0, "seconds": 32.0, "last": "Q"}
+{"tested": 8000, "passed": 3993, "pending": 15, "depth": 24, "counterexamples": 0, "seconds": 42.5, "last": "pass"}
+{"tested": 10000, "passed": 4992, "pending": 17, "depth": 26, "counterexamples": 0, "seconds": 51.8, "last": "Q"}
+{"tested": 12000, "passed": 5992, "pending": 17, "depth": 26, "counterexamples": 0, "seconds": 67.6, "last": "pass"}
+{"tested": 14000, "passed": 6992, "pending": 17, "depth": 26, "counterexamples": 0, "seconds": 74.4, "last": "pass"}
+{"tested": 16000, "passed": 7994, "pending": 13, "depth": 26, "counterexamples": 0, "seconds": 81.3, "last": "pass"}
+{"tested": 18000, "passed": 8994, "pending": 13, "depth": 26, "counterexamples": 0, "seconds": 88.5, "last": "Q"}
+{"tested": 20000, "passed": 9995, "pending": 11, "depth": 26, "counterexamples": 0, "seconds": 95.6, "last": "pass"}
+{"tested": 22000, "passed": 10993, "pending": 15, "depth": 26, "counterexamples": 0, "seconds": 102.3, "last": "pass"}
+{"tested": 24000, "passed": 11995, "pending": 11, "depth": 26, "counterexamples": 0, "seconds": 108.6, "last": "Q"}
+{"tested": 26000, "passed": 12993, "pending": 15, "depth": 26, "counterexamples": 0, "seconds": 115.2, "last": "pass"}
+{"tested": 28000, "passed": 13995, "pending": 11, "depth": 26, "counterexamples": 0, "seconds": 122.1, "last": "pass"}
+{"tested": 30000, "passed": 14995, "pending": 11, "depth": 26, "counterexamples": 0, "seconds": 129.5, "last": "pass"}
+{"tested": 32000, "passed": 15996, "pending": 9, "depth": 26, "counterexamples": 0, "seconds": 135.9, "last": "pass"}
+{"tested": 34000, "passed": 16996, "pending": 9, "depth": 26, "counterexamples": 0, "seconds": 143.0, "last": "pass"}
+{"tested": 36000, "passed": 17997, "pending": 7, "depth": 26, "counterexamples": 0, "seconds": 149.3, "last": "M lower"}
+{"tested": 38000, "passed": 18996, "pending": 9, "depth": 26, "counterexamples": 0, "seconds": 155.4, "last": "M lower"}
+{"tested": 40000, "passed": 19996, "pending": 9, "depth": 26, "counterexamples": 0, "seconds": 160.7, "last": "pass"}
+{"tested": 42000, "passed": 20996, "pending": 9, "depth": 26, "counterexamples": 0, "seconds": 168.0, "last": "M lower"}
+{"tested": 44000, "passed": 21995, "pending": 11, "depth": 26, "counterexamples": 0, "seconds": 175.1, "last": "pass"}
+{"tested": 46000, "passed": 22995, "pending": 11, "depth": 26, "counterexamples": 0, "seconds": 181.9, "last": "M lower"}
+{"tested": 48000, "passed": 23995, "pending": 11, "depth": 26, "counterexamples": 0, "seconds": 188.5, "last": "M lower"}
+{"tested": 50000, "passed": 24996, "pending": 9, "depth": 26, "counterexamples": 0, "seconds": 193.8, "last": "pass"}
+{"tested": 52000, "passed": 25995, "pending": 11, "depth": 26, "counterexamples": 0, "seconds": 199.9, "last": "M lower"}
+{"tested": 54000, "passed": 26995, "pending": 11, "depth": 26, "counterexamples": 0, "seconds": 205.9, "last": "eps margin only"}
+{"tested": 56000, "passed": 27996, "pending": 9, "depth": 26, "counterexamples": 0, "seconds": 213.0, "last": "M lower"}
+{"tested": 58000, "passed": 28996, "pending": 9, "depth": 26, "counterexamples": 0, "seconds": 218.2, "last": "M lower"}
+{"tested": 60000, "passed": 29996, "pending": 9, "depth": 26, "counterexamples": 0, "seconds": 224.4, "last": "pass"}
+{"tested": 62000, "passed": 30993, "pending": 15, "depth": 26, "counterexamples": 0, "seconds": 231.3, "last": "eps margin only"}
+{"tested": 64000, "passed": 31995, "pending": 11, "depth": 26, "counterexamples": 0, "seconds": 237.1, "last": "M lower"}
+{"tested": 66000, "passed": 32994, "pending": 13, "depth": 26, "counterexamples": 0, "seconds": 243.4, "last": "pass"}
+{"tested": 68000, "passed": 33994, "pending": 13, "depth": 26, "counterexamples": 0, "seconds": 250.4, "last": "eps margin only"}
+{"tested": 70000, "passed": 34994, "pending": 13, "depth": 26, "counterexamples": 0, "seconds": 256.4, "last": "eps margin only"}
+{"tested": 72000, "passed": 35995, "pending": 11, "depth": 26, "counterexamples": 0, "seconds": 262.7, "last": "pass"}
+{"tested": 74000, "passed": 36995, "pending": 11, "depth": 26, "counterexamples": 0, "seconds": 268.8, "last": "M lower"}
+{"tested": 76000, "passed": 37995, "pending": 11, "depth": 26, "counterexamples": 0, "seconds": 275.7, "last": "pass"}
+{"tested": 78000, "passed": 38995, "pending": 11, "depth": 26, "counterexamples": 0, "seconds": 280.9, "last": "pass"}
+{"tested": 80000, "passed": 39996, "pending": 9, "depth": 26, "counterexamples": 0, "seconds": 286.4, "last": "pass"}
+{"tested": 82000, "passed": 40996, "pending": 9, "depth": 26, "counterexamples": 0, "seconds": 293.2, "last": "pass"}
+{"tested": 84000, "passed": 41996, "pending": 9, "depth": 26, "counterexamples": 0, "seconds": 298.6, "last": "M lower"}
+{"tested": 86000, "passed": 42996, "pending": 9, "depth": 26, "counterexamples": 0, "seconds": 304.7, "last": "M lower"}
+{"tested": 88000, "passed": 43997, "pending": 7, "depth": 26, "counterexamples": 0, "seconds": 309.8, "last": "pass"}
+{"tested": 90000, "passed": 44994, "pending": 13, "depth": 26, "counterexamples": 0, "seconds": 315.7, "last": "M lower"}
+{"tested": 92000, "passed": 45995, "pending": 11, "depth": 26, "counterexamples": 0, "seconds": 321.5, "last": "pass"}
+{"tested": 94000, "passed": 46995, "pending": 11, "depth": 26, "counterexamples": 0, "seconds": 326.6, "last": "pass"}
+{"tested": 96000, "passed": 47996, "pending": 9, "depth": 26, "counterexamples": 0, "seconds": 332.7, "last": "M lower"}
+{"tested": 98000, "passed": 48996, "pending": 9, "depth": 26, "counterexamples": 0, "seconds": 337.6, "last": "M lower"}
+{"tested": 100000, "passed": 49995, "pending": 11, "depth": 26, "counterexamples": 0, "seconds": 344.9, "last": "M lower"}
+{"tested": 102000, "passed": 50997, "pending": 7, "depth": 26, "counterexamples": 0, "seconds": 350.1, "last": "pass"}
+{"tested": 104000, "passed": 51995, "pending": 11, "depth": 26, "counterexamples": 0, "seconds": 355.5, "last": "M lower"}
+{"tested": 106000, "passed": 52995, "pending": 11, "depth": 26, "counterexamples": 0, "seconds": 361.7, "last": "pass"}
+{"tested": 108000, "passed": 53996, "pending": 9, "depth": 26, "counterexamples": 0, "seconds": 367.4, "last": "pass"}
+{"tested": 110000, "passed": 54996, "pending": 9, "depth": 26, "counterexamples": 0, "seconds": 373.6, "last": "pass"}
+{"tested": 112000, "passed": 55996, "pending": 9, "depth": 26, "counterexamples": 0, "seconds": 378.4, "last": "pass"}
+{"tested": 114000, "passed": 56997, "pending": 7, "depth": 26, "counterexamples": 0, "seconds": 384.4, "last": "M lower"}
+{"tested": 116000, "passed": 57997, "pending": 7, "depth": 26, "counterexamples": 0, "seconds": 388.7, "last": "M lower"}
+{"tested": 118000, "passed": 58997, "pending": 7, "depth": 26, "counterexamples": 0, "seconds": 394.2, "last": "M lower"}
+{"tested": 120000, "passed": 59995, "pending": 11, "depth": 26, "counterexamples": 0, "seconds": 399.1, "last": "pass"}
+{"tested": 122000, "passed": 60995, "pending": 11, "depth": 26, "counterexamples": 0, "seconds": 404.4, "last": "pass"}
+{"tested": 124000, "passed": 61995, "pending": 11, "depth": 26, "counterexamples": 0, "seconds": 409.6, "last": "pass"}
+{"tested": 126000, "passed": 62996, "pending": 9, "depth": 26, "counterexamples": 0, "seconds": 417.5, "last": "pass"}
+{"tested": 128000, "passed": 63996, "pending": 9, "depth": 26, "counterexamples": 0, "seconds": 431.9, "last": "pass"}
+{
+ "branch": "active",
+ "status": "VERIFIED",
+ "gamma_bounds_deg": [
+  24.423399999999997,
+  43.0
+ ],
+ "nu_bounds": [
+  0.98,
+  1.0199999999999998
+ ],
+ "lambda": "0.1",
+ "epsilon": "1E-5",
+ "upper": 10,
+ "certified_min_eig_M_lower_bound": 0.0,
+ "certified_min_eig_10I_minus_M_lower_bound": 0.04377641317422844,
+ "certified_max_eig_contraction_matrix_upper_bound": 0.0,
+ "epsilon_margin_holds_in_all_boxes": false,
+ "verified_boxes": 64491,
+ "unresolved_boxes": 0,
+ "counterexample_boxes": 0,
+ "tested_boxes": 128981,
+ "max_depth": 26,
+ "budget_exhausted": false,
+ "failures_before_subdivision": {
+  "root bracket": 19,
+  "voltage": 264,
+  "Q": 16075,
+  "eps margin only": 20541,
+  "M lower": 27219,
+  "mode": 372
+ },
+ "min_certified_current_margin_pu": 0.0011653598075674018,
+ "min_certified_voltage_margin_pu": 0.0011152345849398029,
+ "mode_or_voltage_violations": [],
+ "counterexamples": [],
+ "unresolved": [],
+ "precision_decimal_digits": 30,
+ "elapsed_s": 438.0314681529999,
+ "notes": "Directed-rounding interval arithmetic (mpmath iv, 30 digits) on fixed decimal coefficients from metric.json; omega=100*pi exact; Mdot = dM/dz * f/scale with the nonlinear vector field of the branch."
+}

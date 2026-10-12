@@ -1,0 +1,1 @@
+Completed: 6 overview and 12 individual figures, PNG + FIG, Tclear=0.25 s; drawn from the regenerated CSV data. All titles use the saved duration.

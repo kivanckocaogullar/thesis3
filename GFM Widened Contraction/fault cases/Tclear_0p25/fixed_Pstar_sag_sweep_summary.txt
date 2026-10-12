@@ -1,0 +1,25 @@
+Fixed-Pstar nominal-equilibrium sag-depth assessment
+Pstar = 1 throughout; gamma0 = 20.633904875622 deg; nu0 = 1; Tclear = 0.25 s.
+Model: saved radial Xeq=0.35, SCR5/XR10, algebraic E+0.1Q=1 coupling, radial Imax=1.2. Source U is reduced during fault; Q-V reference stays 1. omega=100*pi rad/s, mass=6.8, D=25.
+Widened active Cpost: gamma=[24.4234,43] deg, nu=[0.98,1.02]. Correct-mode membership is not a recovery certificate.
+Postfault observation ends at 8 s. Recovered: last 10% of postfault samples within 0.1 deg and 1e-4 nu of the SAME nominal equilibrium, final |Pe-1|<1e-4, and no validity stop. Other complete runs are non-recovered within horizon. Validity stops are not assessed.
+Voltage-command >1.3 or nu<=0.5 ends model-valid observation. Maxima use adaptive nodes plus 501 fault / 6001 postfault dense samples and events; numerical extrema only.
+Clearing activity is recorded immediately before and after cfg.tClear. Release time is first observed release; last release and all event files also exported. NaN means unavailable/not encountered. Times are absolute seconds from fault onset.
+Every case repeated at RelTol=1e-11, AbsTol=[1e-13,1e-14], half maximum steps; classifications, membership and limiter encounter agree. Maximum clearing-state difference 3.36e-07.
+
+Uret sag% gamma_clear_deg nu_clear classification limiter clear- clear+ first_release_s inside_Cpost max_gamma_deg min_nu max_nu max_raw_I max_limited_I
+0.90 10 24.246161734 1.000505010 RECOVERED 0 0 0 NaN 0 24.334037188 0.998197844 1.001108414 1.198087027 1.198087027
+0.80 20 28.518478070 1.001849631 RECOVERED 1 1 1 0.492026458 1 29.617407070 0.996659548 1.002288839 1.456412779 1.200000000
+0.70 30 34.324657158 1.004405740 RECOVERED 1 1 1 0.781484937 1 40.195443357 0.995543047 1.004405740 1.967768995 1.200000000
+0.65 35 37.785518095 1.005864332 RECOVERED 1 1 1 1.03443966 1 48.367253813 0.995248563 1.005864332 2.354893558 1.200000000
+0.60 40 41.842632550 1.007417023 RECOVERED 1 1 1 1.93777953 1 61.553120975 0.995151461 1.007417023 2.958811791 1.200000000
+0.55 45 46.335479096 1.008998080 NON_RECOVERED_WITHIN_HORIZON 1 1 1 1.59931901 0 4759.033187772 1.000000000 1.052334779 5.932220888 1.200000000
+0.50 50 50.573369978 1.010525650 NON_RECOVERED_WITHIN_HORIZON 1 1 1 1.32423927 0 4918.592584433 1.000000000 1.052334750 5.932220876 1.200000000
+0.45 55 54.543944158 1.011997742 NON_RECOVERED_WITHIN_HORIZON 1 1 1 1.17663151 0 5040.032191799 1.000000000 1.052334790 5.932220747 1.200000000
+0.40 60 58.251734222 1.013414523 NON_RECOVERED_WITHIN_HORIZON 1 1 1 1.07821865 0 5119.147735356 1.000000000 1.052334773 5.932220861 1.200000000
+0.35 65 61.710813831 1.014777503 NON_RECOVERED_WITHIN_HORIZON 1 1 1 1.00586738 0 5162.846633667 1.000000000 1.052334774 5.932220855 1.200000000
+0.30 70 64.939742647 1.016088927 NON_RECOVERED_WITHIN_HORIZON 1 1 1 0.949541552 0 5193.494511924 1.000000000 1.052334781 5.932220526 1.200000000
+0.25 75 67.958460565 1.017351370 NON_RECOVERED_WITHIN_HORIZON 1 1 1 0.903983221 0 5218.365697720 1.000000000 1.052334697 5.932220886 1.200000000
+
+Sampled transition: retained voltage in [0.55, 0.60], lower non-recovered and upper recovered; sag-depth in [40%, 45%]. This is a grid bracket at the configured clearing time, not an exact critical voltage.
+This sweep assesses critical retained-voltage / maximum sag-depth at the configured clearing time. Initial angle and Pstar never vary.

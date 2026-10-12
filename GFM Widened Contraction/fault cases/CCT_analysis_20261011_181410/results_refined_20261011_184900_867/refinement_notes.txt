@@ -1,0 +1,14 @@
+Refinement of Uret=0.45 (55% sag) completed.
+Original model and recovery tolerances unchanged. Longer observation used to resolve
+slow convergence at the former upper endpoint. Original results preserved separately.
+New lower clearing time: 0.156468750 s (recovered).
+New upper clearing time: 0.1566640625 s (not recovered within assessed horizons).
+Midpoint numerical CCT: 0.15656640625 s. Width: 0.0001953125 s.
+Both endpoints tested at 32 and 64 s with RelTol 1e-11 / 1e-12,
+AbsTol [1e-13,1e-14] / [1e-14,1e-15], and maximum steps
+fault .001 / .0005 s and postfault .0025 / .00125 s.
+All eight endpoint classifications agree. No physical validity or numerical stops.
+Assessment and verification horizons are recorded in separate CSV columns.
+Other eleven results unchanged. Original failed verification retained in source run
+and in originalResults inside the new MAT file; refinementAudit stores new trials.
+This is a finite-horizon numerical CCT, not an asymptotic mathematical proof.
